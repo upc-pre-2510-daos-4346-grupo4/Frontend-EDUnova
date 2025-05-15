@@ -1,0 +1,543 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "username": "darkwolf21",
+      "password": "Dw@2025x",
+      "email": "darkwolf21@example.com"
+    },
+    {
+      "id": 2,
+      "username": "sunny_rider",
+      "password": "SunnY#89",
+      "email": "sunny_rider@example.com"
+    },
+    {
+      "id": 3,
+      "username": "pixel_ghost",
+      "password": "Pix3l!gh0st",
+      "email": "pixel_ghost@example.com"
+    },
+    {
+      "id": 4,
+      "username": "code_ninja",
+      "password": "N1nj@Code!",
+      "email": "code_ninja@example.com"
+    },
+    {
+      "id": 5,
+      "username": "alpha_zero",
+      "password": "AlphaZ_44",
+      "email": "alpha_zero@example.com"
+    },
+    {
+      "id": 6,
+      "username": "byte_bomber",
+      "password": "Bom8!Byte",
+      "email": "byte_bomber@example.com"
+    }
+  ],
+  "profiles": [
+    {
+      "id": 1,
+      "userId": 1,
+      "name": "Carlos",
+      "lastname": "Ramírez",
+      "gender": "male",
+      "imageProfile": "https://example.com/images/darkwolf21.jpg",
+      "isPremium": true,
+      "dateExpiration": "2025-12-31"
+    },
+    {
+      "id": 2,
+      "userId": 2,
+      "name": "Laura",
+      "lastname": "Martínez",
+      "gender": "female",
+      "imageProfile": "https://example.com/images/sunny_rider.jpg",
+      "isPremium": false,
+      "dateExpiration": ""
+    },
+    {
+      "id": 3,
+      "userId": 3,
+      "name": "Jorge",
+      "lastname": "Fernández",
+      "gender": "male",
+      "imageProfile": "https://example.com/images/pixel_ghost.jpg",
+      "isPremium": true,
+      "dateExpiration": "2025-11-20"
+    },
+    {
+      "id": 4,
+      "userId": 4,
+      "name": "Valeria",
+      "lastname": "González",
+      "gender": "female",
+      "imageProfile": "https://example.com/images/code_ninja.jpg",
+      "isPremium": false,
+      "dateExpiration": ""
+    },
+    {
+      "id": 5,
+      "userId": 5,
+      "name": "Andrés",
+      "lastname": "Pérez",
+      "gender": "male",
+      "imageProfile": "https://example.com/images/alpha_zero.jpg",
+      "isPremium": true,
+      "dateExpiration": "2026-01-15"
+    },
+    {
+      "id": 6,
+      "userId": 6,
+      "name": "María",
+      "lastname": "Suárez",
+      "gender": "female",
+      "imageProfile": "https://example.com/images/byte_bomber.jpg",
+      "isPremium": false,
+      "dateExpiration": ""
+    }
+  ],
+  "followedUsers": [
+    {
+      "id": 1,
+      "followerId": 1,
+      "followedId": 2
+    },
+    {
+      "id": 2,
+      "followerId": 1,
+      "followedId": 3
+    },
+    {
+      "id": 3,
+      "followerId": 3,
+      "followedId": 1
+    },
+    {
+      "id": 4,
+      "followerId": 1,
+      "followedId": 5
+    },
+    {
+      "id": 5,
+      "followerId": 1,
+      "followedId": 6
+    },
+    {
+      "id": 6,
+      "followerId": 6,
+      "followedId": 4
+    }
+  ],
+  "courses": [
+    {
+      "id": 1,
+      "name": "Álgebra Lineal",
+      "code": "01MAT42",
+      "description": "Curso introductorio sobre álgebra lineal, vectores y matrices.",
+      "category": "Matemáticas",
+      "price": 120,
+      "language": "Español",
+      "creatorId": 1
+    },
+    {
+      "id": 2,
+      "name": "Fundamentos de Programación",
+      "code": "02CS10",
+      "description": "Aprende los conceptos básicos de programación con Python.",
+      "category": "Informática",
+      "price": 150,
+      "language": "Español",
+      "creatorId": 1
+    },
+    {
+      "id": 3,
+      "name": "Historia del Arte",
+      "code": "03ART21",
+      "description": "Un recorrido visual por las grandes obras y movimientos artísticos.",
+      "category": "Arte",
+      "price": 100,
+      "language": "Inglés",
+      "creatorId": 1
+    },
+    {
+      "id": 4,
+      "name": "Diseño UX/UI",
+      "code": "04DES35",
+      "description": "Principios de diseño centrado en el usuario para apps y sitios web.",
+      "category": "Diseño",
+      "price": 180,
+      "language": "Español",
+      "creatorId": 1
+    },
+    {
+      "id": 5,
+      "name": "Marketing Digital",
+      "code": "05BUS60",
+      "description": "Técnicas y herramientas clave del marketing en medios digitales.",
+      "category": "Negocios",
+      "price": 130,
+      "language": "Español",
+      "creatorId": 3
+    },
+    {
+      "id": 6,
+      "name": "Introducción a la Filosofía",
+      "code": "06PHI01",
+      "description": "Explora las preguntas fundamentales de la filosofía occidental.",
+      "category": "Humanidades",
+      "price": 90,
+      "language": "Español",
+      "creatorId": 3
+    }
+  ],
+  "topics": [
+    {
+      "id": 1,
+      "title": "Vectores y Espacios",
+      "description": "Introducción a vectores en R² y R³ y nociones de espacio vectorial.",
+      "courseId": 1,
+      "position": 1
+    },
+    {
+      "id": 2,
+      "title": "Matrices y Transformaciones",
+      "description": "Uso de matrices para representar y resolver sistemas lineales.",
+      "courseId": 1,
+      "position": 2
+    },
+    {
+      "id": 3,
+      "title": "Variables y Tipos de Datos",
+      "description": "Conceptos fundamentales en programación con Python.",
+      "courseId": 2,
+      "position": 1
+    },
+    {
+      "id": 4,
+      "title": "Condicionales y Bucles",
+      "description": "Control de flujo en programas utilizando estructuras condicionales.",
+      "courseId": 2,
+      "position": 2
+    },
+    {
+      "id": 5,
+      "title": "Arte Renacentista",
+      "description": "Características y autores clave del Renacimiento.",
+      "courseId": 3,
+      "position": 1
+    },
+    {
+      "id": 6,
+      "title": "Principios de UX",
+      "description": "Bases del diseño centrado en el usuario.",
+      "courseId": 4,
+      "position": 1
+    },
+    {
+      "id": 7,
+      "title": "Wireframes y Prototipos",
+      "description": "Uso de herramientas para el diseño de interfaces.",
+      "courseId": 4,
+      "position": 2
+    },
+    {
+      "id": 8,
+      "title": "SEO y SEM",
+      "description": "Optimización en buscadores y publicidad pagada.",
+      "courseId": 5,
+      "position": 1
+    },
+    {
+      "id": 9,
+      "title": "Introducción a Sócrates",
+      "description": "Contexto histórico y pensamiento socrático.",
+      "courseId": 6,
+      "position": 1
+    }
+  ],
+  "objectives": [
+    {
+      "id": 1,
+      "topicId": 1,
+      "description": "Comprender el concepto de vector y su representación gráfica."
+    },
+    {
+      "id": 2,
+      "topicId": 1,
+      "description": "Identificar operaciones básicas con vectores."
+    },
+    {
+      "id": 3,
+      "topicId": 2,
+      "description": "Entender la multiplicación de matrices y sus aplicaciones."
+    },
+    {
+      "id": 4,
+      "topicId": 2,
+      "description": "Resolver sistemas de ecuaciones lineales usando matrices."
+    },
+    {
+      "id": 5,
+      "topicId": 3,
+      "description": "Reconocer distintos tipos de datos en Python."
+    },
+    {
+      "id": 6,
+      "topicId": 3,
+      "description": "Declarar variables utilizando buenas prácticas."
+    },
+    {
+      "id": 7,
+      "topicId": 4,
+      "description": "Aplicar estructuras condicionales simples y compuestas."
+    },
+    {
+      "id": 8,
+      "topicId": 4,
+      "description": "Implementar bucles para automatizar tareas repetitivas."
+    },
+    {
+      "id": 9,
+      "topicId": 5,
+      "description": "Distinguir las características del arte renacentista."
+    },
+    {
+      "id": 10,
+      "topicId": 6,
+      "description": "Definir los principios fundamentales de la experiencia de usuario."
+    },
+    {
+      "id": 11,
+      "topicId": 6,
+      "description": "Identificar buenas y malas prácticas en interfaces."
+    },
+    {
+      "id": 12,
+      "topicId": 7,
+      "description": "Crear wireframes para prototipos funcionales."
+    },
+    {
+      "id": 13,
+      "topicId": 8,
+      "description": "Comprender la diferencia entre SEO y SEM."
+    },
+    {
+      "id": 14,
+      "topicId": 8,
+      "description": "Aplicar estrategias básicas de posicionamiento web."
+    },
+    {
+      "id": 15,
+      "topicId": 9,
+      "description": "Conocer el contexto histórico de la filosofía griega antigua."
+    },
+    {
+      "id": 16,
+      "topicId": 9,
+      "description": "Explicar los principales aportes de Sócrates al pensamiento filosófico."
+    }
+  ],
+  "resources": [
+    {
+      "id": 1,
+      "topicId": 1,
+      "link": "https://example.com/vector-space-video"
+    },
+    {
+      "id": 2,
+      "topicId": 1,
+      "link": "https://example.com/vector-guide-pdf"
+    },
+    {
+      "id": 3,
+      "topicId": 2,
+      "link": "https://example.com/matrix-transformations"
+    },
+    {
+      "id": 4,
+      "topicId": 3,
+      "link": "https://example.com/python-variables"
+    },
+    {
+      "id": 5,
+      "topicId": 3,
+      "link": "https://example.com/data-types-explained"
+    },
+    {
+      "id": 6,
+      "topicId": 4,
+      "link": "https://example.com/conditionals-loops"
+    },
+    {
+      "id": 7,
+      "topicId": 5,
+      "link": "https://example.com/renaissance-art-overview"
+    },
+    {
+      "id": 8,
+      "topicId": 6,
+      "link": "https://example.com/ux-principles"
+    },
+    {
+      "id": 9,
+      "topicId": 6,
+      "link": "https://example.com/ux-checklist"
+    },
+    {
+      "id": 10,
+      "topicId": 7,
+      "link": "https://example.com/wireframe-tools"
+    },
+    {
+      "id": 11,
+      "topicId": 8,
+      "link": "https://example.com/seo-vs-sem"
+    },
+    {
+      "id": 12,
+      "topicId": 8,
+      "link": "https://example.com/seo-strategies"
+    },
+    {
+      "id": 13,
+      "topicId": 9,
+      "link": "https://example.com/socrates-bio"
+    },
+    {
+      "id": 14,
+      "topicId": 9,
+      "link": "https://example.com/greek-philosophy"
+    }
+  ],
+  "reviews": [
+    {
+      "id": 1,
+      "reviewerId": 2,
+      "courseId": 1,
+      "rating": 5,
+      "title": "Excelente curso",
+      "comment": "Muy claro y bien estructurado. Ideal para empezar con álgebra."
+    },
+    {
+      "id": 2,
+      "reviewerId": 3,
+      "courseId": 1,
+      "rating": 4,
+      "title": "Muy útil",
+      "comment": "Buena explicación de conceptos básicos."
+    },
+    {
+      "id": 3,
+      "reviewerId": 4,
+      "courseId": 2,
+      "rating": 5,
+      "title": "Perfecto para principiantes",
+      "comment": "Me ayudó mucho para entender la programación."
+    },
+    {
+      "id": 4,
+      "reviewerId": 5,
+      "courseId": 3,
+      "rating": 4,
+      "title": "Interesante",
+      "comment": "Buen contenido sobre arte renacentista."
+    },
+    {
+      "id": 5,
+      "reviewerId": 6,
+      "courseId": 4,
+      "rating": 3,
+      "title": "Está bien",
+      "comment": "Podría ser más profundo en UX."
+    },
+    {
+      "id": 6,
+      "reviewerId": 1,
+      "courseId": 5,
+      "rating": 4,
+      "title": "Muy informativo",
+      "comment": "Aprendí mucho sobre marketing digital."
+    },
+    {
+      "id": 7,
+      "reviewerId": 3,
+      "courseId": 6,
+      "rating": 5,
+      "title": "Excelente",
+      "comment": "Una gran introducción a la filosofía."
+    }
+  ],
+  "purchasedCourses": [
+    {
+      "id": 1,
+      "userId": 2,
+      "courseId": 1
+    },
+    {
+      "id": 2,
+      "userId": 3,
+      "courseId": 2
+    },
+    {
+      "id": 3,
+      "userId": 4,
+      "courseId": 3
+    },
+    {
+      "id": 4,
+      "userId": 5,
+      "courseId": 4
+    },
+    {
+      "id": 5,
+      "userId": 1,
+      "courseId": 5
+    },
+    {
+      "id": 6,
+      "userId": 1,
+      "courseId": 6
+    }
+  ],
+  "completedTopics": [
+    {
+      "id": 1,
+      "purchasedCourseId": 1,
+      "topicId": 1
+    },
+    {
+      "id": 2,
+      "purchasedCourseId": 1,
+      "topicId": 2
+    },
+    {
+      "id": 3,
+      "purchasedCourseId": 2,
+      "topicId": 3
+    },
+    {
+      "id": 4,
+      "purchasedCourseId": 3,
+      "topicId": 5
+    },
+    {
+      "id": 5,
+      "purchasedCourseId": 4,
+      "topicId": 6
+    },
+    {
+      "id": 6,
+      "purchasedCourseId": 4,
+      "topicId": 7
+    },
+    {
+      "id": 7,
+      "purchasedCourseId": 5,
+      "topicId": 8
+    }
+  ]
+
+}
