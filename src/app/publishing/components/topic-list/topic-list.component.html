@@ -1,0 +1,40 @@
+<!-- Course catalogue -->
+<div class="table-wrapper">
+  <h3>{{ 'topic.syllabus' | translate }}</h3>
+  <!--Add/Edit Form-->
+
+
+  <!-- Data Table -->
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8"
+         matSort matSortActive="name" matSortDirection="asc">
+
+    <ng-container matColumnDef="id">
+      <th *matHeaderCellDef mat-header-cell mat-sort-header> {{ 'topic.id' | translate }} </th>
+      <td *matCellDef="let element" mat-cell>{{ element.id }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="title">
+      <th *matHeaderCellDef mat-header-cell mat-sort-header>{{ 'topic.title' | translate }}</th>
+      <td *matCellDef="let element" mat-cell>{{ element.title }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="description">
+      <th *matHeaderCellDef mat-header-cell mat-sort-header>{{ 'topic.description' | translate }}</th>
+      <td *matCellDef="let element" mat-cell>{{ element.description }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="actions">
+      <th *matHeaderCellDef mat-header-cell> {{ 'topic.actions' | translate }}</th>
+      <td *matCellDef="let element" mat-cell>
+        <a href="javascript:void(0)"><mat-icon>edit</mat-icon></a>
+        <a href="javascript:void(0)"><mat-icon>delete</mat-icon></a>
+        <a mat-flat-button (click)="goToDetails(element.id)" target="_blank">Link</a>
+      </td>
+    </ng-container>
+
+    <tr *matHeaderRowDef="displayedColumns" mat-header-row></tr>
+    <tr *matRowDef="let row; columns:displayedColumns" [ngClass]="{'editable-row': topicData.id === row.id }" mat-row></tr>
+  </table>
+  <!-- Paginator child component-->
+  <mat-paginator [pageSizeOptions]="[5, 10, 15]" [pageSize]="5" showFirstLastButtons></mat-paginator>
+</div>

@@ -1,0 +1,32 @@
+<mat-accordion>
+  <mat-expansion-panel hideToggle>
+    <mat-expansion-panel-header>
+      <mat-panel-title> {{ 'resource.title' | translate}} </mat-panel-title>
+      <mat-panel-description> {{ 'resource.description' | translate}} </mat-panel-description>
+    </mat-expansion-panel-header>
+    <mat-accordion>
+      <div *ngFor="let resource of resourceList; let i = index">
+        <mat-expansion-panel hideToggle>
+          <mat-expansion-panel-header>
+            <mat-panel-title> Resource {{ i + 1 }} </mat-panel-title>
+            <mat-panel-description> {{resource.description}} </mat-panel-description>
+          </mat-expansion-panel-header>
+          <mat-card appearance="outlined" class="example-card">
+            <div class="card-content">
+              <youtube-player [videoId]="resource.link" class="responsive-video" [width]="390" [height]="200"></youtube-player>
+              <mat-card-actions class="card-actions">
+                <button mat-button>{{ 'resource.edit' | translate}}</button>
+                <button mat-button>{{ 'resource.delete' | translate}}</button>
+              </mat-card-actions>
+            </div>
+          </mat-card>
+        </mat-expansion-panel>
+        <br>
+      </div>
+
+    </mat-accordion>
+  </mat-expansion-panel>
+</mat-accordion>
+
+
+

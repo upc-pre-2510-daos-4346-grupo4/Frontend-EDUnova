@@ -1,0 +1,49 @@
+
+<div class="example-button-row">
+  <div class="example-flex-container">
+    <div class="example-button-container">
+      <button mat-fab extended (click)="openDialog()">
+        <mat-icon>edit</mat-icon>
+        {{ 'course.create' | translate }}
+      </button>
+    </div>
+  </div>
+</div>
+
+
+<br>
+<br>
+
+
+<div *ngFor="let course of paginatedCourses; let i = index">
+  <br>
+  <mat-card appearance="outlined" class="data-view-card">
+    <div class="card-content">
+      <img [src]="course.image" alt="Imagen" class="card-image" />
+      <div class="card-details">
+        <mat-card-title>{{ 'course.name' | translate }}: {{ course.name }}</mat-card-title>
+        <mat-card-subtitle>{{ 'course.category' | translate }}: {{ course.category }}</mat-card-subtitle>
+        <p class="course-description">{{ 'course.description' | translate }}: {{ course.description }}</p>
+        <p class="course-price"><strong style="font-size: 1.2em;">{{ 'course.price' | translate }}: $ {{ course.price }}</strong></p>
+      </div>
+      <mat-card-actions class="card-actions">
+        <button mat-button (click)="openDialog()">{{ 'course.edit' | translate }}</button>
+        <button mat-button>{{ 'course.delete' | translate }}</button>
+      </mat-card-actions>
+    </div>
+    <mat-accordion class="card-accordion">
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <span>{{ 'course.moreInformation' | translate }}</span>
+        </mat-expansion-panel-header>
+        <app-topic-list [courseId]="course.id"></app-topic-list>
+      </mat-expansion-panel>
+    </mat-accordion>
+  </mat-card>
+</div>
+
+<mat-paginator [length]="courseList.length"
+               [pageSize]="pageSize"
+               [pageSizeOptions]="[5, 10, 25, 100]"
+               (page)="onPageChange($event)">
+</mat-paginator>

@@ -13,10 +13,13 @@ import { BreakpointObserver } from "@angular/cdk/layout";
 import { TranslateService } from "@ngx-translate/core";
 import { LanguageSwitcherComponent } from "./public/components/language-switcher/language-switcher.component";
 
+import { FooterContentComponent } from './public/components/footer-content/footer-content.component';
+
+
 @Component({
   selector: 'app-root',
   imports: [RouterOutlet, RouterLink, MatToolbarModule, MatButtonModule, MatIconModule,
-    MatSidenavModule, MatDividerModule, MatListModule, LanguageSwitcherComponent],
+    MatSidenavModule, MatDividerModule, MatListModule, LanguageSwitcherComponent,FooterContentComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
@@ -26,6 +29,7 @@ export class AppComponent implements OnInit {
   @ViewChild(MatSidenav, {static: true}) sidenav!: MatSidenav;
   options = [
     { icon: 'home', path: '/home', title: 'Home'},
+    { icon: 'edit', path: '/publishing/courses', title: 'Courses'},
     { icon: 'info', path:'/about', title: 'About'}
   ];
 
@@ -35,7 +39,7 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.observer.observe(['(max-width: 1280px)']) // Observa el ancho de la pantalla
+    this.observer.observe(['(max-width: 1580px)']) // Observa el ancho de la pantalla
       .subscribe((response) => {  // Se suscribe a los cambios en el ancho de la pantalla
         if (response.matches) { // Si el ancho de la pantalla es menor a 1280px
           this.sidenav.mode = 'over'; // Se despliega sobre el contenido

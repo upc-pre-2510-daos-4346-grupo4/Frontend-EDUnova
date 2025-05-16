@@ -1,4 +1,4 @@
-<mat-toolbar color="primary">
+<mat-toolbar color="primary" class="custom-toolbar">
   @if (sidenav.mode === 'over') {
     <button mat-icon-button (click)="sidenav.toggle()" >
       @if (sidenav.opened) {
@@ -9,7 +9,7 @@
     </button>
   }
   <mat-icon matListItemIcon>rocket_launch</mat-icon>
-  <span>Learning Center</span>
+  <span>EDUnova</span>
   <span class="mat-spacer"></span>
   @for(option of options; track option.title) {
     <a mat-button [routerLink]="option.path">{{ option.title }}</a>
@@ -22,8 +22,8 @@
   </span>
 </mat-toolbar>
 
-<mat-sidenav-container>
-  <mat-sidenav>
+<mat-sidenav-container class="custom-sidenav-container">
+  <mat-sidenav class="custom-sidenav">
     <mat-nav-list>
       @for(option of options; track option.title) {
         <mat-list-item (click)="sidenav.mode === 'over' && sidenav.toggle()" [routerLink]="option.path">
@@ -33,9 +33,11 @@
       }
     </mat-nav-list>
   </mat-sidenav>
-  <mat-sidenav-content>
+  <mat-sidenav-content class="custom-content">
     <div class="content">
       <router-outlet />
+      <br>
+      <app-footer-content></app-footer-content>
     </div>
   </mat-sidenav-content>
 </mat-sidenav-container>

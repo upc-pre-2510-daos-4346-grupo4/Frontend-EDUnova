@@ -1,8 +1,41 @@
 {
+  "course": {
+    "create": "Create Course",
+    "edit": "Edit Course",
+    "delete": "Delete Course",
+    "name": "Name",
+    "description": "Description",
+    "category": "Category",
+    "price": "Price",
+    "moreInformation": "More Information"
+  },
+
+  "topic": {
+    "syllabus": "Syllabus",
+    "id": "ID",
+    "title": "Title",
+    "description": "Description",
+    "actions": "Actions"
+  },
+
   "footer": {
     "rights": "Copyright © 2024 {{ api }}, All rights reserved",
     "intro": "Developed ",
     "author": "by {{ team }} Team"
+  },
+
+  "objective": {
+    "title": "Objectives",
+    "description": "Here you can see your objectives and the information to learn them",
+    "edit": "Edit",
+    "delete": "Delete"
+  },
+
+  "resource": {
+    "title": "Resources",
+    "description": "Here you can see complementary videos on YouTube",    "edit": "Edit",
+    "delete": "Delete",
+    "edit": "Edit"
   }
 
 }

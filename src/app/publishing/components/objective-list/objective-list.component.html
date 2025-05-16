@@ -1,0 +1,30 @@
+
+
+<mat-accordion>
+  <mat-expansion-panel hideToggle>
+    <mat-expansion-panel-header>
+      <mat-panel-title> {{ 'objective.title' | translate}} </mat-panel-title>
+      <mat-panel-description> {{ 'objective.description' | translate}} </mat-panel-description>
+    </mat-expansion-panel-header>
+    <br>
+    <div *ngFor="let objective of paginatedObjectives; let i = index">
+      <mat-card appearance="outlined">
+        <mat-card-header>
+          <mat-card-title>{{objective.title}}</mat-card-title>
+          <mat-card-subtitle>{{objective.description}}</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-actions align="end">
+          <button mat-button>{{ 'objective.edit' | translate}}</button>
+          <button mat-button>{{ 'objective.delete' | translate}}</button>
+        </mat-card-actions>
+      </mat-card>
+      <br>
+    </div>
+
+    <mat-paginator [length]="objectiveList.length"
+                   [pageSize]="pageSize"
+                   [pageSizeOptions]="[5, 10, 25, 100]"
+                   (page)="onPageChange($event)">
+    </mat-paginator>
+  </mat-expansion-panel>
+</mat-accordion>
