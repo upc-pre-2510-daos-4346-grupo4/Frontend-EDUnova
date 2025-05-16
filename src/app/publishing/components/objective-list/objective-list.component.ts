@@ -15,6 +15,7 @@ import {
 
 import {ViewChild} from '@angular/core';
 import {MatPaginator} from '@angular/material/paginator';
+import {TranslatePipe} from '@ngx-translate/core';
 
 
 
@@ -24,7 +25,7 @@ import {MatPaginator} from '@angular/material/paginator';
   imports: [MatListModule, NgForOf, MatCardTitle, MatCardHeader,
     MatCard, MatCardActions, MatButton, MatCardSubtitle,
     MatExpansionPanelDescription, MatExpansionPanelTitle,
-    MatExpansionPanelHeader, MatExpansionPanel, MatAccordion, MatPaginator],
+    MatExpansionPanelHeader, MatExpansionPanel, MatAccordion, MatPaginator, TranslatePipe],
   templateUrl: './objective-list.component.html',
   styleUrl: './objective-list.component.css'
 })

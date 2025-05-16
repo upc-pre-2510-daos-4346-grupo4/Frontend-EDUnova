@@ -19,6 +19,7 @@ import {
 import {YouTubePlayer} from '@angular/youtube-player';
 import {MatButton} from '@angular/material/button';
 import {TopicListComponent} from '../topic-list/topic-list.component';
+import {TranslatePipe} from '@ngx-translate/core';
 
 @Component({
   selector: 'app-resource-list',
@@ -38,7 +39,8 @@ import {TopicListComponent} from '../topic-list/topic-list.component';
     MatButton,
     MatCardSubtitle,
     MatCardTitle,
-    TopicListComponent
+    TopicListComponent,
+    TranslatePipe
   ],
   templateUrl: './resource-list.component.html',
   styleUrl: './resource-list.component.css'

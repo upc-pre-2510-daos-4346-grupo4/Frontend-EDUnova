@@ -3,8 +3,8 @@
 <mat-accordion>
   <mat-expansion-panel hideToggle>
     <mat-expansion-panel-header>
-      <mat-panel-title> Document </mat-panel-title>
-      <mat-panel-description> This is a summary of the content </mat-panel-description>
+      <mat-panel-title> {{ 'objective.title' | translate}} </mat-panel-title>
+      <mat-panel-description> {{ 'objective.description' | translate}} </mat-panel-description>
     </mat-expansion-panel-header>
     <br>
     <div *ngFor="let objective of paginatedObjectives; let i = index">
@@ -14,8 +14,8 @@
           <mat-card-subtitle>{{objective.description}}</mat-card-subtitle>
         </mat-card-header>
         <mat-card-actions align="end">
-          <button mat-button>Edit</button>
-          <button mat-button>Delete</button>
+          <button mat-button>{{ 'objective.edit' | translate}}</button>
+          <button mat-button>{{ 'objective.delete' | translate}}</button>
         </mat-card-actions>
       </mat-card>
       <br>
