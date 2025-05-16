@@ -3,5 +3,14 @@
     "rights": "Derechos de autor © 2024 {{ api }}, Todos los derechos reservados",
     "intro": "Desarrollado ",
     "author": "por el Equipo {{ team }}"
+  },
+  "STUDYING": {
+    "SCHEDULE_TITLE": "Cronograma",
+    "IN_PROGRESS": "En progreso",
+    "COMPLETED": "Completados",
+    "INSTRUCTOR": "Instructor",
+    "WEEK": "Semana",
+    "CANCEL": "Cancelar",
+    "COMPLETE": "Completar"
   }
 }

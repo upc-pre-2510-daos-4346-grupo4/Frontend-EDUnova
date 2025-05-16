@@ -1,0 +1,85 @@
+.studying-wrapper {
+  padding: 24px;
+  background-color: #ececec;
+  min-height: 100vh;
+  box-sizing: border-box;
+}
+
+.studying-wrapper h2 {
+  margin-bottom: 16px;
+  color: #1d1d1d;
+}
+
+.tab-group {
+  margin-bottom: 16px;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.paginator-container {
+  display: flex;
+  justify-content: flex-end;
+  margin: 12px 0;
+}
+
+.course-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.course-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px;
+  background-color: #ffffff;
+  border-left: 4px solid #deb12c;
+  border-radius: 8px;
+}
+
+.card-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.menu-wrapper {
+  display: flex;
+  align-items: center;
+}
+
+.course-info h3 {
+  margin: 0 0 8px 0;
+  color: #1d1d1d;
+}
+
+.course-info p {
+  margin: 4px 0;
+  color: #333333;
+}
+
+.menu-wrapper button {
+  background-color: #e07219;
+  color: white;
+  border-radius: 4px;
+  transition: background-color 0.2s;
+}
+
+.menu-wrapper button:hover {
+  background-color: #c86117;
+}
+
+mat-dialog-content {
+  max-height: 60vh;
+  overflow-y: auto;
+  color: #1d1d1d;
+  padding-right: 8px;
+}
+
+mat-dialog-actions button {
+  min-width: 100px;
+  margin-left: 8px;
+}

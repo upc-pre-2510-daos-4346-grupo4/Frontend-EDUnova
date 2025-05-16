@@ -3,6 +3,14 @@
     "rights": "Copyright © 2024 {{ api }}, All rights reserved",
     "intro": "Developed ",
     "author": "by {{ team }} Team"
+  },
+  "STUDYING": {
+    "SCHEDULE_TITLE": "Schedule",
+    "IN_PROGRESS": "In Progress",
+    "COMPLETED": "Completed",
+    "INSTRUCTOR": "Instructor",
+    "WEEK": "Week",
+    "CANCEL": "Cancel",
+    "COMPLETE": "Complete"
   }
-
 }
