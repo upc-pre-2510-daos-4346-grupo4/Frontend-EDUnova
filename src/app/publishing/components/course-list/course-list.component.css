@@ -1,0 +1,40 @@
+.data-view-card {
+  display: flex;
+  padding: 16px;
+}
+
+.card-content {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+}
+
+.card-image {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.card-details {
+  flex-grow: 1;
+}
+
+.card-actions {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 8px;
+}
+
+.card-accordion {
+  margin-top: 16px;
+}
+
+.course-description {
+  max-height: 100px;
+  overflow: auto;
+  font-size: 14px;
+  color: #666;
+}
