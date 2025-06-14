@@ -39,30 +39,29 @@ export class StudyingComponent implements OnInit {
   selectedTabIndex = 0;
   courses: any[] = [];
   topics: any[] = [];
-  completedTopics: any[] = [];
-  purchasedCourses: any[] = [];
-
-  currentUserId = 1; // SIMULACION DE USUARIO CON ID 1
+  currentUserId = 1;
+  currentUser: any;
 
   pageSize = 4;
   currentPage = 0;
   paginatedCourses: any[] = [];
+  activeCourse: any = null;
 
   get filteredCourses() {
-    const userCourseIds = this.purchasedCourses.map(pc => Number(pc.courseId));
-    const completedTopicIds = this.completedTopics.map(c => Number(c.topicId));
+    if (!this.currentUser) return [];
 
-    const filtered = this.courses
-      .filter(course => userCourseIds.includes(Number(course.id)))
+    const purchased = (this.currentUser.purchasedCourses || []).map((id: any) => Number(id));
+    const completed = this.currentUser.completedTopics || [];
+
+    return this.courses
+      .filter(course => purchased.includes(Number(course.id)))
       .filter(course => {
-        const courseTopicIds = this.topics
-          .filter(t => Number(t.courseId) === Number(course.id))
-          .map(t => Number(t.id));
-        const isCompleted = courseTopicIds.every(tid => completedTopicIds.includes(tid));
+        const courseTopics = this.topics.filter(t => Number(t.courseId) === Number(course.id));
+        const userCompletion = completed.find((c: any) => Number(c.courseId) === Number(course.id));
+        const completedIds = (userCompletion?.topicIds || []).map((id: any) => Number(id));
+        const isCompleted = courseTopics.every(t => completedIds.includes(Number(t.id)));
         return this.selectedTabIndex === 0 ? !isCompleted : isCompleted;
       });
-
-    return filtered;
   }
 
   ngOnInit(): void {
@@ -70,21 +69,28 @@ export class StudyingComponent implements OnInit {
   }
 
   loadAllData() {
-    this.http.get(`${environment.serverBasePath}/courses`).subscribe((res: any) => this.courses = res);
-    this.http.get(`${environment.serverBasePath}/topics`).subscribe((res: any) => this.topics = res);
-    this.http.get(`${environment.serverBasePath}/purchasedCourses?userId=${this.currentUserId}`)
-      .subscribe((res: any) => {
-        this.purchasedCourses = res;
-        this.http.get(`${environment.serverBasePath}/completedTopics`).subscribe((ct: any) => {
-          this.completedTopics = ct;
+    this.http.get<any[]>(`${environment.serverBasePath}/courses`).subscribe(courses => {
+      this.courses = courses;
+
+      this.http.get<any[]>(`${environment.serverBasePath}/topics`).subscribe(topics => {
+        this.topics = topics;
+
+        this.http.get<any>(`${environment.serverBasePath}/users/${this.currentUserId}`).subscribe(user => {
+          this.currentUser = user;
           this.paginateCourses();
         });
       });
+    });
   }
 
   onPageChange(event: PageEvent) {
     this.pageSize = event.pageSize;
     this.currentPage = event.pageIndex;
+    this.paginateCourses();
+  }
+
+  onTabChange() {
+    this.currentPage = 0;
     this.paginateCourses();
   }
 
@@ -95,23 +101,21 @@ export class StudyingComponent implements OnInit {
   }
 
   getInstructorName(creatorId: number): string {
-    return creatorId === 1 ? 'Carlos Ramírez' : 'Instructor desconocido';
+    return creatorId === 1 ? 'Carlos Ramírez' : 'Instructor Desconocido';
   }
 
-  getTopicsByCourse(courseId: number) {
+  getTopicsByCourse(courseId: number | null) {
+    if (courseId === null) return [];
     return this.topics
-      .filter(topic => Number(topic.courseId) === Number(courseId))
+      .filter(t => Number(t.courseId) === Number(courseId))
       .sort((a, b) => a.position - b.position);
   }
 
   openTopicDialog(topic: any, courseId: number): void {
-    const purchased = this.purchasedCourses.find(pc => Number(pc.courseId) === Number(courseId));
-    if (!purchased) return;
-
-    const dialogRef = this.dialog.open(this.topicDialog, {
+    this.dialog.open(this.topicDialog, {
       data: {
         ...topic,
-        purchasedCourseId: purchased.id
+        courseId
       },
       width: '80vw',
       height: '80vh'
@@ -119,25 +123,55 @@ export class StudyingComponent implements OnInit {
   }
 
   markTopicCompleted(topic: any) {
-    if (!topic.purchasedCourseId) return;
-
-    const body = {
-      purchasedCourseId: topic.purchasedCourseId,
-      topicId: topic.id
-    };
-
-    const alreadyCompleted = this.completedTopics.some(
-      c => Number(c.topicId) === Number(topic.id) && Number(c.purchasedCourseId) === Number(topic.purchasedCourseId)
-    );
-
-    if (alreadyCompleted) {
+    const courseId = Number(topic.courseId);
+    const topicId = Number(topic.id);
+  
+    if (!this.currentUser?.completedTopics) {
+      this.currentUser.completedTopics = [];
+    }
+  
+    // Normaliza datos actuales a número para evitar duplicados por tipo
+    this.currentUser.completedTopics.forEach((ct: any) => {
+      ct.courseId = Number(ct.courseId);
+      ct.topicIds = ct.topicIds.map((id: any) => Number(id));
+    });
+  
+    // Busca si ya hay progreso guardado en ese curso
+    let courseCompletion = this.currentUser.completedTopics.find((ct: any) => ct.courseId === courseId);
+  
+    // Evita duplicados
+    if (courseCompletion?.topicIds.includes(topicId)) {
       this.dialog.closeAll();
       return;
     }
-
-    this.http.post(`${environment.serverBasePath}/completedTopics`, body).subscribe(() => {
+  
+    // Añadir nuevo progreso
+    if (!courseCompletion) {
+      this.currentUser.completedTopics.push({ courseId, topicIds: [topicId] });
+    } else {
+      courseCompletion.topicIds.push(topicId);
+    }
+  
+    // Envía la versión limpia al backend
+    const updatedUser = {
+      ...this.currentUser,
+      completedTopics: this.currentUser.completedTopics.map((ct: any) => ({
+        courseId: Number(ct.courseId),
+        topicIds: ct.topicIds.map((id: any) => Number(id))
+      }))
+    };
+  
+    this.http.put(`${environment.serverBasePath}/users/${this.currentUserId}`, updatedUser).subscribe(() => {
       this.loadAllData();
       this.dialog.closeAll();
     });
+  }
+
+  isTopicCompleted(courseId: number, topicId: number): boolean {
+    const courseCompletion = this.currentUser?.completedTopics?.find(
+      (ct: any) => Number(ct.courseId) === Number(courseId)
+    );
+  
+    return courseCompletion?.topicIds?.some((id: any) => Number(id) === Number(topicId)) || false;
   }
 }

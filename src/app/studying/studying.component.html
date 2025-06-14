@@ -1,11 +1,15 @@
 <section class="studying-wrapper">
   <h2>{{ 'STUDYING.SCHEDULE_TITLE' | translate }}</h2>
 
-  <mat-tab-group [(selectedIndex)]="selectedTabIndex" class="tab-group">
+  <!-- Tabs: En progreso / Completados -->
+  <mat-tab-group [(selectedIndex)]="selectedTabIndex"
+               (selectedIndexChange)="onTabChange()"
+               class="tab-group">
     <mat-tab label="{{ 'STUDYING.IN_PROGRESS' | translate }}"></mat-tab>
     <mat-tab label="{{ 'STUDYING.COMPLETED' | translate }}"></mat-tab>
   </mat-tab-group>
 
+  <!-- Paginador -->
   <div class="paginator-container">
     <mat-paginator [length]="filteredCourses.length"
                    [pageSize]="pageSize"
@@ -14,23 +18,25 @@
     </mat-paginator>
   </div>
 
+  <!-- Lista de Cursos -->
   <div class="course-list">
     <mat-card *ngFor="let course of paginatedCourses" class="course-card">
       <div class="card-content">
         <div class="course-info">
           <h3>{{ course.name }}</h3>
-          <p><strong>{{ 'STUDYING.INSTRUCTOR' | translate }}:</strong> {{ getInstructorName(course. creatorId) }}</p>
+          <p><strong>{{ 'STUDYING.INSTRUCTOR' | translate }}:</strong> {{ getInstructorName(course.creatorId) }}</p>
           <p>{{ course.description }}</p>
         </div>
-
         <div class="menu-wrapper">
-          <button mat-icon-button [matMenuTriggerFor]="menu">
+          <button mat-icon-button [matMenuTriggerFor]="menuCourse" aria-label="Temas">
             <mat-icon>menu</mat-icon>
           </button>
-          <mat-menu #menu="matMenu">
-            <button mat-menu-item *ngFor="let week of getTopicsByCourse(course.id)"
+          <mat-menu #menuCourse="matMenu">
+            <button mat-menu-item
+                    *ngFor="let week of getTopicsByCourse(course.id)"
                     (click)="openTopicDialog(week, course.id)">
               {{ 'STUDYING.WEEK' | translate }} {{ week.position }} — {{ week.title }}
+              <mat-icon *ngIf="isTopicCompleted(course.id, week.id)" style="color: green; margin-left: 4px;">check_circle</mat-icon>
             </button>
           </mat-menu>
         </div>
@@ -38,6 +44,7 @@
     </mat-card>
   </div>
 
+  <!-- Diálogo para mostrar detalles del tema -->
   <ng-template #topicDialog let-data>
     <h2 mat-dialog-title>
       {{ 'STUDYING.WEEK' | translate }} {{ data.position }} — {{ data.title }}
@@ -46,7 +53,9 @@
       <p>{{ data.description }}</p>
     </mat-dialog-content>
     <mat-dialog-actions align="end">
-      <button mat-button mat-dialog-close>{{ 'STUDYING.CANCEL' | translate }}</button>
+      <button mat-button mat-dialog-close>
+        {{ 'STUDYING.CANCEL' | translate }}
+      </button>
       <button mat-button color="primary" (click)="markTopicCompleted(data)">
         {{ 'STUDYING.COMPLETE' | translate }}
       </button>

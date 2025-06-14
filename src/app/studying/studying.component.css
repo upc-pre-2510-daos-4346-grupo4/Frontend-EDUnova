@@ -72,6 +72,11 @@
   background-color: #c86117;
 }
 
+.completed-icon {
+  color: green;
+  margin-left: auto;
+}
+
 mat-dialog-content {
   max-height: 60vh;
   overflow-y: auto;

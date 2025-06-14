@@ -1,45 +1,89 @@
 {
   "users": [
     {
-      "id": 1,
+      "id": "1",
       "username": "darkwolf21",
       "password": "Dw@2025x",
-      "email": "darkwolf21@example.com"
+      "email": "darkwolf21@example.com",
+      "purchasedCourses": [
+        2,
+        3,
+        4
+      ],
+      "completedTopics": [
+      ]
     },
     {
-      "id": 2,
+      "id": "2",
       "username": "sunny_rider",
       "password": "SunnY#89",
-      "email": "sunny_rider@example.com"
+      "email": "sunny_rider@example.com",
+      "purchasedCourses": [
+        1
+      ],
+      "completedTopics": [
+        {
+          "courseId": 1,
+          "topicIds": [
+            1
+          ]
+        }
+      ]
     },
     {
-      "id": 3,
+      "id": "3",
       "username": "pixel_ghost",
       "password": "Pix3l!gh0st",
-      "email": "pixel_ghost@example.com"
+      "email": "pixel_ghost@example.com",
+      "purchasedCourses": [
+        1,
+        2,
+        3
+      ],
+      "completedTopics": [
+        {
+          "courseId": 1,
+          "topicIds": [
+            1,
+            2
+          ]
+        },
+        {
+          "courseId": 2,
+          "topicIds": [
+            3
+          ]
+        }
+      ]
     },
     {
-      "id": 4,
+      "id": "4",
       "username": "code_ninja",
       "password": "N1nj@Code!",
-      "email": "code_ninja@example.com"
+      "email": "code_ninja@example.com",
+      "purchasedCourses": [],
+      "completedTopics": []
     },
     {
-      "id": 5,
+      "id": "5",
       "username": "alpha_zero",
       "password": "AlphaZ_44",
-      "email": "alpha_zero@example.com"
+      "email": "alpha_zero@example.com",
+      "purchasedCourses": [],
+      "completedTopics": []
     },
     {
-      "id": 6,
+      "id": "6",
       "username": "byte_bomber",
       "password": "Bom8!Byte",
-      "email": "byte_bomber@example.com"
+      "email": "byte_bomber@example.com",
+      "purchasedCourses": [],
+      "completedTopics": []
     }
   ],
   "profiles": [
     {
-      "id": 1,
+      "id": "1",
       "userId": 1,
       "name": "Carlos",
       "lastname": "Ramírez",
@@ -49,7 +93,7 @@
       "dateExpiration": "2025-12-31"
     },
     {
-      "id": 2,
+      "id": "2",
       "userId": 2,
       "name": "Laura",
       "lastname": "Martínez",
@@ -59,7 +103,7 @@
       "dateExpiration": ""
     },
     {
-      "id": 3,
+      "id": "3",
       "userId": 3,
       "name": "Jorge",
       "lastname": "Fernández",
@@ -69,7 +113,7 @@
       "dateExpiration": "2025-11-20"
     },
     {
-      "id": 4,
+      "id": "4",
       "userId": 4,
       "name": "Valeria",
       "lastname": "González",
@@ -79,7 +123,7 @@
       "dateExpiration": ""
     },
     {
-      "id": 5,
+      "id": "5",
       "userId": 5,
       "name": "Andrés",
       "lastname": "Pérez",
@@ -89,7 +133,7 @@
       "dateExpiration": "2026-01-15"
     },
     {
-      "id": 6,
+      "id": "6",
       "userId": 6,
       "name": "María",
       "lastname": "Suárez",
@@ -101,49 +145,49 @@
   ],
   "followedUsers": [
     {
-      "id": 1,
+      "id": "1",
       "followerId": 1,
       "followedId": 2
     },
     {
-      "id": 2,
+      "id": "2",
       "followerId": 1,
       "followedId": 3
     },
     {
-      "id": 3,
+      "id": "3",
       "followerId": 3,
       "followedId": 1
     },
     {
-      "id": 4,
+      "id": "4",
       "followerId": 1,
       "followedId": 5
     },
     {
-      "id": 5,
+      "id": "5",
       "followerId": 1,
       "followedId": 6
     },
     {
-      "id": 6,
+      "id": "6",
       "followerId": 6,
       "followedId": 4
     }
   ],
   "courses": [
     {
-      "id": 1,
+      "id": "1",
       "name": "Álgebra Lineal",
       "code": "01MAT42",
       "description": "Curso introductorio sobre álgebra lineal, vectores y matrices.",
       "category": "Matemáticas",
       "price": 120,
       "language": "Español",
-      "creatorId": 1
+      "creatorId": 3
     },
     {
-      "id": 2,
+      "id": "2",
       "name": "Fundamentos de Programación",
       "code": "02CS10",
       "description": "Aprende los conceptos básicos de programación con Python.",
@@ -153,17 +197,17 @@
       "creatorId": 1
     },
     {
-      "id": 3,
+      "id": "3",
       "name": "Historia del Arte",
       "code": "03ART21",
       "description": "Un recorrido visual por las grandes obras y movimientos artísticos.",
       "category": "Arte",
       "price": 100,
       "language": "Inglés",
-      "creatorId": 1
+      "creatorId": 3
     },
     {
-      "id": 4,
+      "id": "4",
       "name": "Diseño UX/UI",
       "code": "04DES35",
       "description": "Principios de diseño centrado en el usuario para apps y sitios web.",
@@ -173,7 +217,7 @@
       "creatorId": 1
     },
     {
-      "id": 5,
+      "id": "5",
       "name": "Marketing Digital",
       "code": "05BUS60",
       "description": "Técnicas y herramientas clave del marketing en medios digitales.",
@@ -183,7 +227,7 @@
       "creatorId": 3
     },
     {
-      "id": 6,
+      "id": "6",
       "name": "Introducción a la Filosofía",
       "code": "06PHI01",
       "description": "Explora las preguntas fundamentales de la filosofía occidental.",
@@ -195,63 +239,63 @@
   ],
   "topics": [
     {
-      "id": 1,
+      "id": "1",
       "title": "Vectores y Espacios",
       "description": "Introducción a vectores en R² y R³ y nociones de espacio vectorial.",
       "courseId": 1,
       "position": 1
     },
     {
-      "id": 2,
+      "id": "2",
       "title": "Matrices y Transformaciones",
       "description": "Uso de matrices para representar y resolver sistemas lineales.",
       "courseId": 1,
       "position": 2
     },
     {
-      "id": 3,
+      "id": "3",
       "title": "Variables y Tipos de Datos",
       "description": "Conceptos fundamentales en programación con Python.",
       "courseId": 2,
       "position": 1
     },
     {
-      "id": 4,
+      "id": "4",
       "title": "Condicionales y Bucles",
       "description": "Control de flujo en programas utilizando estructuras condicionales.",
       "courseId": 2,
       "position": 2
     },
     {
-      "id": 5,
+      "id": "5",
       "title": "Arte Renacentista",
       "description": "Características y autores clave del Renacimiento.",
       "courseId": 3,
       "position": 1
     },
     {
-      "id": 6,
+      "id": "6",
       "title": "Principios de UX",
       "description": "Bases del diseño centrado en el usuario.",
       "courseId": 4,
       "position": 1
     },
     {
-      "id": 7,
+      "id": "7",
       "title": "Wireframes y Prototipos",
       "description": "Uso de herramientas para el diseño de interfaces.",
       "courseId": 4,
       "position": 2
     },
     {
-      "id": 8,
+      "id": "8",
       "title": "SEO y SEM",
       "description": "Optimización en buscadores y publicidad pagada.",
       "courseId": 5,
       "position": 1
     },
     {
-      "id": 9,
+      "id": "9",
       "title": "Introducción a Sócrates",
       "description": "Contexto histórico y pensamiento socrático.",
       "courseId": 6,
@@ -260,161 +304,161 @@
   ],
   "objectives": [
     {
-      "id": 1,
+      "id": "1",
       "topicId": 1,
       "description": "Comprender el concepto de vector y su representación gráfica."
     },
     {
-      "id": 2,
+      "id": "2",
       "topicId": 1,
       "description": "Identificar operaciones básicas con vectores."
     },
     {
-      "id": 3,
+      "id": "3",
       "topicId": 2,
       "description": "Entender la multiplicación de matrices y sus aplicaciones."
     },
     {
-      "id": 4,
+      "id": "4",
       "topicId": 2,
       "description": "Resolver sistemas de ecuaciones lineales usando matrices."
     },
     {
-      "id": 5,
+      "id": "5",
       "topicId": 3,
       "description": "Reconocer distintos tipos de datos en Python."
     },
     {
-      "id": 6,
+      "id": "6",
       "topicId": 3,
       "description": "Declarar variables utilizando buenas prácticas."
     },
     {
-      "id": 7,
+      "id": "7",
       "topicId": 4,
       "description": "Aplicar estructuras condicionales simples y compuestas."
     },
     {
-      "id": 8,
+      "id": "8",
       "topicId": 4,
       "description": "Implementar bucles para automatizar tareas repetitivas."
     },
     {
-      "id": 9,
+      "id": "9",
       "topicId": 5,
       "description": "Distinguir las características del arte renacentista."
     },
     {
-      "id": 10,
+      "id": "10",
       "topicId": 6,
       "description": "Definir los principios fundamentales de la experiencia de usuario."
     },
     {
-      "id": 11,
+      "id": "11",
       "topicId": 6,
       "description": "Identificar buenas y malas prácticas en interfaces."
     },
     {
-      "id": 12,
+      "id": "12",
       "topicId": 7,
       "description": "Crear wireframes para prototipos funcionales."
     },
     {
-      "id": 13,
+      "id": "13",
       "topicId": 8,
       "description": "Comprender la diferencia entre SEO y SEM."
     },
     {
-      "id": 14,
+      "id": "14",
       "topicId": 8,
       "description": "Aplicar estrategias básicas de posicionamiento web."
     },
     {
-      "id": 15,
+      "id": "15",
       "topicId": 9,
       "description": "Conocer el contexto histórico de la filosofía griega antigua."
     },
     {
-      "id": 16,
+      "id": "16",
       "topicId": 9,
       "description": "Explicar los principales aportes de Sócrates al pensamiento filosófico."
     }
   ],
   "resources": [
     {
-      "id": 1,
+      "id": "1",
       "topicId": 1,
       "link": "https://example.com/vector-space-video"
     },
     {
-      "id": 2,
+      "id": "2",
       "topicId": 1,
       "link": "https://example.com/vector-guide-pdf"
     },
     {
-      "id": 3,
+      "id": "3",
       "topicId": 2,
       "link": "https://example.com/matrix-transformations"
     },
     {
-      "id": 4,
+      "id": "4",
       "topicId": 3,
       "link": "https://example.com/python-variables"
     },
     {
-      "id": 5,
+      "id": "5",
       "topicId": 3,
       "link": "https://example.com/data-types-explained"
     },
     {
-      "id": 6,
+      "id": "6",
       "topicId": 4,
       "link": "https://example.com/conditionals-loops"
     },
     {
-      "id": 7,
+      "id": "7",
       "topicId": 5,
       "link": "https://example.com/renaissance-art-overview"
     },
     {
-      "id": 8,
+      "id": "8",
       "topicId": 6,
       "link": "https://example.com/ux-principles"
     },
     {
-      "id": 9,
+      "id": "9",
       "topicId": 6,
       "link": "https://example.com/ux-checklist"
     },
     {
-      "id": 10,
+      "id": "10",
       "topicId": 7,
       "link": "https://example.com/wireframe-tools"
     },
     {
-      "id": 11,
+      "id": "11",
       "topicId": 8,
       "link": "https://example.com/seo-vs-sem"
     },
     {
-      "id": 12,
+      "id": "12",
       "topicId": 8,
       "link": "https://example.com/seo-strategies"
     },
     {
-      "id": 13,
+      "id": "13",
       "topicId": 9,
       "link": "https://example.com/socrates-bio"
     },
     {
-      "id": 14,
+      "id": "14",
       "topicId": 9,
       "link": "https://example.com/greek-philosophy"
     }
   ],
   "reviews": [
     {
-      "id": 1,
+      "id": "1",
       "reviewerId": 2,
       "courseId": 1,
       "rating": 5,
@@ -422,7 +466,7 @@
       "comment": "Muy claro y bien estructurado. Ideal para empezar con álgebra."
     },
     {
-      "id": 2,
+      "id": "2",
       "reviewerId": 3,
       "courseId": 1,
       "rating": 4,
@@ -430,7 +474,7 @@
       "comment": "Buena explicación de conceptos básicos."
     },
     {
-      "id": 3,
+      "id": "3",
       "reviewerId": 4,
       "courseId": 2,
       "rating": 5,
@@ -438,7 +482,7 @@
       "comment": "Me ayudó mucho para entender la programación."
     },
     {
-      "id": 4,
+      "id": "4",
       "reviewerId": 5,
       "courseId": 3,
       "rating": 4,
@@ -446,7 +490,7 @@
       "comment": "Buen contenido sobre arte renacentista."
     },
     {
-      "id": 5,
+      "id": "5",
       "reviewerId": 6,
       "courseId": 4,
       "rating": 3,
@@ -454,7 +498,7 @@
       "comment": "Podría ser más profundo en UX."
     },
     {
-      "id": 6,
+      "id": "6",
       "reviewerId": 1,
       "courseId": 5,
       "rating": 4,
@@ -462,82 +506,12 @@
       "comment": "Aprendí mucho sobre marketing digital."
     },
     {
-      "id": 7,
+      "id": "7",
       "reviewerId": 3,
       "courseId": 6,
       "rating": 5,
       "title": "Excelente",
       "comment": "Una gran introducción a la filosofía."
     }
-  ],
-  "purchasedCourses": [
-    {
-      "id": 1,
-      "userId": 2,
-      "courseId": 1
-    },
-    {
-      "id": 2,
-      "userId": 3,
-      "courseId": 2
-    },
-    {
-      "id": 3,
-      "userId": 4,
-      "courseId": 3
-    },
-    {
-      "id": 4,
-      "userId": 5,
-      "courseId": 4
-    },
-    {
-      "id": 5,
-      "userId": 1,
-      "courseId": 5
-    },
-    {
-      "id": 6,
-      "userId": 1,
-      "courseId": 6
-    }
-  ],
-  "completedTopics": [
-    {
-      "id": 1,
-      "purchasedCourseId": 1,
-      "topicId": 1
-    },
-    {
-      "id": 2,
-      "purchasedCourseId": 1,
-      "topicId": 2
-    },
-    {
-      "id": 3,
-      "purchasedCourseId": 2,
-      "topicId": 3
-    },
-    {
-      "id": 4,
-      "purchasedCourseId": 3,
-      "topicId": 5
-    },
-    {
-      "id": 5,
-      "purchasedCourseId": 4,
-      "topicId": 6
-    },
-    {
-      "id": 6,
-      "purchasedCourseId": 4,
-      "topicId": 7
-    },
-    {
-      "id": 7,
-      "purchasedCourseId": 5,
-      "topicId": 8
-    }
   ]
-
 }
