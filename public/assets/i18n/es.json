@@ -5,12 +5,21 @@
     "author": "por el Equipo {{ team }}"
   },
   "STUDYING": {
-    "SCHEDULE_TITLE": "Cronograma",
+    "SCHEDULE_TITLE": "Cronograma de Estudios",
     "IN_PROGRESS": "En progreso",
     "COMPLETED": "Completados",
     "INSTRUCTOR": "Instructor",
     "WEEK": "Semana",
     "CANCEL": "Cancelar",
-    "COMPLETE": "Completar"
+    "COMPLETE": "Completar",
+    "EDIT_COURSE": "Editar Curso",
+    "COURSE_NAME": "Nombre del curso",
+    "DESCRIPTION": "Descripción",
+    "CATEGORY": "Categoría",
+    "SAVE": "Guardar",
+    "ADD_TOPIC": "Agregar Tema",
+    "DELETE_TOPIC": "Eliminar Tema",
+    "TOPIC_TITLE": "Título del Tema",
+    "TOPIC_DESCRIPTION": "Descripción del tema"
   }
 }

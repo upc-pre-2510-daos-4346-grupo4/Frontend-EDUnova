@@ -1,7 +1,6 @@
 <section class="studying-wrapper">
   <h2>{{ 'STUDYING.SCHEDULE_TITLE' | translate }}</h2>
 
-  <!-- Tabs: En progreso / Completados -->
   <mat-tab-group [(selectedIndex)]="selectedTabIndex"
                (selectedIndexChange)="onTabChange()"
                class="tab-group">
@@ -9,7 +8,6 @@
     <mat-tab label="{{ 'STUDYING.COMPLETED' | translate }}"></mat-tab>
   </mat-tab-group>
 
-  <!-- Paginador -->
   <div class="paginator-container">
     <mat-paginator [length]="filteredCourses.length"
                    [pageSize]="pageSize"
@@ -18,7 +16,6 @@
     </mat-paginator>
   </div>
 
-  <!-- Lista de Cursos -->
   <div class="course-list">
     <mat-card *ngFor="let course of paginatedCourses" class="course-card">
       <div class="card-content">
@@ -27,24 +24,39 @@
           <p><strong>{{ 'STUDYING.INSTRUCTOR' | translate }}:</strong> {{ getInstructorName(course.creatorId) }}</p>
           <p>{{ course.description }}</p>
         </div>
+          <div *ngIf="isAuthor(course)" class="edit-button">
+            <button mat-raised-button color="accent" (click)="openEditCourseDialog(course)">
+              {{ 'STUDYING.EDIT_COURSE' | translate }}
+            </button>
+          </div>
+          <div *ngIf="isAuthor(course)" class="add-topic-button">
+            <button mat-raised-button color="primary" (click)="openAddTopicDialog(course.id)">
+              + {{ 'STUDYING.ADD_TOPIC' | translate }}
+            </button>
+          </div>
+          <mat-menu #menuCourse="matMenu">
+            <ng-container *ngFor="let week of getTopicsByCourse(course.id)">
+              <button mat-menu-item (click)="openTopicDialog(week, course.id)">
+                {{ 'STUDYING.WEEK' | translate }} {{ week.position }} — {{ week.title }}
+                <mat-icon *ngIf="isTopicCompleted(course.id, week.id)" style="color: green; margin-left: 4px;">check_circle</mat-icon>
+                <button *ngIf="isAuthor(course)"
+                        mat-icon-button
+                        (click)="deleteTopic(week.id, course.id); $event.stopPropagation()"
+                        style="margin-left: auto;">
+                  <mat-icon color="warn">delete</mat-icon>
+                </button>
+              </button>
+            </ng-container>
+          </mat-menu>
         <div class="menu-wrapper">
           <button mat-icon-button [matMenuTriggerFor]="menuCourse" aria-label="Temas">
             <mat-icon>menu</mat-icon>
           </button>
-          <mat-menu #menuCourse="matMenu">
-            <button mat-menu-item
-                    *ngFor="let week of getTopicsByCourse(course.id)"
-                    (click)="openTopicDialog(week, course.id)">
-              {{ 'STUDYING.WEEK' | translate }} {{ week.position }} — {{ week.title }}
-              <mat-icon *ngIf="isTopicCompleted(course.id, week.id)" style="color: green; margin-left: 4px;">check_circle</mat-icon>
-            </button>
-          </mat-menu>
         </div>
       </div>
     </mat-card>
   </div>
 
-  <!-- Diálogo para mostrar detalles del tema -->
   <ng-template #topicDialog let-data>
     <h2 mat-dialog-title>
       {{ 'STUDYING.WEEK' | translate }} {{ data.position }} — {{ data.title }}
@@ -58,6 +70,54 @@
       </button>
       <button mat-button color="primary" (click)="markTopicCompleted(data)">
         {{ 'STUDYING.COMPLETE' | translate }}
+      </button>
+    </mat-dialog-actions>
+  </ng-template>
+
+  <ng-template #editCourseDialog let-data>
+    <h2 mat-dialog-title>{{ 'STUDYING.EDIT_COURSE' | translate }}</h2>
+    <mat-dialog-content>
+      <mat-form-field class="full-width">
+        <mat-label>{{ 'STUDYING.COURSE_NAME' | translate }}</mat-label>
+        <input matInput [(ngModel)]="data.name">
+      </mat-form-field>
+
+      <mat-form-field class="full-width">
+        <mat-label>{{ 'STUDYING.DESCRIPTION' | translate }}</mat-label>
+        <textarea matInput rows="3" [(ngModel)]="data.description"></textarea>
+      </mat-form-field>
+
+      <mat-form-field class="full-width">
+        <mat-label>{{ 'STUDYING.CATEGORY' | translate }}</mat-label>
+        <input matInput [(ngModel)]="data.category">
+      </mat-form-field>
+    </mat-dialog-content>
+    <mat-dialog-actions align="end">
+      <button mat-button mat-dialog-close>{{ 'STUDYING.CANCEL' | translate }}</button>
+      <button mat-button color="primary" (click)="saveCourseEdit(data)">
+        {{ 'STUDYING.SAVE' | translate }}
+      </button>
+    </mat-dialog-actions>
+  </ng-template>
+
+  <ng-template #addTopicDialog let-data>
+    <h2 mat-dialog-title>{{ 'STUDYING.ADD_TOPIC' | translate }}</h2>
+    <mat-dialog-content>
+      <mat-form-field appearance="fill" style="width: 100%;">
+        <mat-label>{{ 'STUDYING.TOPIC_TITLE' | translate }}</mat-label>
+        <input matInput [(ngModel)]="newTopic.title" required>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" style="width: 100%;">
+        <mat-label>{{ 'STUDYING.TOPIC_DESCRIPTION' | translate }}</mat-label>
+        <textarea matInput rows="3" [(ngModel)]="newTopic.description" required></textarea>
+      </mat-form-field>
+    </mat-dialog-content>
+
+    <mat-dialog-actions align="end">
+      <button mat-button mat-dialog-close>{{ 'STUDYING.CANCEL' | translate }}</button>
+      <button mat-button color="primary" (click)="confirmAddTopic(data)">
+        {{ 'STUDYING.SAVE' | translate }}
       </button>
     </mat-dialog-actions>
   </ng-template>

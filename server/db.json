@@ -4,81 +4,37 @@
       "id": "1",
       "username": "darkwolf21",
       "password": "Dw@2025x",
-      "email": "darkwolf21@example.com",
-      "purchasedCourses": [
-        2,
-        3,
-        4
-      ],
-      "completedTopics": [
-      ]
+      "email": "darkwolf21@example.com"
     },
     {
       "id": "2",
       "username": "sunny_rider",
       "password": "SunnY#89",
-      "email": "sunny_rider@example.com",
-      "purchasedCourses": [
-        1
-      ],
-      "completedTopics": [
-        {
-          "courseId": 1,
-          "topicIds": [
-            1
-          ]
-        }
-      ]
+      "email": "sunny_rider@example.com"
     },
     {
       "id": "3",
       "username": "pixel_ghost",
       "password": "Pix3l!gh0st",
-      "email": "pixel_ghost@example.com",
-      "purchasedCourses": [
-        1,
-        2,
-        3
-      ],
-      "completedTopics": [
-        {
-          "courseId": 1,
-          "topicIds": [
-            1,
-            2
-          ]
-        },
-        {
-          "courseId": 2,
-          "topicIds": [
-            3
-          ]
-        }
-      ]
+      "email": "pixel_ghost@example.com"
     },
     {
       "id": "4",
       "username": "code_ninja",
       "password": "N1nj@Code!",
-      "email": "code_ninja@example.com",
-      "purchasedCourses": [],
-      "completedTopics": []
+      "email": "code_ninja@example.com"
     },
     {
       "id": "5",
       "username": "alpha_zero",
       "password": "AlphaZ_44",
-      "email": "alpha_zero@example.com",
-      "purchasedCourses": [],
-      "completedTopics": []
+      "email": "alpha_zero@example.com"
     },
     {
       "id": "6",
       "username": "byte_bomber",
       "password": "Bom8!Byte",
-      "email": "byte_bomber@example.com",
-      "purchasedCourses": [],
-      "completedTopics": []
+      "email": "byte_bomber@example.com"
     }
   ],
   "profiles": [
@@ -214,7 +170,7 @@
       "category": "Diseño",
       "price": 180,
       "language": "Español",
-      "creatorId": 1
+      "creatorId": 3
     },
     {
       "id": "5",
@@ -224,7 +180,7 @@
       "category": "Negocios",
       "price": 130,
       "language": "Español",
-      "creatorId": 3
+      "creatorId": 1
     },
     {
       "id": "6",
@@ -512,6 +468,31 @@
       "rating": 5,
       "title": "Excelente",
       "comment": "Una gran introducción a la filosofía."
+    }
+  ],
+  "learningProgress": [
+    {
+      "id": "1",
+      "userId": 1,
+      "purchasedCourses": [
+        2,
+        3,
+        4
+      ],
+      "completedTopics": [
+        {
+          "courseId": 3,
+          "topicIds": [
+            5
+          ]
+        },
+        {
+          "courseId": 2,
+          "topicIds": [
+            3
+          ]
+        }
+      ]
     }
   ]
 }

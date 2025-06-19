@@ -11,6 +11,9 @@ import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment';
 import { CommonModule } from '@angular/common';
 import { TranslateModule } from '@ngx-translate/core';
+import { FormsModule } from '@angular/forms';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 
 @Component({
   selector: 'app-studying',
@@ -27,7 +30,10 @@ import { TranslateModule } from '@ngx-translate/core';
     MatDialogModule,
     MatButtonModule,
     MatIconModule,
-    TranslateModule
+    TranslateModule,
+    FormsModule,
+    MatFormFieldModule,
+    MatInputModule
   ]
 })
 export class StudyingComponent implements OnInit {
@@ -35,26 +41,41 @@ export class StudyingComponent implements OnInit {
   private dialog = inject(MatDialog);
 
   @ViewChild('topicDialog') topicDialog!: any;
+  @ViewChild('editCourseDialog') editCourseDialog!: any;
+  @ViewChild('addTopicDialog') addTopicDialog!: any;
+
+  newTopic: any = { title: '', description: '' };
 
   selectedTabIndex = 0;
   courses: any[] = [];
   topics: any[] = [];
   currentUserId = 1;
-  currentUser: any;
 
   pageSize = 4;
   currentPage = 0;
   paginatedCourses: any[] = [];
-  activeCourse: any = null;
+
+  learningProgress: any;
+
+  ngOnInit(): void {
+    this.loadAllData();
+  }
 
   get filteredCourses() {
-    if (!this.currentUser) return [];
+    if (!this.learningProgress) return [];
 
-    const purchased = (this.currentUser.purchasedCourses || []).map((id: any) => Number(id));
-    const completed = this.currentUser.completedTopics || [];
+    const purchased = (this.learningProgress.purchasedCourses || []).map((id: any) => Number(id));
+
+    const created = this.courses
+      .filter(course => Number(course.creatorId) === Number(this.currentUserId))
+      .map(course => Number(course.id));
+
+    const allAccessibleCourses = [...new Set([...purchased, ...created])];
+
+    const completed = this.learningProgress.completedTopics || [];
 
     return this.courses
-      .filter(course => purchased.includes(Number(course.id)))
+      .filter(course => allAccessibleCourses.includes(Number(course.id)))
       .filter(course => {
         const courseTopics = this.topics.filter(t => Number(t.courseId) === Number(course.id));
         const userCompletion = completed.find((c: any) => Number(c.courseId) === Number(course.id));
@@ -64,10 +85,6 @@ export class StudyingComponent implements OnInit {
       });
   }
 
-  ngOnInit(): void {
-    this.loadAllData();
-  }
-
   loadAllData() {
     this.http.get<any[]>(`${environment.serverBasePath}/courses`).subscribe(courses => {
       this.courses = courses;
@@ -75,10 +92,11 @@ export class StudyingComponent implements OnInit {
       this.http.get<any[]>(`${environment.serverBasePath}/topics`).subscribe(topics => {
         this.topics = topics;
 
-        this.http.get<any>(`${environment.serverBasePath}/users/${this.currentUserId}`).subscribe(user => {
-          this.currentUser = user;
-          this.paginateCourses();
-        });
+        this.http.get<any>(`${environment.serverBasePath}/learningProgress?userId=${this.currentUserId}`)
+          .subscribe(progressArray => {
+            this.learningProgress = progressArray[0];
+            this.paginateCourses();
+          });
       });
     });
   }
@@ -125,53 +143,122 @@ export class StudyingComponent implements OnInit {
   markTopicCompleted(topic: any) {
     const courseId = Number(topic.courseId);
     const topicId = Number(topic.id);
-  
-    if (!this.currentUser?.completedTopics) {
-      this.currentUser.completedTopics = [];
+
+    if (!this.learningProgress?.completedTopics) {
+      this.learningProgress.completedTopics = [];
     }
-  
-    // Normaliza datos actuales a número para evitar duplicados por tipo
-    this.currentUser.completedTopics.forEach((ct: any) => {
+
+    this.learningProgress.completedTopics.forEach((ct: any) => {
       ct.courseId = Number(ct.courseId);
       ct.topicIds = ct.topicIds.map((id: any) => Number(id));
     });
-  
-    // Busca si ya hay progreso guardado en ese curso
-    let courseCompletion = this.currentUser.completedTopics.find((ct: any) => ct.courseId === courseId);
-  
-    // Evita duplicados
+
+    let courseCompletion = this.learningProgress.completedTopics.find((ct: any) => ct.courseId === courseId);
+
     if (courseCompletion?.topicIds.includes(topicId)) {
       this.dialog.closeAll();
       return;
     }
-  
-    // Añadir nuevo progreso
+
     if (!courseCompletion) {
-      this.currentUser.completedTopics.push({ courseId, topicIds: [topicId] });
+      this.learningProgress.completedTopics.push({ courseId, topicIds: [topicId] });
     } else {
       courseCompletion.topicIds.push(topicId);
     }
-  
-    // Envía la versión limpia al backend
-    const updatedUser = {
-      ...this.currentUser,
-      completedTopics: this.currentUser.completedTopics.map((ct: any) => ({
+
+    const updatedProgress = {
+      ...this.learningProgress,
+      completedTopics: this.learningProgress.completedTopics.map((ct: any) => ({
         courseId: Number(ct.courseId),
         topicIds: ct.topicIds.map((id: any) => Number(id))
       }))
     };
-  
-    this.http.put(`${environment.serverBasePath}/users/${this.currentUserId}`, updatedUser).subscribe(() => {
+
+    this.http.put(`${environment.serverBasePath}/learningProgress/${this.learningProgress.id}`, updatedProgress).subscribe(() => {
       this.loadAllData();
       this.dialog.closeAll();
     });
   }
 
   isTopicCompleted(courseId: number, topicId: number): boolean {
-    const courseCompletion = this.currentUser?.completedTopics?.find(
+    const courseCompletion = this.learningProgress?.completedTopics?.find(
       (ct: any) => Number(ct.courseId) === Number(courseId)
     );
-  
+
     return courseCompletion?.topicIds?.some((id: any) => Number(id) === Number(topicId)) || false;
+  }
+
+  isAuthor(course: any): boolean {
+    return Number(course.creatorId) === this.currentUserId;
+  }
+
+  openEditCourseDialog(course: any): void {
+    const dialogRef = this.dialog.open(this.editCourseDialog, {
+      data: { ...course },
+      width: '600px'
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.saveCourseEdit(result);
+      }
+    });
+  }
+
+  saveCourseEdit(courseData: any): void {
+    const courseId = courseData.id;
+    this.http.put(`${environment.serverBasePath}/courses/${courseId}`, courseData).subscribe(() => {
+      this.loadAllData();
+      this.dialog.closeAll();
+    });
+  }
+
+  deleteTopic(topicId: number, courseId: number) {
+    if (confirm('¿Estás seguro que deseas eliminar este tema?')) {
+      this.http.delete(`${environment.serverBasePath}/topics/${topicId}`).subscribe(() => {
+        if (this.learningProgress?.completedTopics) {
+          const courseCompletion = this.learningProgress.completedTopics.find((c: any) => c.courseId === courseId);
+          if (courseCompletion) {
+            courseCompletion.topicIds = courseCompletion.topicIds.filter((id: number) => id !== topicId);
+            this.http.put(`${environment.serverBasePath}/learningProgress/${this.learningProgress.id}`, this.learningProgress).subscribe(() => {
+              this.loadAllData();
+            });
+          } else {
+            this.loadAllData();
+          }
+        } else {
+          this.loadAllData();
+        }
+      });
+    }
+  }
+
+  openAddTopicDialog(courseId: number) {
+    this.newTopic = { title: '', description: '' };
+    this.dialog.open(this.addTopicDialog, {
+      data: { courseId },
+      width: '600px'
+    });
+  }
+
+  confirmAddTopic(data: any) {
+    const courseId = Number(data.courseId);
+    const position = this.getTopicsByCourse(courseId).length + 1;
+
+    const maxId = Math.max(0, ...this.topics.map(t => Number(t.id) || 0));
+    const newId = (maxId + 1).toString();
+
+    const newTopic = {
+      id: newId,
+      title: this.newTopic.title,
+      description: this.newTopic.description,
+      courseId: courseId,
+      position
+    };
+
+    this.http.post(`${environment.serverBasePath}/topics`, newTopic).subscribe(() => {
+      this.loadAllData();
+      this.dialog.closeAll();
+    });
   }
 }
