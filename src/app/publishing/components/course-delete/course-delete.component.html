@@ -1,0 +1,10 @@
+<h2 mat-dialog-title>Eliminar Curso</h2>
+<mat-dialog-content>
+  <p>¿Quieres eliminar el curso <strong>"{{ selectCourse.name }}"</strong>?</p>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <div style="text-align:center; margin-top: 16px; display: flex; justify-content: center; gap: 16px;">
+    <button mat-button type="button" [mat-dialog-close]="true">Cancelar</button>
+    <button mat-button type="button" color="warn" (click)="onDelete()" [mat-dialog-close]="true">Eliminar</button>
+  </div>
+</mat-dialog-actions>

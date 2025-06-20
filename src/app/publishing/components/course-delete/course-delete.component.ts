@@ -9,9 +9,8 @@ import {MatRadioButton, MatRadioGroup} from '@angular/material/radio';
 import {MatOption} from '@angular/material/core';
 import {MatSelect} from '@angular/material/select';
 import {CoursesService} from '../../services/courses.service';
-
 @Component({
-  selector: 'app-course-create-and-edit',
+  selector: 'app-course-delete',
   imports: [
     MatDialogActions,
     MatButton,
@@ -26,52 +25,32 @@ import {CoursesService} from '../../services/courses.service';
     MatSelect,
     MatRadioGroup
   ],
-  templateUrl: './course-create-and-edit.component.html',
-  styleUrl: './course-create-and-edit.component.css'
+  templateUrl: './course-delete.component.html',
+  styleUrl: './course-delete.component.css'
 })
-export class CourseCreateAndEditComponent {
+export class CourseDeleteComponent {
   // Attributes
-  userId: string;
-  newCourse:Course;
-  editMode: boolean = false;
-  @Output() courseAdded: EventEmitter<Course> = new EventEmitter<Course>();
-  @Output() courseUpdated: EventEmitter<Course> = new EventEmitter<Course>();
+  selectCourse:Course;
+  @Output() courseDeleted: EventEmitter<Course> = new EventEmitter<Course>();
 
   //Constructor
   constructor(@Inject(MAT_DIALOG_DATA) public data: any, private courseService: CoursesService) {
-    this.userId=data?.userId ?? '1';
-    this.newCourse = data?.course ? { ...data.course } : new Course();
-    this.editMode = data?.editMode ?? false;
+    this.selectCourse = data?.course ? { ...data.course } : new Course();
   }
 
-  // Private methods
+  //Private methods
 
   // CRUD Actions
-  private createCourse(): void {
-    this.courseService.create(this.newCourse)
+  private deleteCourse(): void {
+    this.courseService.delete(this.selectCourse.id)
       .subscribe((response: any) => {
-        this.courseAdded.emit(response);
+        this.courseDeleted.emit(this.selectCourse);
       });
   }
-
-  private updateCourse(): void {
-    this.courseService.update(this.newCourse.id,this.newCourse)
-      .subscribe((response: any) => {
-        this.courseUpdated.emit(response);
-      });
-  }
-
 
   // Event Handlers
-  onSubmit(): void {
-    this.newCourse.creatorId=this.userId;
-
-    if(this.editMode){
-      this.updateCourse();
-    }else{
-      this.createCourse();
-    }
-
+  onDelete(): void {
+    this.deleteCourse();
   }
 
 }

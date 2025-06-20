@@ -1,12 +1,12 @@
 export class Topic {
-  id: number;
+  id: string;
   title: string;
   description: string;
-  courseId: number;
+  courseId: string;
   constructor() {
-    this.id = 0;
+    this.id = "";
     this.title = "";
     this.description = "";
-    this.courseId = 0;
+    this.courseId = "";
   }
 }

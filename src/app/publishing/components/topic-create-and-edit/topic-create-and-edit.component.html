@@ -1,1 +1,22 @@
-<p>topic-create-and-edit works!</p>
+<h2>{{ this.editMode ? 'Editar Curso' : 'Crear Curso' }}</h2>
+<form #topicForm="ngForm" (ngSubmit)="onSubmit()">
+  <mat-form-field appearance="fill">
+    <input matInput placeholder="Título" name="title" [(ngModel)]="topic.title" required />
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <textarea matInput placeholder="Descripción" name="description" [(ngModel)]="topic.description" required></textarea>
+  </mat-form-field>
+  <div style="margin-top: 16px; display: flex; gap: 8px;">
+    <button mat-raised-button color="primary" type="submit">
+      {{ editMode ? 'Actualizar' : 'Agregar' }}
+    </button>
+    <button
+      mat-button
+      type="button"
+      (click)="onCancel()"
+      *ngIf="editMode"
+    >
+      Cancelar
+    </button>
+  </div>
+</form>

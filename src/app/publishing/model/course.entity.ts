@@ -1,18 +1,22 @@
 export class Course {
-  id: number;
+  id: string;
   name: string;
   description: string;
   category: string;
   price: number;
-  creatorId: number;
+  creatorId: string;
   image: string;
+  language: string;
+  difficulty: string;
   constructor() {
-    this.id = 0;
+    this.id = "";
     this.name = "";
     this.description = "";
     this.category = "";
     this.price = 0;
-    this.creatorId = 0;
+    this.creatorId = "";
     this.image = "";
+    this.language = "";
+    this.difficulty = "";
   }
 }

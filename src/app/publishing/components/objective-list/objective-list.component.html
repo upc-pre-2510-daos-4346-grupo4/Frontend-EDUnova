@@ -1,5 +1,44 @@
+<app-objective-create-and-edit *ngIf="!isDeleteMode"
+                               (editCanceled)="onCancelEdit()"
+                               (objectiveAdded)="onObjectiveAdded($event)"
+                               (objectiveUpdated)="onObjectiveUpdated($event)"
+                               [objective]="objectiveData"
+                               [editMode]="isEditMode"
+                               [topicId]="topicId"/>
+
+<app-objective-delete *ngIf="isDeleteMode"
+                      (objectiveDeleted)="onObjectiveDeleted($event)"
+                      (deleteCanceled)="onCancelDelete()"
+                      [objective]="objectiveData"/>
 
 
+<div *ngFor="let objective of paginatedObjectives; let i = index">
+  <mat-card appearance="outlined">
+    <mat-card-header>
+      <mat-card-title>{{ objective.title }}</mat-card-title>
+      <mat-card-subtitle>{{ objective.header }}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <p>{{ objective.mainParagraph }}</p>
+      <p>{{ objective.footer }}</p>
+      <p>{{ objective.conclusion }}</p>
+    </mat-card-content>
+    <mat-card-actions align="end">
+      <button mat-button (click)="onEditObjective(objective)">{{ 'objective.edit' | translate }}</button>
+      <button mat-button (click)="onDeleteObjective(objective)">{{ 'objective.delete' | translate }}</button>
+    </mat-card-actions>
+  </mat-card>
+  <br>
+</div>
+
+<mat-paginator [length]="objectiveList.length"
+               [pageSize]="1"
+               [hidePageSize]="true"
+               (page)="onPageChange($event)">
+</mat-paginator>
+
+
+<!--
 <mat-accordion>
   <mat-expansion-panel hideToggle>
     <mat-expansion-panel-header>
@@ -11,7 +50,7 @@
       <mat-card appearance="outlined">
         <mat-card-header>
           <mat-card-title>{{objective.title}}</mat-card-title>
-          <mat-card-subtitle>{{objective.description}}</mat-card-subtitle>
+          <mat-card-subtitle>{{objective.mainParagraph}}</mat-card-subtitle>
         </mat-card-header>
         <mat-card-actions align="end">
           <button mat-button>{{ 'objective.edit' | translate}}</button>
@@ -28,3 +67,4 @@
     </mat-paginator>
   </mat-expansion-panel>
 </mat-accordion>
+-->

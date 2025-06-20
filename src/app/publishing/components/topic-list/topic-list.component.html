@@ -1,13 +1,23 @@
 <!-- Course catalogue -->
 <div class="table-wrapper">
-  <h3>{{ 'topic.syllabus' | translate }}</h3>
   <!--Add/Edit Form-->
+  <app-topic-create-and-edit *ngIf="!isDeleteMode"
+                             (editCanceled)="onCancelEdit()"
+                             (topicAdded)="onTopicAdded($event)"
+                             (topicUpdated)="onTopicUpdated($event)"
+                             [topic]="topicData"
+                             [editMode]="isEditMode"
+                             [courseId]="courseId"/>
+
+  <app-topic-delete *ngIf="isDeleteMode"
+                    (topicDeleted)="onTopicDeleted($event)"
+                    (deleteCanceled)="onCancelDelete()"
+                    [topic]="topicData"/>
 
 
   <!-- Data Table -->
   <table mat-table [dataSource]="dataSource" class="mat-elevation-z8"
          matSort matSortActive="name" matSortDirection="asc">
-
     <ng-container matColumnDef="id">
       <th *matHeaderCellDef mat-header-cell mat-sort-header> {{ 'topic.id' | translate }} </th>
       <td *matCellDef="let element" mat-cell>{{ element.id }}</td>
@@ -26,8 +36,8 @@
     <ng-container matColumnDef="actions">
       <th *matHeaderCellDef mat-header-cell> {{ 'topic.actions' | translate }}</th>
       <td *matCellDef="let element" mat-cell>
-        <a href="javascript:void(0)"><mat-icon>edit</mat-icon></a>
-        <a href="javascript:void(0)"><mat-icon>delete</mat-icon></a>
+        <a (click)="onEditElement(element)" href="javascript:void(0)"><mat-icon>edit</mat-icon></a>
+        <a (click)="onDeleteElement(element)" href="javascript:void(0)"><mat-icon>delete</mat-icon></a>
         <a mat-flat-button (click)="goToDetails(element.id)" target="_blank">Link</a>
       </td>
     </ng-container>
@@ -36,5 +46,5 @@
     <tr *matRowDef="let row; columns:displayedColumns" [ngClass]="{'editable-row': topicData.id === row.id }" mat-row></tr>
   </table>
   <!-- Paginator child component-->
-  <mat-paginator [pageSizeOptions]="[5, 10, 15]" [pageSize]="5" showFirstLastButtons></mat-paginator>
+  <mat-paginator [pageSizeOptions]="[1, 3, 5]" [pageSize]="1" showFirstLastButtons></mat-paginator>
 </div>

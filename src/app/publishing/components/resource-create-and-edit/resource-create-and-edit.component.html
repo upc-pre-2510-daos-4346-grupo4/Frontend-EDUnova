@@ -1,1 +1,20 @@
-<p>resource-create-and-edit works!</p>
+<h2 mat-dialog-title>{{ editMode ? 'Editar Recurso' : 'Crear Recurso' }}</h2>
+<mat-dialog-content class="mat-typography">
+  <form #resourceForm="ngForm">
+    <mat-form-field appearance="fill">
+      <input matInput placeholder="Título" name="title" [(ngModel)]="newResource.title" required />
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <textarea matInput placeholder="Descripción" name="description" [(ngModel)]="newResource.description" required></textarea>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <input matInput placeholder="YouTube ID" name="youtubeId" [(ngModel)]="newResource.youtubeId" required />
+    </mat-form-field>
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close
+          [mat-dialog-close]="true">Cancelar</button>
+  <button mat-flat-button color="primary" [disabled]="!resourceForm.form.valid" (click)="onSubmit()"
+          [mat-dialog-close]="true">{{ editMode ? 'Guardar' : 'Crear' }}</button>
+</mat-dialog-actions>

@@ -1,32 +1,28 @@
-<mat-accordion>
-  <mat-expansion-panel hideToggle>
-    <mat-expansion-panel-header>
-      <mat-panel-title> {{ 'resource.title' | translate}} </mat-panel-title>
-      <mat-panel-description> {{ 'resource.description' | translate}} </mat-panel-description>
-    </mat-expansion-panel-header>
-    <mat-accordion>
-      <div *ngFor="let resource of resourceList; let i = index">
-        <mat-expansion-panel hideToggle>
-          <mat-expansion-panel-header>
-            <mat-panel-title> Resource {{ i + 1 }} </mat-panel-title>
-            <mat-panel-description> {{resource.description}} </mat-panel-description>
-          </mat-expansion-panel-header>
-          <mat-card appearance="outlined" class="example-card">
-            <div class="card-content">
-              <youtube-player [videoId]="resource.link" class="responsive-video" [width]="390" [height]="200"></youtube-player>
-              <mat-card-actions class="card-actions">
-                <button mat-button>{{ 'resource.edit' | translate}}</button>
-                <button mat-button>{{ 'resource.delete' | translate}}</button>
-              </mat-card-actions>
-            </div>
-          </mat-card>
-        </mat-expansion-panel>
-        <br>
+<div class="resource-list-container">
+  <div class="add-resource-btn-container">
+    <button mat-fab extended class="add-resource-btn" (click)="openDialog(false)">
+      <mat-icon>edit</mat-icon>
+      Agregar Recurso
+    </button>
+  </div>
+
+  <mat-card *ngFor="let resource of paginatedResources; let i = index" appearance="outlined" class="resource-view-card">
+    <div class="resource-card-content">
+      <youtube-player [videoId]="resource.youtubeId" class="resource-card-video" [width]="320" [height]="220"></youtube-player>
+      <div class="resource-card-details">
+        <mat-card-title>Título: {{resource.title}}</mat-card-title>
+        <mat-card-subtitle>Descripción: {{resource.description}}</mat-card-subtitle>
       </div>
+      <mat-card-actions class="card-actions">
+        <button mat-button (click)="openDialog(true, resource)">Editar</button>
+        <button mat-button (click)="openDeleteDialog(resource)">Eliminar</button>
+      </mat-card-actions>
+    </div>
+  </mat-card>
 
-    </mat-accordion>
-  </mat-expansion-panel>
-</mat-accordion>
-
-
-
+  <mat-paginator [length]="resourceList.length"
+                 [pageSize]="pageSize"
+                 [pageSizeOptions]="[1, 2, 4, 10]"
+                 (page)="onPageChange($event)">
+  </mat-paginator>
+</div>

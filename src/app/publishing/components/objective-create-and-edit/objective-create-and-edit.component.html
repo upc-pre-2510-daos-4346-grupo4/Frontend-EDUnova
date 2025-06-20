@@ -1,1 +1,34 @@
-<p>objective-create-and-edit works!</p>
+<mat-card appearance="outlined">
+  <mat-card-header>
+    <mat-card-title>
+      {{ editMode ? 'Editar Objetivo' : 'Crear Objetivo' }}
+    </mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <form #objectiveForm="ngForm" (ngSubmit)="onSubmit()">
+      <mat-form-field appearance="fill" style="width: 100%;">
+        <input matInput placeholder="Título" name="title" [(ngModel)]="objective.title" required />
+      </mat-form-field>
+      <mat-form-field appearance="fill" style="width: 100%;">
+        <input matInput placeholder="Encabezado" name="header" [(ngModel)]="objective.header" required />
+      </mat-form-field>
+      <mat-form-field appearance="fill" style="width: 100%;">
+        <textarea matInput placeholder="Párrafo principal" name="mainParagraph" [(ngModel)]="objective.mainParagraph" required></textarea>
+      </mat-form-field>
+      <mat-form-field appearance="fill" style="width: 100%;">
+        <input matInput placeholder="Pie de página" name="footer" [(ngModel)]="objective.footer" />
+      </mat-form-field>
+      <mat-form-field appearance="fill" style="width: 100%;">
+        <input matInput placeholder="Conclusión" name="conclusion" [(ngModel)]="objective.conclusion" />
+      </mat-form-field>
+      <div style="margin-top: 16px; display: flex; gap: 8px;">
+        <button mat-raised-button color="primary" type="submit">
+          {{ editMode ? 'Actualizar' : 'Agregar' }}
+        </button>
+        <button mat-button type="button" (click)="onCancel()" *ngIf="editMode">
+          Cancelar
+        </button>
+      </div>
+    </form>
+  </mat-card-content>
+</mat-card>

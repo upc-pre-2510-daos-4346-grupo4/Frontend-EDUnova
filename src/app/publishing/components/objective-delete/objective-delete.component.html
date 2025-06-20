@@ -1,0 +1,17 @@
+<mat-card appearance="outlined">
+  <mat-card-header>
+    <mat-card-title style="font-size: 1.5rem; color: #b71c1c;">
+      ¿Quieres borrar <strong>{{ objective.title }}</strong>?
+    </mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <div style="display: flex; justify-content: flex-end; gap: 12px; margin-top: 24px;">
+      <button mat-raised-button color="warn" (click)="onSubmit()">
+        Delete
+      </button>
+      <button mat-button (click)="onCancel()">
+        Cancel
+      </button>
+    </div>
+  </mat-card-content>
+</mat-card>

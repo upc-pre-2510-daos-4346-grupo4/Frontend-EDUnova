@@ -1,12 +1,14 @@
 export class Resource {
-  id: number;
-  topicId: number;
-  link: string;
+  id: string;
+  topicId: string;
+  youtubeId: string;
+  title: string;
   description: string;
   constructor() {
-    this.id = 0;
-    this.topicId = 0;
-    this.link = "";
+    this.id = "";
+    this.topicId = "";
+    this.youtubeId = "";
+    this.title = "";
     this.description = "";
   }
 }

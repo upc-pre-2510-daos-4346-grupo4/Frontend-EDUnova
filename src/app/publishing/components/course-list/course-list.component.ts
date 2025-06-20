@@ -27,12 +27,12 @@ import {TopicListComponent} from '../topic-list/topic-list.component';
 
 //paginator
 import {MatPaginatorModule} from '@angular/material/paginator';
+import {CourseDeleteComponent} from '../course-delete/course-delete.component';
 
 @Component({
   selector: 'app-course-list',
   imports: [
-    MatIconModule, MatTableModule,
-    NgClass, TranslateModule, MatCardModule,
+    MatIconModule, MatTableModule, TranslateModule, MatCardModule,
     MatButtonModule, MatExpansionModule, NgForOf, MatButtonModule, MatDialogModule, TopicListComponent, MatPaginatorModule],
   templateUrl: './course-list.component.html',
   styleUrl: './course-list.component.css'
@@ -42,23 +42,57 @@ export class CourseListComponent implements OnInit{
   // Dialog
   readonly dialog = inject(MatDialog);
 
-  openDialog() {
-    const dialogRef = this.dialog.open(CourseCreateAndEditComponent);
+  openDialog(isEditMode:boolean, course?: Course): void {
+    const dialogRef = this.dialog.open(CourseCreateAndEditComponent, {
+      data: {
+        userId: this.userId,
+        course: course ? { ...course } : new Course(),
+        editMode: isEditMode
+      }
+    });
+
+    // Suscribirse a los eventos del hijo
+    const instance = dialogRef.componentInstance;
+    if (instance) {
+      instance.courseAdded.subscribe((newCourse: Course) => this.onCourseAdded(newCourse));
+      instance.courseUpdated.subscribe((newCourse: Course) => this.onCourseUpdated(newCourse));
+    }
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
+      this.updatePaginatedCourses();
+    });
+  }
+
+  openDeleteDialog(course: Course): void {
+    const dialogRef = this.dialog.open(
+      // Import dinámico para evitar problemas de dependencias circulares
+      CourseDeleteComponent,
+      {
+        data: {
+          course:course
+        }
+      }
+    );
+
+    const instance = dialogRef.componentInstance;
+    if (instance) {
+      instance.courseDeleted.subscribe((selectedCourse: Course) => this.onCourseDeleted(selectedCourse));
+    }
+
+    dialogRef.afterClosed().subscribe(() => {
+      this.updatePaginatedCourses();
     });
   }
 
   // Attributes
-  courseData: Course;
+
   courseList: Course[];
   paginatedCourses: Course[];
   isEditMode: boolean;
-  userId: Number;
+  userId: String;
 
   //paginator
-  pageSize = 5;
+  pageSize = 1;
   currentPage = 0;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
@@ -67,12 +101,13 @@ export class CourseListComponent implements OnInit{
   // Constructor
   constructor(private courseService: CoursesService) {
     this.isEditMode = false;
-    this.courseData = {} as Course;
     this.courseList = [];
     this.paginatedCourses= [];
     // Este es el user actual
-    this.userId = 1;
+    this.userId = "1";
   }
+
+  // Private Methods
 
   // CRUD Actions
   private getAllCourses(): void {
@@ -82,7 +117,35 @@ export class CourseListComponent implements OnInit{
         console.log(this.courseList); // Muestra los cursos filtrados en la consola
         this.updatePaginatedCourses();
       });
-  };
+  }
+
+
+  // Event Handlers
+  onCourseAdded(newCourse: Course): void {
+    this.courseList.push(newCourse);
+    this.updatePaginatedCourses();
+  }
+
+  onCourseUpdated(newCourse: Course): void {
+    const index = this.courseList.findIndex(course => course.id === newCourse.id);
+    if (index !== -1) {
+      this.courseList[index] = { ...newCourse };
+      this.updatePaginatedCourses();
+    }
+  }
+
+  onCourseDeleted(selectedCourse: Course): void {
+    this.courseList = this.courseList.filter(course => course.id !== selectedCourse.id);
+    // Si la página actual queda vacía y no es la primera, retrocede una página
+    const totalPages = Math.ceil(this.courseList.length / this.pageSize);
+    if (this.currentPage >= totalPages && this.currentPage > 0) {
+      this.currentPage = totalPages - 1;
+      if (this.paginator) {
+        this.paginator.pageIndex = this.currentPage;
+      }
+    }
+    this.updatePaginatedCourses();
+  }
 
 
   // Lifecycle Hooks

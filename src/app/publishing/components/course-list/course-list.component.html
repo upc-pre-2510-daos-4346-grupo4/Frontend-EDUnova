@@ -2,7 +2,7 @@
 <div class="example-button-row">
   <div class="example-flex-container">
     <div class="example-button-container">
-      <button mat-fab extended (click)="openDialog()">
+      <button mat-fab extended (click)="openDialog(false)">
         <mat-icon>edit</mat-icon>
         {{ 'course.create' | translate }}
       </button>
@@ -10,10 +10,7 @@
   </div>
 </div>
 
-
 <br>
-<br>
-
 
 <div *ngFor="let course of paginatedCourses; let i = index">
   <br>
@@ -27,8 +24,8 @@
         <p class="course-price"><strong style="font-size: 1.2em;">{{ 'course.price' | translate }}: $ {{ course.price }}</strong></p>
       </div>
       <mat-card-actions class="card-actions">
-        <button mat-button (click)="openDialog()">{{ 'course.edit' | translate }}</button>
-        <button mat-button>{{ 'course.delete' | translate }}</button>
+        <button mat-button (click)="openDialog(true, course)">{{ 'course.edit' | translate }}</button>
+        <button mat-button (click)="openDeleteDialog(course)">{{ 'course.delete' | translate }}</button>
       </mat-card-actions>
     </div>
     <mat-accordion class="card-accordion">
@@ -44,6 +41,6 @@
 
 <mat-paginator [length]="courseList.length"
                [pageSize]="pageSize"
-               [pageSizeOptions]="[5, 10, 25, 100]"
+               [pageSizeOptions]="[1, 2, 4, 10]"
                (page)="onPageChange($event)">
 </mat-paginator>

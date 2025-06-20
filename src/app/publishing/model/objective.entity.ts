@@ -1,12 +1,18 @@
 export class Objective {
-  id: number;
-  topicId: number;
+  id: string;
+  topicId: string;
   title: string;
-  description: string;
+  header:string;
+  mainParagraph: string;
+  footer: string;
+  conclusion: string;
   constructor() {
-    this.id = 0;
-    this.topicId = 0;
+    this.id = "";
+    this.topicId = "";
     this.title = "";
-    this.description = "";
+    this.header = "";
+    this.mainParagraph = "";
+    this.footer = "";
+    this.conclusion = "";
   }
 }
