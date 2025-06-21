@@ -31,6 +31,7 @@ export class AppComponent implements OnInit {
     { icon: 'home', path: '/home', title: 'Home'},
     { icon: 'edit', path: '/publishing/courses', title: 'Course Management'},
     { icon: 'school', path: '/studying', title: 'Studying' },
+    { icon: 'person', path: '/profile', title: 'Profile' },
     { icon: 'info', path:'/about', title: 'About'}
   ];
 

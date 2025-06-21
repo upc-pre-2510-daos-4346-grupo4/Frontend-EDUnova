@@ -1,0 +1,28 @@
+<div class="certificates-section">
+  <h2>Certificados</h2>
+
+  <form (ngSubmit)="onSubmit()" #form="ngForm">
+    <input type="text" name="title" [(ngModel)]="certificate.title" placeholder="Título" required />
+    <input type="text" name="issuer" [(ngModel)]="certificate.issuer" placeholder="Institución" required />
+    <textarea name="description" [(ngModel)]="certificate.description" placeholder="Descripción"></textarea>
+
+    <button type="submit">{{ isEditing ? 'Actualizar' : 'Agregar' }}</button>
+    <button type="button" *ngIf="isEditing" (click)="cancelEdit()">Cancelar</button>
+  </form>
+
+  <hr />
+
+  <h3>Certificados registrados</h3>
+  <ul *ngIf="certificates.length > 0; else noCertificates">
+    <li *ngFor="let cert of certificates">
+      <strong>{{ cert.title }}</strong> - {{ cert.issuer }}
+      <p>{{ cert.description }}</p>
+      <button (click)="edit(cert)">Editar</button>
+      <button (click)="delete(cert.id)">Eliminar</button>
+    </li>
+  </ul>
+
+  <ng-template #noCertificates>
+    <p>No hay certificados registrados.</p>
+  </ng-template>
+</div>

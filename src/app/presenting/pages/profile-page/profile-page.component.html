@@ -1,0 +1,62 @@
+<!-- Sección 1: Banner de bienvenida -->
+<section class="welcome-banner">
+  <img src="assets/profile-banner.jpg" class="banner-image" alt="Bienvenida" />
+  <div class="banner-text">
+    <h1>Apartado Perfil</h1>
+    <p>En esta sección podrás editar tus datos personales</p>
+  </div>
+</section>
+
+<!-- Sección 2: Cards lado a lado -->
+<section class="profile-container" *ngIf="profile">
+  <!-- Card Izquierda (editable) -->
+  <div class="profile-card edit-card">
+    <h2>Perfil profesional</h2>
+    <form>
+      <label>Username</label>
+      <input type="text" [(ngModel)]="profile.username" name="username" disabled />
+
+      <label>Image URL</label>
+      <input type="text" [(ngModel)]="profile.imageProfile" name="imageUrl" />
+
+      <label>First Name</label>
+      <input type="text" [(ngModel)]="profile.name" name="firstName" />
+
+      <label>Last Name</label>
+      <input type="text" [(ngModel)]="profile.lastname" name="lastName" />
+
+      <!-- Eliminado: Date of Birth -->
+
+      <label>Email</label>
+      <input type="email" [(ngModel)]="profile.email" name="email" disabled />
+
+      <label>Gender</label>
+      <select [(ngModel)]="profile.gender" name="gender">
+        <option value="male">Masculino</option>
+        <option value="female">Femenino</option>
+      </select>
+
+      <label>Tipo de Cuenta</label>
+      <input type="text" [value]="profile.isPremium ? 'Premium' : 'Gratis'" disabled />
+
+      <label *ngIf="profile.isPremium">Fecha Expiración</label>
+      <input *ngIf="profile.isPremium" type="text" [(ngModel)]="profile.dateExpiration" name="expiration" />
+
+      <button type="button" (click)="guardarCambios()">Guardar cambios</button>
+    </form>
+  </div>
+
+  <!-- Card Derecha (visualización) -->
+  <div class="profile-card view-card">
+    <img [src]="profile.imageProfile" alt="Foto de perfil" class="profile-image" />
+    <div class="card-info">
+      <h2>{{ profile.name }} {{ profile.lastname }}</h2>
+      <p><strong>Tipo de cuenta:</strong> {{ profile.isPremium ? 'Premium' : 'Gratis' }}</p>
+      <p *ngIf="profile.isPremium"><strong>Expira:</strong> {{ profile.dateExpiration }}</p>
+    </div>
+  </div>
+
+</section>
+
+<!-- ✅ Sección 3: CRUD de Certificados -->
+<app-certificate-list-create-and-edit></app-certificate-list-create-and-edit>
