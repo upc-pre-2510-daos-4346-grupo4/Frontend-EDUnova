@@ -6,14 +6,15 @@ import {
   MatDialogActions,
   MatDialogClose,
   MatDialogContent,
-  MatDialogTitle
+  MatDialogTitle,
+  MatDialogRef
 } from '@angular/material/dialog';
 import {CoursesService} from '../../services/courses.service';
 import {ResourcesService} from '../../services/resources.service';
 import {FormsModule} from '@angular/forms';
 import {MatFormField, MatInput, MatLabel} from '@angular/material/input';
 import {MatButton} from '@angular/material/button';
-import {NgClass} from '@angular/common';
+import {NgClass, NgIf} from '@angular/common';
 
 @Component({
   selector: 'app-resource-create-and-edit',
@@ -27,7 +28,8 @@ import {NgClass} from '@angular/common';
     MatButton,
     MatDialogClose,
     NgClass,
-    MatLabel
+    MatLabel,
+    NgIf
   ],
   templateUrl: './resource-create-and-edit.component.html',
   styleUrl: './resource-create-and-edit.component.css'
@@ -38,11 +40,12 @@ export class ResourceCreateAndEditComponent {
   topicId: string;
   newResource: Resource; // Replace 'any' with the actual type of your resource
   editMode: boolean = false;
+  showIncompleteError = false;
   @Output() resourceAdded: EventEmitter<Resource> = new EventEmitter<Resource>();
   @Output() resourceUpdated: EventEmitter<Resource> = new EventEmitter<Resource>();
 
   // Constructor
-  constructor(@Inject(MAT_DIALOG_DATA) public data: any, private resourcesService: ResourcesService) {
+  constructor(@Inject(MAT_DIALOG_DATA) public data: any, private resourcesService: ResourcesService, private dialogRef: MatDialogRef<ResourceCreateAndEditComponent>) {
     this.topicId = data?.topicId ?? '';
     this.newResource = data?.resource ? { ...data.resource } : new Resource();
     this.editMode = data?.editMode ?? false;
@@ -67,13 +70,25 @@ export class ResourceCreateAndEditComponent {
 
   // Event handlers
   onSubmit(): void {
-    this.newResource.topicId=this.topicId;
+    this.newResource.topicId = this.topicId;
+
+    const isEmpty =
+      !this.newResource.title || this.newResource.title.trim() === '' ||
+      !this.newResource.description || this.newResource.description.trim() === '' ||
+      !this.newResource.youtubeId || this.newResource.youtubeId.trim() === '';
+
+    if (isEmpty) {
+      this.showIncompleteError = true;
+      return;
+    }
+    this.showIncompleteError = false;
 
     if (this.editMode) {
       this.updateResource();
     } else {
       this.createResource();
     }
+    this.dialogRef.close(true);
   }
 
 

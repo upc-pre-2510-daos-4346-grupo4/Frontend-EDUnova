@@ -1,4 +1,9 @@
-<h2 mat-dialog-title [ngClass]="editMode ? 'title-mint' : 'title-blue'">{{ this.editMode ? 'Editar Curso' : 'Crear Curso' }}</h2>
+<div style="display: flex; align-items: center; justify-content: space-between;">
+  <h2 mat-dialog-title [ngClass]="editMode ? 'title-mint' : 'title-blue'" style="margin-bottom: 0;">
+    {{ this.editMode ? 'Editar Curso' : 'Crear Curso' }}
+  </h2>
+  <small *ngIf="showIncompleteError" class="form-error-message" style="margin-bottom:0;">Datos incompletos</small>
+</div>
 <mat-dialog-content class="mat-typography">
   <br>
   <form #courseForm="ngForm">
@@ -64,9 +69,8 @@
   <button mat-button
         [ngClass]="['btn-action', !editMode ? 'btn-action-mint' : 'btn-action-blue']"
         type="submit"
-          cdkFocusInitial
-        (click)="onSubmit()"
-        [mat-dialog-close]="true">
+        cdkFocusInitial
+        (click)="onSubmit()">
     {{ newCourse.id === '' ? 'Crear' : 'Actualizar' }}
   </button>
 </mat-dialog-actions>

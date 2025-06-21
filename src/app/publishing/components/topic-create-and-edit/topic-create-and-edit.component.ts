@@ -36,6 +36,8 @@ export class TopicCreateAndEditComponent {
   @Output() topicUpdated: EventEmitter<Topic> = new EventEmitter<Topic>();
   @Output() editCanceled: EventEmitter<any> = new EventEmitter();
 
+  showIncompleteError = false;
+
   // Methods
   constructor(private topicService: TopicsService) {
     this.topic = new Topic;
@@ -61,6 +63,17 @@ export class TopicCreateAndEditComponent {
 
   // Event Handlers
   onSubmit(): void {
+    // Validación de campos obligatorios
+    const isEmpty =
+      !this.topic.title || this.topic.title.trim() === '' ||
+      !this.topic.description || this.topic.description.trim() === '';
+
+    if (isEmpty) {
+      this.showIncompleteError = true;
+      return;
+    }
+    this.showIncompleteError = false;
+
     if (this.editMode) {
       this.updateTopic();
     } else {

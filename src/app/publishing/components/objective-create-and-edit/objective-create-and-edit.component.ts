@@ -38,6 +38,8 @@ export class ObjectiveCreateAndEditComponent {
   @Output() objectiveUpdated: EventEmitter<Objective> = new EventEmitter<Objective>();
   @Output() editCanceled: EventEmitter<any> = new EventEmitter();
 
+  showIncompleteError = false;
+
   constructor(private objectivesService: ObjectivesService) {
     this.objective = new Objective();
   }
@@ -60,6 +62,20 @@ export class ObjectiveCreateAndEditComponent {
 
   // Event Handlers
   onSubmit(): void {
+    // Validación de campos obligatorios
+    const isEmpty =
+      !this.objective.title || this.objective.title.trim() === '' ||
+      !this.objective.header || this.objective.header.trim() === '' ||
+      !this.objective.mainParagraph || this.objective.mainParagraph.trim() === '' ||
+      !this.objective.footer || this.objective.footer.trim() === '' ||
+      !this.objective.conclusion || this.objective.conclusion.trim() === '';
+
+    if (isEmpty) {
+      this.showIncompleteError = true;
+      return;
+    }
+    this.showIncompleteError = false;
+
     if (this.editMode) {
       this.updateObjective();
     } else {

@@ -1,7 +1,12 @@
 <mat-card class="temario-card">
+  <div style="display: flex; align-items: flex-start; justify-content: space-between;">
+    <div>
+      <mat-card-title class="temario-title">Gestiona el temario del curso</mat-card-title>
+      <mat-card-subtitle class="temario-subtitle">Aquí puedes agregar o editar los temas del curso. Completa los campos y haz clic en <b>Agregar</b> o <b>Actualizar</b>.</mat-card-subtitle>
+    </div>
+    <small *ngIf="showIncompleteError" class="form-error-message" style="margin-top:2px;">Datos incompletos</small>
+  </div>
   <div class="temario-card-content">
-    <mat-card-title class="temario-title">Gestiona el temario del curso</mat-card-title>
-    <mat-card-subtitle class="temario-subtitle">Aquí puedes agregar o editar los temas del curso. Completa los campos y haz clic en <b>Agregar</b> o <b>Actualizar</b>.</mat-card-subtitle>
     <form #topicForm="ngForm" (ngSubmit)="onSubmit()">
       <div class="temario-form-row-horizontal-align">
         <mat-form-field appearance="outline" class="temario-input small-label horizontal-field field-title">

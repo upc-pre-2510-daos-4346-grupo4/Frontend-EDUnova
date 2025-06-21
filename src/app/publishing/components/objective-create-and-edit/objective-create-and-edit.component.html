@@ -1,11 +1,16 @@
 <mat-card class="objective-card">
+  <div style="display: flex; align-items: flex-start; justify-content: space-between;">
+    <div>
+      <mat-card-title class="objective-title">
+        {{ editMode ? 'Editar Objetivo' : 'Crear Objetivo' }}
+      </mat-card-title>
+      <mat-card-subtitle class="objective-subtitle">
+        {{ editMode ? 'Modifica los campos y haz clic en Actualizar para guardar los cambios.' : 'Completa los campos y haz clic en Agregar para crear un nuevo objetivo.' }}
+      </mat-card-subtitle>
+    </div>
+    <small *ngIf="showIncompleteError" class="form-error-message" style="margin-top:2px;">Datos incompletos</small>
+  </div>
   <div class="objective-card-content">
-    <mat-card-title class="objective-title">
-      {{ editMode ? 'Editar Objetivo' : 'Crear Objetivo' }}
-    </mat-card-title>
-    <mat-card-subtitle class="objective-subtitle">
-      {{ editMode ? 'Modifica los campos y haz clic en Actualizar para guardar los cambios.' : 'Completa los campos y haz clic en Agregar para crear un nuevo objetivo.' }}
-    </mat-card-subtitle>
     <form #objectiveForm="ngForm" (ngSubmit)="onSubmit()">
       <div class="objective-form-row">
         <mat-form-field appearance="outline" class="objective-input small-label field-title">

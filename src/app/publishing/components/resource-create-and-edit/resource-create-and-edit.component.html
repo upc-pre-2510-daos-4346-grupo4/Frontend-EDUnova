@@ -1,4 +1,9 @@
-<h2 mat-dialog-title [ngClass]="editMode ? 'title-mint' : 'title-blue'">{{ editMode ? 'Editar Recurso' : 'Crear Recurso' }}</h2>
+<div style="display: flex; align-items: center; justify-content: space-between;">
+  <h2 mat-dialog-title [ngClass]="editMode ? 'title-mint' : 'title-blue'" style="margin-bottom: 0;">
+    {{ editMode ? 'Editar Recurso' : 'Crear Recurso' }}
+  </h2>
+  <small *ngIf="showIncompleteError" class="form-error-message" style="margin-bottom:0;">Datos incompletos</small>
+</div>
 <mat-dialog-content class="mat-typography">
   <br>
   <form #resourceForm="ngForm">
@@ -20,8 +25,7 @@
   <button mat-button class="btn-yellow-text" mat-dialog-close [mat-dialog-close]="true">Cancelar</button>
   <button mat-button
           [ngClass]="['btn-action', !editMode ? 'btn-action-mint' : 'btn-action-blue', 'btn-always-filled']"
-          [disabled]="!resourceForm.form.valid" (click)="onSubmit()"
-          [mat-dialog-close]="true"
+          (click)="onSubmit()"
           cdkFocusInitial>
     {{ editMode ? 'Guardar' : 'Crear' }}
   </button>

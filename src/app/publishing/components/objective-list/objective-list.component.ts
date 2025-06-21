@@ -71,11 +71,13 @@ export class ObjectiveListComponent implements OnInit {
   onEditObjective(objective: Objective): void {
     this.isEditMode = true;
     this.objectiveData = { ...objective }; // Create a copy of the objective to edit
+    this.isDeleteMode= false; // Ensure delete mode is off when editing
   }
 
   onDeleteObjective(objective: Objective): void {
     this.isDeleteMode = true;
     this.objectiveData = { ...objective }; // Create a copy of the objective to delete
+    this.isEditMode = false; // Ensure edit mode is off when deleting
   }
 
   onObjectiveAdded(objective: Objective): void {

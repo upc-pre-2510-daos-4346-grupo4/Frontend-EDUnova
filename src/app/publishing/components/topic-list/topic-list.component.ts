@@ -63,6 +63,7 @@ export class TopicListComponent implements OnInit, AfterViewInit {
   onEditElement(element: Topic): void {
     this.isEditMode = true;
     this.topicData = { ...element }; // copia superficial
+    this.isDeleteMode= false; // Aseguramos que el modo de eliminación esté desactivado
   }
 
   onDeleteElement(element: Topic): void {
@@ -86,6 +87,7 @@ export class TopicListComponent implements OnInit, AfterViewInit {
   onTopicDeleted(deletedTopic: Topic): void {
     this.dataSource.data = this.dataSource.data.filter((topic: Topic) => topic.id !== deletedTopic.id);
     this.resetEditState();
+    this.isDeleteMode= false;
   }
   onCancelEdit(): void {
     this.resetEditState();
@@ -94,6 +96,7 @@ export class TopicListComponent implements OnInit, AfterViewInit {
   onCancelDelete(): void {
     this.isDeleteMode= false;
     this.topicData = new Topic;
+    this.isEditMode = false; // Reset edit mode after update
   }
 
 
