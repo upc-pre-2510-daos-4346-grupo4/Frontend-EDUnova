@@ -35,20 +35,23 @@ export class AppComponent implements OnInit {
     { icon: 'info', path:'/about', title: 'About'}
   ];
 
+  isSmallScreen = false;
+
   constructor(private translate: TranslateService, private observer: BreakpointObserver) {
     translate.setDefaultLang('en');
     translate.use('en');
   }
 
   ngOnInit(): void {
-    this.observer.observe(['(max-width: 1580px)']) // Observa el ancho de la pantalla
-      .subscribe((response) => {  // Se suscribe a los cambios en el ancho de la pantalla
-        if (response.matches) { // Si el ancho de la pantalla es menor a 1280px
-          this.sidenav.mode = 'over'; // Se despliega sobre el contenido
-          this.sidenav.close(); // Se cierra
+    this.observer.observe(['(max-width: 900px)']) // Ajusta el breakpoint según necesidad
+      .subscribe((response) => {
+        this.isSmallScreen = response.matches;
+        if (response.matches) {
+          this.sidenav.mode = 'over';
+          this.sidenav.close();
         } else {
-          this.sidenav.mode = 'side'; // Se despliega al lado del contenido
-          this.sidenav.open();  // Se abre
+          this.sidenav.mode = 'over';
+          this.sidenav.close();
         }
       });
   }
