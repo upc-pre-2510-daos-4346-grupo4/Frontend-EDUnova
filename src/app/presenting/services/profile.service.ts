@@ -6,7 +6,7 @@ import { Observable, map, switchMap, forkJoin } from 'rxjs';
   providedIn: 'root'
 })
 export class ProfileService {
-  private readonly API = 'http://localhost:3000';
+  private readonly API = 'https://685250f80594059b23ccf92a.mockapi.io';
 
   constructor(private http: HttpClient) {}
 

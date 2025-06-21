@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class CertificateService {
-  private baseUrl = 'http://localhost:3000/certificates';
+  private baseUrl = 'https://685250f80594059b23ccf92a.mockapi.io/certificates';
 
   constructor(private http: HttpClient) {}
 
