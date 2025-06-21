@@ -8,7 +8,7 @@ import {NgClass, NgIf} from "@angular/common";
 import { TranslateModule } from "@ngx-translate/core";
 import {Topic} from '../../model/topic.entity';
 import {TopicsService} from '../../services/topics.service';
-import {MatAnchor} from '@angular/material/button';
+import {MatAnchor, MatIconButton} from '@angular/material/button';
 import { Router } from '@angular/router';
 import {TopicCreateAndEditComponent} from '../topic-create-and-edit/topic-create-and-edit.component';
 import {TopicDeleteComponent} from '../topic-delete/topic-delete.component';
@@ -16,7 +16,7 @@ import {TopicDeleteComponent} from '../topic-delete/topic-delete.component';
 
 @Component({
   selector: 'app-topic-list',
-  imports: [MatPaginator, MatSort, MatIconModule, MatTableModule, NgClass, TranslateModule, MatAnchor, TopicCreateAndEditComponent, TopicDeleteComponent, NgIf],
+  imports: [MatPaginator, MatSort, MatIconModule, MatTableModule, NgClass, TranslateModule, MatAnchor, TopicCreateAndEditComponent, TopicDeleteComponent, NgIf, MatIconButton],
   templateUrl: './topic-list.component.html',
   styleUrl: './topic-list.component.css'
 })

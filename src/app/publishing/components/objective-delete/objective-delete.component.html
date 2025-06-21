@@ -1,17 +1,20 @@
-<mat-card appearance="outlined">
-  <mat-card-header>
-    <mat-card-title style="font-size: 1.5rem; color: #b71c1c;">
+<mat-card class="objective-delete-card">
+  <div class="objective-delete-card-content">
+    <mat-card-title class="objective-delete-title">
       ¿Quieres borrar <strong>{{ objective.title }}</strong>?
     </mat-card-title>
-  </mat-card-header>
-  <mat-card-content>
-    <div style="display: flex; justify-content: flex-end; gap: 12px; margin-top: 24px;">
-      <button mat-raised-button color="warn" (click)="onSubmit()">
-        Delete
+    <mat-card-subtitle class="objective-delete-subtitle">
+      Esta acción no se puede deshacer. El objetivo será eliminado permanentemente.
+    </mat-card-subtitle>
+    <div class="objective-delete-actions">
+      <button mat-raised-button color="warn" (click)="onSubmit()" class="delete-btn styled-btn">
+        <mat-icon class="icon-btn">delete</mat-icon>
+        Eliminar
       </button>
-      <button mat-button (click)="onCancel()">
-        Cancel
+      <button mat-stroked-button type="button" (click)="onCancel()" class="cancel-btn styled-btn btn-yellow">
+        <mat-icon class="icon-btn">close</mat-icon>
+        Cancelar
       </button>
     </div>
-  </mat-card-content>
+  </div>
 </mat-card>

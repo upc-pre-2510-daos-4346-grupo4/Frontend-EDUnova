@@ -1,40 +1,496 @@
 .data-view-card {
   display: flex;
-  padding: 16px;
+  flex-direction: column;
+  padding: 0;
+  border-radius: 18px;
+  border: 2.5px solid #009688;
+  margin-bottom: 32px;
+  background: #fff;
+  transition: box-shadow 0.22s, border 0.22s;
+}
+
+.data-view-card:hover {
+  border: 2.5px solid #22b97f; /* Verde menos brillante que #43e97b */
+  box-shadow: 0 2px 12px rgba(34, 185, 127, 0.10); /* Sombra sutil para resaltar */
 }
 
 .card-content {
   display: flex;
-  align-items: center;
-  gap: 16px;
-  width: 100%;
+  align-items: stretch;
+  gap: 24px;
+  padding: 24px 32px 16px 32px;
 }
 
 .card-image {
-  width: 150px;
-  height: 150px;
+  width: 120px;
+  height: 120px;
   object-fit: cover;
-  border-radius: 8px;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,150,136,0.07);
+  border: 1px solid #e0f2f1;
+  background: #fafafa;
 }
 
 .card-details {
-  flex-grow: 1;
+  flex: 1.2;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  justify-content: center;
+}
+
+.card-details mat-card-title {
+  font-size: 1.22rem;
+  font-weight: 700;
+  color: #263238;
+  margin-bottom: 2px;
+  font-family: 'Montserrat', 'Roboto', Arial, sans-serif;
+}
+
+.card-details mat-card-subtitle {
+  font-size: 1.02rem;
+  color: #009688;
+  font-weight: 500;
+  font-family: 'Montserrat', 'Roboto', Arial, sans-serif;
+}
+
+.course-meta {
+  display: flex;
+  flex-direction: row;
+  gap: 18px;
+  margin-top: 8px;
+}
+
+.course-language, .course-difficulty {
+  display: flex;
+  align-items: center;
+  font-size: 1rem;
+  color: #1976d2;
+  gap: 6px;
+  font-family: 'Roboto', Arial, sans-serif;
+  background: #e3f2fd;
+  border-radius: 8px;
+  padding: 2px 10px 2px 6px;
+}
+
+.course-language mat-icon, .course-difficulty mat-icon {
+  font-size: 20px;
+  vertical-align: middle;
+  margin-right: 4px;
+}
+
+.card-center-content {
+  flex: 2; /* Aumenta el espacio para la descripción */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 0 0 0 8px; /* Menos padding a la izquierda */
+  min-width: 220px;
+  max-width: 500px; /* Permite que la descripción sea más ancha */
+  border-left: 1.5px solid #e0f2f1;
+  border-right: 1.5px solid #e0f2f1;
+  margin: 0 8px;
+}
+
+.course-description {
+  max-height: 100px;
+  overflow: auto;
+  font-size: 1.07rem;
+  color: #37474f;
+  font-family: 'Roboto', Arial, sans-serif;
+  margin-bottom: 8px;
+  line-height: 1.6;
+}
+
+.course-price {
+  color: #009688;
+  font-size: 1.18rem;
+  font-weight: 600;
+  font-family: 'Montserrat', 'Roboto', Arial, sans-serif;
+  margin-bottom: 0;
 }
 
 .card-actions {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  gap: 8px;
+  gap: 10px;
+  align-items: flex-end;
+  min-width: 120px;
+}
+
+.card-actions button[mat-button] {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #009688;
+  border-radius: 8px;
+  padding: 6px 18px;
+  transition: background 0.2s, color 0.2s;
+}
+
+.card-actions button[mat-button]:hover {
+  background: #e0f2f1;
+  color: #00796b;
+}
+
+.card-actions button[mat-fab] {
+  background: #009688;
+  color: #fff;
+  font-size: 1.1rem;
+  font-weight: 500;
+  border-radius: 28px;
+  min-width: 180px;
+  height: 48px;
+  padding: 0 24px;
+  box-shadow: 0 2px 8px rgba(0, 150, 136, 0.15);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: background 0.2s, color 0.2s;
+}
+
+.card-actions button[mat-fab]:hover {
+  background: #00796b;
+  color: #fff;
+}
+
+.card-actions button[mat-fab][color="primary"] {
+  background: #1976d2;
+  color: #fff;
+  font-size: 1.1rem;
+  font-weight: 500;
+  border-radius: 28px;
+  min-width: 180px;
+  height: 48px;
+  padding: 0 24px;
+  box-shadow: 0 2px 8px rgba(25, 118, 210, 0.15);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: background 0.2s, color 0.2s;
+}
+
+.card-actions button[mat-fab][color="primary"]:hover {
+  background: #1565c0;
+  color: #fff;
+}
+
+.card-actions button[mat-fab][color="warn"] {
+  background: #e53935;
+  color: #fff;
+  font-size: 1.1rem;
+  font-weight: 500;
+  border-radius: 28px;
+  min-width: 180px;
+  height: 48px;
+  padding: 0 24px;
+  box-shadow: 0 2px 8px rgba(229, 57, 53, 0.15);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: background 0.2s, color 0.2s;
+}
+
+.card-actions button[mat-fab][color="warn"]:hover {
+  background: #b71c1c;
+  color: #fff;
 }
 
 .card-accordion {
   margin-top: 16px;
+  background: #fafbfc;
+  border-radius: 10px;
+  box-shadow: none;
+  margin-left: 0;
+  margin-right: 0;
+  padding: 0 16px 12px 16px; /* Más padding para separar del borde del card */
 }
 
-.course-description {
-  max-height: 100px;
-  overflow: auto;
-  font-size: 14px;
-  color: #666;
+.card-accordion .mat-expansion-panel {
+  border: 2px solid #1976d2;
+  border-radius: 8px;
+  margin: 14px 0;
+  box-shadow: 0 2px 8px rgba(25, 118, 210, 0.07);
+  background: #fff;
+  overflow: hidden;
+}
+
+.card-accordion .mat-expansion-panel-header {
+  background: #fff;
+  color: #37474f;
+  font-size: 1.08rem;
+  font-weight: 500;
+  font-family: 'Montserrat', 'Roboto', Arial, sans-serif;
+  letter-spacing: 0.1px;
+  border-radius: 8px 8px 0 0;
+  box-shadow: none;
+  border-bottom: 1px solid #e3e6ea;
+  padding-left: 16px;
+  padding-right: 8px;
+  min-height: 44px;
+  transition: background 0.2s, color 0.2s;
+}
+
+.card-accordion .mat-expansion-panel-header:hover {
+  background: #f5f7fa;
+  color: #009688;
+}
+
+.card-accordion .mat-expansion-panel-header.mat-expanded {
+  border-bottom: 1.5px solid #1976d2;
+  background: #f7f7f7;
+  color: #263238;
+  font-weight: 600;
+}
+
+.card-accordion .mat-expansion-panel-header span {
+  font-size: 1.08rem;
+  font-weight: 500;
+  font-family: 'Montserrat', 'Roboto', Arial, sans-serif;
+  letter-spacing: 0.1px;
+}
+
+.card-accordion .mat-expansion-panel-body,
+.card-accordion app-topic-list {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0;
+}
+
+/* Hacer la tabla responsive dentro del topic-list */
+.card-accordion .table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.card-accordion table {
+  min-width: 600px;
+  width: 100%;
+}
+
+@media (max-width: 700px) {
+  .card-accordion table {
+    min-width: 400px;
+    font-size: 0.95em;
+  }
+}
+
+.presentation-card {
+  margin-bottom: 32px;
+  padding: 32px 40px;
+  background: linear-gradient(90deg, #e0f7fa 0%, #fff 100%);
+  border-radius: 18px;
+  box-shadow: 0 4px 24px rgba(0, 150, 136, 0.10), 0 1.5px 4px rgba(0,0,0,0.04);
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  border: 1px solid #b2dfdb;
+}
+
+.presentation-content {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+}
+
+.presentation-text {
+  flex: 2;
+}
+
+.presentation-action {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+.presentation-card mat-card-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #009688;
+  margin-bottom: 8px;
+}
+
+.presentation-card mat-card-subtitle {
+  font-size: 1.1rem;
+  color: #333;
+  margin-bottom: 0;
+}
+
+.presentation-hint {
+  font-size: 0.95rem;
+  color: #009688;
+  margin-top: 8px;
+  font-style: italic;
+}
+
+.presentation-card button[mat-fab] {
+  background: #009688;
+  color: #fff;
+  font-size: 1.1rem;
+  font-weight: 500;
+  border-radius: 28px;
+  min-width: 180px;
+  height: 48px;
+  padding: 0 24px;
+  box-shadow: 0 2px 8px rgba(0, 150, 136, 0.15);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: background 0.2s, color 0.2s;
+}
+
+.presentation-card button[mat-fab]:hover {
+  background: #00796b;
+  color: #fff;
+}
+
+mat-paginator {
+  margin: 32px auto 0 auto;
+  display: flex !important;
+  justify-content: center;
+  background: #f5f7fa;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(33, 150, 243, 0.08);
+  border: 2px solid #b2dfdb;
+  padding: 10px 32px 6px 32px;
+  max-width: 420px;
+}
+
+mat-paginator.main-paginator {
+  margin: 32px auto 0 auto;
+  display: flex !important;
+  justify-content: center;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 1px 6px rgba(103, 58, 183, 0.10);
+  border: 1.5px solid #8e24aa;
+  padding: 6px 32px 4px 32px;
+  max-width: 600px;
+  min-width: 340px;
+  min-height: 44px;
+  font-family: 'Montserrat', 'Roboto', Arial, sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #6a1b9a;
+  transition: box-shadow 0.2s, border 0.2s, background 0.2s;
+}
+
+mat-paginator.main-paginator:hover {
+  box-shadow: 0 2px 10px rgba(103, 58, 183, 0.13);
+  border-color: #6a1b9a;
+}
+
+::ng-deep .mat-paginator-range-label {
+  font-weight: 600;
+  color: #009688;
+  font-size: 1.08rem;
+  letter-spacing: 0.5px;
+}
+
+::ng-deep mat-paginator.main-paginator .mat-paginator-range-label {
+  font-weight: 600;
+  color: #8e24aa;
+  font-size: 1rem;
+  letter-spacing: 0.2px;
+}
+
+::ng-deep .mat-paginator-page-size-label,
+::ng-deep .mat-paginator-page-size-select {
+  color: #1976d2 !important;
+  font-weight: 500;
+}
+
+::ng-deep mat-paginator.main-paginator .mat-paginator-page-size-label,
+::ng-deep mat-paginator.main-paginator .mat-paginator-page-size-select {
+  color: #6a1b9a !important;
+  font-weight: 500;
+  font-size: 0.98rem;
+}
+
+::ng-deep .mat-paginator-icon {
+  color: #009688 !important;
+  font-size: 1.3em;
+}
+
+::ng-deep mat-paginator.main-paginator .mat-paginator-icon {
+  color: #8e24aa !important;
+  font-size: 1.1em;
+}
+
+::ng-deep .mat-paginator-navigation-previous,
+::ng-deep .mat-paginator-navigation-next {
+  border-radius: 50%;
+  background: #e0f2f1;
+  margin: 0 2px;
+  transition: background 0.2s;
+}
+
+::ng-deep mat-paginator.main-paginator .mat-paginator-navigation-previous,
+::ng-deep mat-paginator.main-paginator .mat-paginator-navigation-next {
+  border-radius: 50%;
+  background: #f3e5f5;
+  margin: 0 2px;
+  transition: background 0.2s;
+}
+
+::ng-deep .mat-paginator-navigation-previous:hover,
+::ng-deep .mat-paginator-navigation-next:hover {
+  background: #b2dfdb;
+}
+
+::ng-deep mat-paginator.main-paginator .mat-paginator-navigation-previous:hover,
+::ng-deep mat-paginator.main-paginator .mat-paginator-navigation-next:hover {
+  background: #e1bee7;
+}
+
+::ng-deep .mat-paginator-page-size-select.mat-select {
+  border-radius: 6px;
+  background: #e3f2fd;
+}
+
+::ng-deep mat-paginator.main-paginator .mat-paginator-page-size-select.mat-select {
+  border-radius: 6px;
+  background: #f3e5f5;
+  font-weight: 500;
+  font-size: 0.98rem;
+}
+
+@media (max-width: 900px) {
+  .card-content {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 16px;
+    padding: 18px 8px 8px 8px;
+  }
+  .card-center-content {
+    border-left: none;
+    border-right: none;
+    margin: 0;
+    max-width: 100%;
+    padding: 0;
+  }
+  .data-view-card {
+    border-radius: 12px;
+  }
+  .presentation-content {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+  }
+  .presentation-action {
+    align-items: flex-start;
+    width: 100%;
+  }
+  .card-accordion {
+    margin-left: 0;
+    margin-right: 0;
+    border-radius: 8px;
+    padding: 0 2px 6px 2px;
+  }
 }

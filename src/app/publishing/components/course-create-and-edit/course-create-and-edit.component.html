@@ -1,14 +1,18 @@
-<h2 mat-dialog-title>{{ this.editMode ? 'Editar Curso' : 'Crear Curso' }}</h2>
+<h2 mat-dialog-title [ngClass]="editMode ? 'title-mint' : 'title-blue'">{{ this.editMode ? 'Editar Curso' : 'Crear Curso' }}</h2>
 <mat-dialog-content class="mat-typography">
+  <br>
   <form #courseForm="ngForm">
-    <mat-form-field appearance="fill">
+    <mat-form-field appearance="outline" class="temario-input small-label field-title">
+      <mat-label>Nombre</mat-label>
       <input matInput placeholder="Nombre" name="name" [(ngModel)]="newCourse.name" required />
     </mat-form-field>
-    <mat-form-field appearance="fill">
-      <textarea matInput placeholder="Descripción" name="description" [(ngModel)]="newCourse.description" required></textarea>
+    <mat-form-field appearance="outline" class="temario-input small-label field-description">
+      <mat-label>Descripción</mat-label>
+      <textarea matInput placeholder="Descripción" name="description" [(ngModel)]="newCourse.description" required rows="1"></textarea>
     </mat-form-field>
-    <mat-form-field appearance="fill">
-      <mat-select placeholder="Categoría" name="category" [(ngModel)]="newCourse.category" required>
+    <mat-form-field appearance="outline" class="temario-input small-label">
+      <mat-label>Categoría</mat-label>
+      <mat-select name="category" [(ngModel)]="newCourse.category" required>
         <mat-option value="Mathematics">Mathematics</mat-option>
         <mat-option value="Computer Science">Computer Science (o Programming)</mat-option>
         <mat-option value="Science">Science</mat-option>
@@ -21,14 +25,17 @@
         <mat-option value="Personal Development">Personal Development</mat-option>
       </mat-select>
     </mat-form-field>
-    <mat-form-field appearance="fill">
+    <mat-form-field appearance="outline" class="temario-input small-label">
+      <mat-label>Precio</mat-label>
       <input matInput type="number" placeholder="Precio" name="price" [(ngModel)]="newCourse.price" required />
     </mat-form-field>
-    <mat-form-field appearance="fill">
-      <textarea matInput placeholder="Imagen (URL)" name="image" [(ngModel)]="newCourse.image"></textarea>
+    <mat-form-field appearance="outline" class="temario-input small-label">
+      <mat-label>Imagen (URL)</mat-label>
+      <textarea matInput placeholder="Imagen (URL)" name="image" [(ngModel)]="newCourse.image" rows="1"></textarea>
     </mat-form-field>
-    <mat-form-field appearance="fill">
-      <mat-select placeholder="Lenguaje" name="language" [(ngModel)]="newCourse.language" required>
+    <mat-form-field appearance="outline" class="temario-input small-label">
+      <mat-label>Lenguaje</mat-label>
+      <mat-select name="language" [(ngModel)]="newCourse.language" required>
         <mat-option value="English">English</mat-option>
         <mat-option value="Spanish">Spanish</mat-option>
         <mat-option value="Mandarin Chinese">Mandarin Chinese</mat-option>
@@ -41,7 +48,7 @@
         <mat-option value="Japanese">Japanese</mat-option>
       </mat-select>
     </mat-form-field>
-    <label style="margin-top: 8px; display: block;">Dificultad</label>
+    <label [ngClass]="editMode ? 'label-blue' : 'label-mint'" style="margin-top: 8px; display: block;">Dificultad</label>
     <mat-radio-group name="difficulty" [(ngModel)]="newCourse.difficulty" required style="display: flex; flex-direction: row; gap: 16px;">
       <mat-radio-button value="Beginner">Beginner</mat-radio-button>
       <mat-radio-button value="Intermediate">Intermediate</mat-radio-button>
@@ -50,10 +57,16 @@
   </form>
 </mat-dialog-content>
 <mat-dialog-actions align="end">
-  <button mat-button type="button"
+  <button mat-button
+          class="btn-yellow-text"
+          type="button"
           [mat-dialog-close]="true">Cancel</button>
-  <button mat-button color="primary" type="submit"
-          (click)="onSubmit()"
+  <button mat-button
+        [ngClass]="['btn-action', !editMode ? 'btn-action-mint' : 'btn-action-blue']"
+        type="submit"
           cdkFocusInitial
-          [mat-dialog-close]="true">{{ newCourse.id === '' ? 'Crear' : 'Actualizar' }}</button>
+        (click)="onSubmit()"
+        [mat-dialog-close]="true">
+    {{ newCourse.id === '' ? 'Crear' : 'Actualizar' }}
+  </button>
 </mat-dialog-actions>

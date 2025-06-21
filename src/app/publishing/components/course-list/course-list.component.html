@@ -1,14 +1,26 @@
-
-<div class="example-button-row">
-  <div class="example-flex-container">
-    <div class="example-button-container">
-      <button mat-fab extended (click)="openDialog(false)">
-        <mat-icon>edit</mat-icon>
-        {{ 'course.create' | translate }}
-      </button>
+<mat-card class="presentation-card">
+  <div class="presentation-content">
+    <div class="presentation-text">
+      <mat-card-title>¡Bienvenido a la gestión de cursos!</mat-card-title>
+      <mat-card-subtitle>
+        En esta sección puedes crear, editar y administrar tus cursos para venderlos en la plataforma. Utiliza el botón a continuación para crear un nuevo curso y comienza a compartir tu conocimiento con el mundo.
+      </mat-card-subtitle>
+    </div>
+    <div class="presentation-action">
+      <div class="example-button-row">
+        <div class="example-flex-container">
+          <div class="example-button-container">
+            <button mat-fab extended (click)="openDialog(false)">
+              <mat-icon>add_circle</mat-icon>
+              {{ 'course.create' | translate }}
+            </button>
+          </div>
+        </div>
+      </div>
+      <span class="presentation-hint">Este botón te permite crear un nuevo curso</span>
     </div>
   </div>
-</div>
+</mat-card>
 
 <br>
 
@@ -18,14 +30,26 @@
     <div class="card-content">
       <img [src]="course.image" alt="Imagen" class="card-image" />
       <div class="card-details">
-        <mat-card-title>{{ 'course.name' | translate }}: {{ course.name }}</mat-card-title>
-        <mat-card-subtitle>{{ 'course.category' | translate }}: {{ course.category }}</mat-card-subtitle>
-        <p class="course-description">{{ 'course.description' | translate }}: {{ course.description }}</p>
-        <p class="course-price"><strong style="font-size: 1.2em;">{{ 'course.price' | translate }}: $ {{ course.price }}</strong></p>
+        <mat-card-title class="course-title">{{ course.name }}</mat-card-title>
+        <mat-card-subtitle class="course-category">Categoría: {{ course.category }}</mat-card-subtitle>
+        <div class="course-meta">
+          <span class="course-language"><mat-icon>language</mat-icon>Idioma: {{ course.language }}</span>
+          <span class="course-difficulty"><mat-icon>school</mat-icon>Dificultad: {{ course.difficulty }}</span>
+        </div>
+      </div>
+      <div class="card-center-content">
+        <p class="course-description">{{ course.description }}</p>
+        <p class="course-price"><strong style="font-size: 1.2em;">Precio: ${{ course.price }}</strong></p>
       </div>
       <mat-card-actions class="card-actions">
-        <button mat-button (click)="openDialog(true, course)">{{ 'course.edit' | translate }}</button>
-        <button mat-button (click)="openDeleteDialog(course)">{{ 'course.delete' | translate }}</button>
+        <button mat-fab extended color="primary" (click)="openDialog(true, course)">
+          <mat-icon>edit</mat-icon>
+          {{ 'course.edit' | translate }}
+        </button>
+        <button mat-fab extended color="warn" (click)="openDeleteDialog(course)">
+          <mat-icon>delete</mat-icon>
+          {{ 'course.delete' | translate }}
+        </button>
       </mat-card-actions>
     </div>
     <mat-accordion class="card-accordion">
@@ -39,7 +63,8 @@
   </mat-card>
 </div>
 
-<mat-paginator [length]="courseList.length"
+<mat-paginator class="main-paginator"
+               [length]="courseList.length"
                [pageSize]="pageSize"
                [pageSizeOptions]="[1, 2, 4, 10]"
                (page)="onPageChange($event)">

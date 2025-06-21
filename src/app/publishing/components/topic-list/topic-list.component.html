@@ -36,9 +36,15 @@
     <ng-container matColumnDef="actions">
       <th *matHeaderCellDef mat-header-cell> {{ 'topic.actions' | translate }}</th>
       <td *matCellDef="let element" mat-cell>
-        <a (click)="onEditElement(element)" href="javascript:void(0)"><mat-icon>edit</mat-icon></a>
-        <a (click)="onDeleteElement(element)" href="javascript:void(0)"><mat-icon>delete</mat-icon></a>
-        <a mat-flat-button (click)="goToDetails(element.id)" target="_blank">Link</a>
+        <button mat-icon-button (click)="onEditElement(element)" aria-label="Editar tema">
+          <mat-icon style="color: #1976d2;">edit</mat-icon>
+        </button>
+        <button mat-icon-button (click)="onDeleteElement(element)" aria-label="Eliminar tema">
+          <mat-icon style="color: #e53935;">delete</mat-icon>
+        </button>
+        <button mat-icon-button (click)="goToDetails(element.id)" aria-label="Ver detalles" target="_blank">
+          <mat-icon style="color: #8e24aa;">link</mat-icon>
+        </button>
       </td>
     </ng-container>
 

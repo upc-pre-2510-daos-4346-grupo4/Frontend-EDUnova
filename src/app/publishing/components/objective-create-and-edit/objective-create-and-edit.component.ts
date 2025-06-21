@@ -3,10 +3,11 @@ import {Objective} from '../../model/objective.entity';
 import {Topic} from '../../model/topic.entity';
 import {ObjectivesService} from '../../services/objectives.service';
 import {MatCard, MatCardContent, MatCardHeader, MatCardSubtitle, MatCardTitle} from '@angular/material/card';
-import {MatFormField, MatInput} from '@angular/material/input';
+import {MatFormField, MatInput, MatLabel} from '@angular/material/input';
 import {FormsModule} from '@angular/forms';
 import {MatButton} from '@angular/material/button';
-import {NgIf} from '@angular/common';
+import {NgClass, NgIf} from '@angular/common';
+import {MatIcon} from '@angular/material/icon';
 
 @Component({
   selector: 'app-objective-create-and-edit',
@@ -20,7 +21,10 @@ import {NgIf} from '@angular/common';
     MatButton,
     NgIf,
     MatCardTitle,
-    MatCardSubtitle
+    MatCardSubtitle,
+    MatLabel,
+    NgClass,
+    MatIcon
   ],
   templateUrl: './objective-create-and-edit.component.html',
   styleUrl: './objective-create-and-edit.component.css'

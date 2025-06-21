@@ -2,7 +2,7 @@ import {Component, Input, OnInit} from '@angular/core';
 import {Objective} from '../../model/objective.entity';
 import {ObjectivesService} from '../../services/objectives.service';
 import {MatListModule} from '@angular/material/list';
-import {NgForOf, NgIf} from '@angular/common';
+import {NgClass, NgForOf, NgIf} from '@angular/common';
 import {MatCard, MatCardActions, MatCardContent, MatCardHeader, MatCardTitle,MatCardSubtitle} from '@angular/material/card';
 import {MatButton} from '@angular/material/button';
 import {
@@ -26,13 +26,13 @@ import {ObjectiveDeleteComponent} from '../objective-delete/objective-delete.com
   imports: [MatListModule, NgForOf, MatCardTitle, MatCardHeader,
     MatCard, MatCardActions, MatButton, MatCardSubtitle,
     MatExpansionPanelDescription, MatExpansionPanelTitle,
-    MatExpansionPanelHeader, MatExpansionPanel, MatAccordion, MatPaginator, TranslatePipe, MatCardContent, ObjectiveCreateAndEditComponent, NgIf, TopicCreateAndEditComponent, ObjectiveDeleteComponent],
+    MatExpansionPanelHeader, MatExpansionPanel, MatAccordion, MatPaginator, TranslatePipe, MatCardContent, ObjectiveCreateAndEditComponent, NgIf, TopicCreateAndEditComponent, ObjectiveDeleteComponent, NgClass],
   templateUrl: './objective-list.component.html',
   styleUrl: './objective-list.component.css'
 })
 export class ObjectiveListComponent implements OnInit {
   //Paginator
-  pageSize = 1;
+  pageSize = 2;
   currentPage = 0;
   paginatedObjectives: Objective[] = [];
   @ViewChild(MatPaginator) paginator!: MatPaginator;
@@ -122,6 +122,7 @@ export class ObjectiveListComponent implements OnInit {
 
   // Lifecycle Hooks
   ngOnInit(): void {
+    this.pageSize = 2;
     this.getAllObjectives();
   }
 
@@ -134,7 +135,7 @@ export class ObjectiveListComponent implements OnInit {
 
   onPageChange(event: any): void {
     this.currentPage = event.pageIndex;
-    this.pageSize = event.pageSize;
+    this.pageSize = event.pageSize; // Actualiza el pageSize según la selección del usuario
     this.updatePaginatedObjectives();
   }
 

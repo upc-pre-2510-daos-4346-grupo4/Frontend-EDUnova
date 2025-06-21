@@ -2,13 +2,15 @@ import {Component, EventEmitter, Input, Output, ViewChild, Inject} from '@angula
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import {MatDialogActions, MatDialogClose, MatDialogContent, MatDialogTitle} from '@angular/material/dialog';
 import {MatButton} from '@angular/material/button';
-import {MatFormField, MatInput} from '@angular/material/input';
+import {MatFormField, MatInput, MatLabel} from '@angular/material/input';
 import {FormsModule, NgForm} from '@angular/forms';
 import {Course} from '../../model/course.entity';
 import {MatRadioButton, MatRadioGroup} from '@angular/material/radio';
 import {MatOption} from '@angular/material/core';
 import {MatSelect} from '@angular/material/select';
 import {CoursesService} from '../../services/courses.service';
+import {MatCard} from '@angular/material/card';
+import {NgClass} from '@angular/common';
 
 @Component({
   selector: 'app-course-create-and-edit',
@@ -24,7 +26,10 @@ import {CoursesService} from '../../services/courses.service';
     MatRadioButton,
     MatOption,
     MatSelect,
-    MatRadioGroup
+    MatRadioGroup,
+    MatCard,
+    MatLabel,
+    NgClass
   ],
   templateUrl: './course-create-and-edit.component.html',
   styleUrl: './course-create-and-edit.component.css'

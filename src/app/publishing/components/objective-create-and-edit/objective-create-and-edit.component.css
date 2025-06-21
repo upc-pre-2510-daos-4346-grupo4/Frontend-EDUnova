@@ -1,0 +1,147 @@
+.objective-card {
+  background: linear-gradient(120deg, #f5f7fa 60%, #e0f7fa 100%);
+  border-radius: 14px;
+  box-shadow: 0 2px 12px rgba(0, 150, 136, 0.08), 0 1px 2px rgba(0,0,0,0.03);
+  padding: 20px 22px 18px 22px;
+  margin-bottom: 24px;
+  border: 1px solid #b2dfdb;
+  width: fit-content;
+  min-width: 320px;
+  max-width: 100%;
+}
+
+.objective-title {
+  font-size: 1.35rem;
+  font-weight: 600;
+  color: #009688;
+  font-family: 'Montserrat', 'Roboto', Arial, sans-serif;
+  margin-bottom: 2px;
+}
+
+.objective-subtitle {
+  font-size: 0.98rem;
+  color: #37474f;
+  margin-bottom: 14px;
+  font-family: 'Roboto', Arial, sans-serif;
+}
+
+.objective-form-row-horizontal-align {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+}
+
+.objective-form-row {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.objective-input {
+  width: 100%;
+  font-size: 0.98rem;
+}
+
+.small-label .mat-form-field-label {
+  font-size: 0.85rem !important;
+  color: #607d8b !important;
+  font-weight: 500;
+}
+
+.horizontal-field {
+  min-width: 180px;
+  flex: 1 1 0;
+}
+
+.objective-form-actions-horizontal-right {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  align-items: center;
+  justify-content: flex-end;
+  height: 100%;
+  align-self: stretch;
+}
+
+.styled-btn {
+  font-size: 1rem !important;
+  padding: 0 24px !important;
+  border-radius: 6px !important;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  min-height: 56px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  box-shadow: none !important;
+  text-transform: none;
+}
+
+.styled-btn .icon-btn {
+  margin-right: 7px;
+  font-size: 1.2em;
+  vertical-align: middle;
+}
+
+.btn-mint {
+  background: #43e97b !important;
+  color: #fff !important;
+  border: none !important;
+  box-shadow: none !important;
+  transition: background 0.2s, color 0.2s;
+}
+.btn-mint:hover, .btn-mint:focus {
+  background: #38f9d7 !important;
+  color: #fff !important;
+}
+
+.btn-blue {
+  background: #2196f3 !important;
+  color: #fff !important;
+  border: none !important;
+  box-shadow: none !important;
+  transition: background 0.2s, color 0.2s;
+}
+.btn-blue:hover, .btn-blue:focus {
+  background: #1976d2 !important;
+  color: #fff !important;
+}
+
+.btn-yellow {
+  background: #ffe259 !important;
+  color: #8d6f00 !important;
+  border: 1.5px solid #ffe259 !important;
+  box-shadow: none !important;
+  transition: background 0.2s, color 0.2s;
+}
+.btn-yellow:hover, .btn-yellow:focus {
+  background: #ffd600 !important;
+  color: #8d6f00 !important;
+}
+
+.btn-yellow .icon-btn {
+  color: #8d6f00 !important;
+}
+
+@media (max-width: 900px) {
+  .objective-card {
+    min-width: 0;
+    width: 100%;
+  }
+  .objective-form-row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .objective-form-actions-horizontal-right {
+    flex-direction: row;
+    align-items: stretch;
+    margin-top: 10px;
+    justify-content: flex-start;
+  }
+  .horizontal-field {
+    min-width: 0;
+  }
+}

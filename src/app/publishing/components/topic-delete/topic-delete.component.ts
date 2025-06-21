@@ -2,11 +2,17 @@ import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {Topic} from '../../model/topic.entity';
 import {TopicsService} from '../../services/topics.service';
 import {MatButton} from '@angular/material/button';
+import {MatCard, MatCardSubtitle, MatCardTitle} from '@angular/material/card';
+import {MatIcon} from '@angular/material/icon';
 
 @Component({
   selector: 'app-topic-delete',
   imports: [
-    MatButton
+    MatButton,
+    MatCard,
+    MatCardTitle,
+    MatCardSubtitle,
+    MatIcon
   ],
   templateUrl: './topic-delete.component.html',
   styleUrl: './topic-delete.component.css'

@@ -3,9 +3,11 @@ import {Topic} from '../../model/topic.entity';
 import {TopicsService} from '../../services/topics.service';
 import {MatDialogTitle} from '@angular/material/dialog';
 import {FormsModule} from '@angular/forms';
-import {MatFormField, MatInput} from '@angular/material/input';
+import {MatFormField, MatInput, MatLabel} from '@angular/material/input';
 import {MatButton} from '@angular/material/button';
-import {NgIf} from '@angular/common';
+import {NgClass, NgIf} from '@angular/common';
+import {MatCard, MatCardSubtitle, MatCardTitle} from '@angular/material/card';
+import {MatIcon} from '@angular/material/icon';
 
 @Component({
   selector: 'app-topic-create-and-edit',
@@ -14,7 +16,13 @@ import {NgIf} from '@angular/common';
     FormsModule,
     MatInput,
     MatButton,
-    NgIf
+    NgIf,
+    MatCard,
+    MatCardTitle,
+    MatCardSubtitle,
+    MatLabel,
+    MatIcon,
+    NgClass
   ],
   templateUrl: './topic-create-and-edit.component.html',
   styleUrl: './topic-create-and-edit.component.css'
