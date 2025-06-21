@@ -36,7 +36,10 @@ import {ResourceDeleteComponent} from '../resource-delete/resource-delete.compon
     MatCardTitle,
     MatFabButton,
     MatIcon,
-    MatPaginator
+    MatPaginator,
+    MatAccordion,
+    MatExpansionPanel
+    , MatExpansionPanelHeader, MatExpansionPanelTitle, MatExpansionPanelDescription
   ],
   templateUrl: './resource-list.component.html',
   styleUrl: './resource-list.component.css'

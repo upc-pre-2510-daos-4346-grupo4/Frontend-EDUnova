@@ -144,6 +144,55 @@
   justify-content: center;
 }
 
+.objective-card-grid-paginator mat-paginator {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: none;
+  border: none;
+  padding: 8px 24px;
+  margin: 0 auto;
+  font-family: 'Montserrat', 'Roboto', Arial, sans-serif;
+  font-size: 1.08rem;
+  color: #333;
+  transition: none;
+}
+
+.objective-card-grid-paginator mat-paginator .mat-paginator-range-label {
+  color: #333;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.objective-card-grid-paginator mat-paginator .mat-paginator-icon {
+  color: #333;
+  font-size: 1.3em;
+}
+
+.objective-card-grid-paginator mat-paginator .mat-paginator-page-size {
+  color: #333;
+  font-weight: 500;
+}
+
+.objective-card-grid-paginator mat-paginator .mat-paginator-navigation-previous,
+.objective-card-grid-paginator mat-paginator .mat-paginator-navigation-next {
+  background: transparent;
+  border-radius: 50%;
+  margin: 0 2px;
+  transition: none;
+}
+.objective-card-grid-paginator mat-paginator .mat-paginator-navigation-previous:hover,
+.objective-card-grid-paginator mat-paginator .mat-paginator-navigation-next:hover {
+  background: #e0e0e0;
+  color: #333;
+}
+
+@media (max-width: 600px) {
+  .objective-card-grid-paginator mat-paginator {
+    padding: 6px 4px;
+    font-size: 0.98rem;
+  }
+}
+
 /* Responsive: 2 columnas en pantallas medianas */
 @media (max-width: 1200px) {
   .objective-list-grid {

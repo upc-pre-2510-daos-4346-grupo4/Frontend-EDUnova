@@ -81,13 +81,24 @@ mat-accordion {
   margin: 0 auto;
 }
 
+/* Card de recurso de video estilo YouTube simple y profesional */
 .resource-view-card {
+  background: linear-gradient(120deg, #ede7f6 60%, #e3f2fd 100%);
+  border-radius: 16px;
+  box-shadow: 0 2px 12px rgba(103, 58, 183, 0.10), 0 1.5px 4px rgba(0,0,0,0.04);
+  border: 1.5px solid #b39ddb;
+  margin-bottom: 28px;
+  padding: 0;
   display: flex;
-  padding: 16px;
-  align-items: flex-start;
-  max-width: 1000px;
+  transition: box-shadow 0.18s, border 0.18s;
   width: 100%;
-  margin: 0 auto 24px auto;
+  height: auto;
+  min-height: unset;
+  align-items: stretch;
+}
+.resource-view-card:hover {
+  box-shadow: 0 4px 18px rgba(103, 58, 183, 0.13);
+  border-color: #7c4dff;
 }
 
 .resource-card-content {
@@ -95,6 +106,10 @@ mat-accordion {
   align-items: center;
   width: 100%;
   gap: 32px;
+  padding: 24px 36px;
+  height: auto;
+  min-height: unset;
+  box-sizing: border-box;
 }
 
 .resource-card-video {
@@ -102,41 +117,99 @@ mat-accordion {
   min-height: 180px;
   max-width: 320px;
   max-height: 220px;
-  flex-shrink: 0;
-  border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(103,58,183,0.10);
+  background: #fff;
+  height: auto;
 }
 
 .resource-card-details {
   flex-grow: 1;
   display: flex;
   flex-direction: column;
+  align-items: center;
+  justify-content: center;
   gap: 8px;
   min-width: 0;
   word-break: break-word;
+  color: #512da8;
+  text-align: center;
+}
+
+.resource-card-details mat-card-title {
+  font-size: 1.22rem;
+  font-weight: 700;
+  color: #512da8;
+  margin-bottom: 4px;
+  letter-spacing: 0.1px;
+}
+
+.resource-card-details mat-card-subtitle {
+  font-size: 1.04rem;
+  color: #5e35b1;
+  font-weight: 400;
+  margin-bottom: 0;
 }
 
 .card-actions {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-end;
   align-items: flex-end;
-  gap: 8px;
-  height: auto;
-  margin-left: auto;
+  gap: 10px;
+  margin-left: 24px;
   padding: 0;
 }
 
+
+
+.edit-btn {
+  background: linear-gradient(90deg, #4fc3f7 60%, #7c4dff 100%);
+  color: #fff !important;
+  border-radius: 8px;
+  font-weight: 600;
+  box-shadow: 0 1.5px 4px rgba(79,195,247,0.10);
+  transition: background 0.18s, color 0.18s;
+}
+.edit-btn:hover {
+  background: #039be5;
+  color: #fff !important;
+}
+
+.delete-btn {
+  background: linear-gradient(90deg, #ff5252 60%, #ff9800 100%);
+  color: #fff !important;
+  border-radius: 8px;
+  font-weight: 600;
+  box-shadow: 0 1.5px 4px rgba(255,82,82,0.10);
+  transition: background 0.18s, color 0.18s;
+}
+.delete-btn:hover {
+  background: #d32f2f;
+  color: #fff !important;
+}
+
+.green-btn {
+  background: linear-gradient(90deg, #43ea7f 60%, #00bfa5 100%);
+  color: #fff !important;
+  border-radius: 8px;
+  font-weight: 600;
+  box-shadow: 0 1.5px 4px rgba(67,234,127,0.10);
+  transition: background 0.18s, color 0.18s;
+}
+.green-btn:hover {
+  background: #00bfa5;
+  color: #fff !important;
+}
+
 @media (max-width: 900px) {
-  .resource-view-card {
-    max-width: 100%;
-  }
   .resource-card-content {
     gap: 16px;
+    padding: 14px 8px;
   }
   .resource-card-video {
     max-width: 220px;
-    min-width: 180px;
+    min-width: 120px;
     max-height: 140px;
     min-height: 100px;
   }
@@ -145,8 +218,9 @@ mat-accordion {
 @media (max-width: 700px) {
   .resource-card-content {
     flex-direction: column;
-    align-items: flex-start;
-    gap: 12px;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 4px;
   }
   .resource-card-video {
     width: 100% !important;
@@ -159,7 +233,88 @@ mat-accordion {
     align-items: flex-start;
     max-width: 100%;
   }
+  .card-actions {
+    margin-left: 0;
+    align-items: center;
+    width: 100%;
+  }
 }
 
+/* Card de presentación para recursos de video */
+.presentation-card {
+  margin-bottom: 32px;
+  padding: 32px 40px;
+  background: linear-gradient(90deg, #e3f2fd 0%, #fff 100%);
+  border-radius: 16px;
+  box-shadow: 0 4px 18px rgba(33, 150, 243, 0.10), 0 1.5px 4px rgba(0,0,0,0.04);
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #b3e5fc;
+}
 
+.presentation-content {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+}
 
+.presentation-text {
+  flex: 2;
+}
+
+.presentation-action {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+.presentation-card mat-card-title {
+  font-size: 1.7rem;
+  font-weight: 700;
+  color: #1976d2;
+  margin-bottom: 8px;
+}
+
+.presentation-card mat-card-subtitle {
+  font-size: 1.08rem;
+  color: #333;
+  margin-bottom: 0;
+}
+
+.presentation-hint {
+  font-size: 0.97rem;
+  color: #1976d2;
+  margin-top: 8px;
+  font-style: italic;
+}
+
+.add-resource-btn {
+  margin-top: 8px;
+  background: #1976d2;
+  color: #fff;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  box-shadow: 0 2px 8px rgba(33,150,243,0.10);
+  transition: background 0.18s, color 0.18s;
+}
+.add-resource-btn:hover {
+  background: #1565c0;
+  color: #fff;
+}
+
+@media (max-width: 900px) {
+  .presentation-content {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+  }
+  .presentation-action {
+    align-items: flex-start;
+    width: 100%;
+  }
+}

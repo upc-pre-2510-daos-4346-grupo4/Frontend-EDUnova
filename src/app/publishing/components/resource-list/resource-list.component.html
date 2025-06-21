@@ -1,28 +1,46 @@
 <div class="resource-list-container">
-  <div class="add-resource-btn-container">
-    <button mat-fab extended class="add-resource-btn" (click)="openDialog(false)">
-      <mat-icon>edit</mat-icon>
-      Agregar Recurso
-    </button>
-  </div>
-
-  <mat-card *ngFor="let resource of paginatedResources; let i = index" appearance="outlined" class="resource-view-card">
-    <div class="resource-card-content">
-      <youtube-player [videoId]="resource.youtubeId" class="resource-card-video" [width]="320" [height]="220"></youtube-player>
-      <div class="resource-card-details">
-        <mat-card-title>Título: {{resource.title}}</mat-card-title>
-        <mat-card-subtitle>Descripción: {{resource.description}}</mat-card-subtitle>
+  <mat-card class="presentation-card">
+    <div class="presentation-content">
+      <div class="presentation-text">
+        <mat-card-title>¡Gestión de recursos de video!</mat-card-title>
+        <mat-card-subtitle>
+          En esta sección puedes gestionar los videos de YouTube que ayudarán al usuario a aprender el tema. Agrega, edita o elimina recursos para enriquecer el aprendizaje de manera efectiva.
+        </mat-card-subtitle>
       </div>
-      <mat-card-actions class="card-actions">
-        <button mat-button (click)="openDialog(true, resource)">Editar</button>
-        <button mat-button (click)="openDeleteDialog(resource)">Eliminar</button>
-      </mat-card-actions>
+      <div class="presentation-action">
+        <button mat-fab extended class="green-btn" (click)="openDialog(false)">
+          <mat-icon>add</mat-icon>
+          Agregar Recurso
+        </button>
+        <span class="presentation-hint">Este botón te permite agregar un video de YouTube para el aprendizaje</span>
+      </div>
     </div>
+    <mat-accordion class="card-accordion" style="margin-top: 24px;">
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <span>Lista y edición de recursos de video</span>
+        </mat-expansion-panel-header>
+        <ng-container *ngFor="let resource of paginatedResources; let i = index">
+          <mat-card appearance="outlined" class="resource-view-card">
+            <div class="resource-card-content">
+              <youtube-player [videoId]="resource.youtubeId" class="resource-card-video" [width]="320" [height]="220"></youtube-player>
+              <div class="resource-card-details">
+                <mat-card-title>Título: {{resource.title}}</mat-card-title>
+                <mat-card-subtitle>Descripción: {{resource.description}}</mat-card-subtitle>
+              </div>
+              <mat-card-actions class="card-actions">
+                <button mat-button class="edit-btn" (click)="openDialog(true, resource)">Editar</button>
+                <button mat-button class="delete-btn" (click)="openDeleteDialog(resource)">Eliminar</button>
+              </mat-card-actions>
+            </div>
+          </mat-card>
+        </ng-container>
+        <mat-paginator [length]="resourceList.length"
+                       [pageSize]="pageSize"
+                       [pageSizeOptions]="[1, 2, 4, 10]"
+                       (page)="onPageChange($event)">
+        </mat-paginator>
+      </mat-expansion-panel>
+    </mat-accordion>
   </mat-card>
-
-  <mat-paginator [length]="resourceList.length"
-                 [pageSize]="pageSize"
-                 [pageSizeOptions]="[1, 2, 4, 10]"
-                 (page)="onPageChange($event)">
-  </mat-paginator>
 </div>

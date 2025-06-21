@@ -10,59 +10,65 @@
       <span class="presentation-hint">Gestiona los objetivos para mejorar la experiencia de aprendizaje</span>
     </div>
   </div>
-</mat-card>
+  <mat-accordion class="card-accordion" style="margin-top: 24px;">
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <span>Lista y edición de objetivos</span>
+      </mat-expansion-panel-header>
+      <div class="objective-list-grid">
+        <div class="objective-list-col objective-list-col-form">
+          <app-objective-create-and-edit *ngIf="!isDeleteMode"
+                                         (editCanceled)="onCancelEdit()"
+                                         (objectiveAdded)="onObjectiveAdded($event)"
+                                         (objectiveUpdated)="onObjectiveUpdated($event)"
+                                         [objective]="objectiveData"
+                                         [editMode]="isEditMode"
+                                         [topicId]="topicId"/>
 
-<div class="objective-list-grid">
-  <div class="objective-list-col objective-list-col-form">
-    <app-objective-create-and-edit *ngIf="!isDeleteMode"
-                                   (editCanceled)="onCancelEdit()"
-                                   (objectiveAdded)="onObjectiveAdded($event)"
-                                   (objectiveUpdated)="onObjectiveUpdated($event)"
-                                   [objective]="objectiveData"
-                                   [editMode]="isEditMode"
-                                   [topicId]="topicId"/>
-
-    <app-objective-delete *ngIf="isDeleteMode"
-                        (objectiveDeleted)="onObjectiveDeleted($event)"
-                        (deleteCanceled)="onCancelDelete()"
-                        [objective]="objectiveData"/>
-  </div>
-  <div class="objective-list-col objective-list-col-cards-grid" style="grid-column: 2 / span 2;">
-    <div class="objective-card-grid">
-      <div *ngFor="let objective of paginatedObjectives; let i = index" class="objective-card-grid-item">
-        <mat-card appearance="outlined">
-          <mat-card-header>
-            <mat-card-title>{{ objective.title }}</mat-card-title>
-            <mat-card-subtitle>{{ objective.header }}</mat-card-subtitle>
-          </mat-card-header>
-          <mat-card-content>
-            <div class="objective-section objective-main-paragraph">
-              <span class="objective-section-label">Párrafo principal:</span>
-              <p>{{ objective.mainParagraph }}</p>
+          <app-objective-delete *ngIf="isDeleteMode"
+                              (objectiveDeleted)="onObjectiveDeleted($event)"
+                              (deleteCanceled)="onCancelDelete()"
+                              [objective]="objectiveData"/>
+        </div>
+        <div class="objective-list-col objective-list-col-cards-grid" style="grid-column: 2 / span 2;">
+          <div class="objective-card-grid">
+            <div *ngFor="let objective of paginatedObjectives; let i = index" class="objective-card-grid-item">
+              <mat-card appearance="outlined">
+                <mat-card-header>
+                  <mat-card-title>{{ objective.title }}</mat-card-title>
+                  <mat-card-subtitle>{{ objective.header }}</mat-card-subtitle>
+                </mat-card-header>
+                <mat-card-content>
+                  <div class="objective-section objective-main-paragraph">
+                    <span class="objective-section-label">Párrafo principal:</span>
+                    <p>{{ objective.mainParagraph }}</p>
+                  </div>
+                  <div class="objective-section objective-footer" *ngIf="objective.footer">
+                    <span class="objective-section-label">Pie de página:</span>
+                    <p>{{ objective.footer }}</p>
+                  </div>
+                  <div class="objective-section objective-conclusion" *ngIf="objective.conclusion">
+                    <span class="objective-section-label">Conclusión:</span>
+                    <p>{{ objective.conclusion }}</p>
+                  </div>
+                </mat-card-content>
+                <mat-card-actions align="end">
+                  <button mat-button (click)="onEditObjective(objective)">{{ 'objective.edit' | translate }}</button>
+                  <button mat-button (click)="onDeleteObjective(objective)">{{ 'objective.delete' | translate }}</button>
+                </mat-card-actions>
+              </mat-card>
             </div>
-            <div class="objective-section objective-footer" *ngIf="objective.footer">
-              <span class="objective-section-label">Pie de página:</span>
-              <p>{{ objective.footer }}</p>
-            </div>
-            <div class="objective-section objective-conclusion" *ngIf="objective.conclusion">
-              <span class="objective-section-label">Conclusión:</span>
-              <p>{{ objective.conclusion }}</p>
-            </div>
-          </mat-card-content>
-          <mat-card-actions align="end">
-            <button mat-button (click)="onEditObjective(objective)">{{ 'objective.edit' | translate }}</button>
-            <button mat-button (click)="onDeleteObjective(objective)">{{ 'objective.delete' | translate }}</button>
-          </mat-card-actions>
-        </mat-card>
+          </div>
+          <div class="objective-card-grid-paginator">
+            <mat-paginator [length]="objectiveList.length"
+                           [pageSize]="pageSize"
+                           [pageSizeOptions]="[2, 4, 6, 8]"
+                           [hidePageSize]="false"
+                           (page)="onPageChange($event)">
+            </mat-paginator>
+          </div>
+        </div>
       </div>
-    </div>
-    <div class="objective-card-grid-paginator">
-      <mat-paginator [length]="objectiveList.length"
-                     [pageSize]="pageSize"
-                     [pageSizeOptions]="[2, 4, 6, 8]"
-                     [hidePageSize]="false"
-                     (page)="onPageChange($event)">
-      </mat-paginator>
-    </div>
-  </div>
-</div>
+    </mat-expansion-panel>
+  </mat-accordion>
+</mat-card>
