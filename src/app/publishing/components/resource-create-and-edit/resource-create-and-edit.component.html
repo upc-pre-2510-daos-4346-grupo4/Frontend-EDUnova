@@ -1,20 +1,28 @@
-<h2 mat-dialog-title>{{ editMode ? 'Editar Recurso' : 'Crear Recurso' }}</h2>
+<h2 mat-dialog-title [ngClass]="editMode ? 'title-mint' : 'title-blue'">{{ editMode ? 'Editar Recurso' : 'Crear Recurso' }}</h2>
 <mat-dialog-content class="mat-typography">
+  <br>
   <form #resourceForm="ngForm">
-    <mat-form-field appearance="fill">
+    <mat-form-field appearance="outline" class="temario-input small-label field-title">
+      <mat-label>Título</mat-label>
       <input matInput placeholder="Título" name="title" [(ngModel)]="newResource.title" required />
     </mat-form-field>
-    <mat-form-field appearance="fill">
-      <textarea matInput placeholder="Descripción" name="description" [(ngModel)]="newResource.description" required></textarea>
+    <mat-form-field appearance="outline" class="temario-input small-label field-description">
+      <mat-label>Descripción</mat-label>
+      <textarea matInput placeholder="Descripción" name="description" [(ngModel)]="newResource.description" required rows="1"></textarea>
     </mat-form-field>
-    <mat-form-field appearance="fill">
+    <mat-form-field appearance="outline" class="temario-input small-label">
+      <mat-label>YouTube ID</mat-label>
       <input matInput placeholder="YouTube ID" name="youtubeId" [(ngModel)]="newResource.youtubeId" required />
     </mat-form-field>
   </form>
 </mat-dialog-content>
 <mat-dialog-actions align="end">
-  <button mat-button mat-dialog-close
-          [mat-dialog-close]="true">Cancelar</button>
-  <button mat-flat-button color="primary" [disabled]="!resourceForm.form.valid" (click)="onSubmit()"
-          [mat-dialog-close]="true">{{ editMode ? 'Guardar' : 'Crear' }}</button>
+  <button mat-button class="btn-yellow-text" mat-dialog-close [mat-dialog-close]="true">Cancelar</button>
+  <button mat-button
+          [ngClass]="['btn-action', !editMode ? 'btn-action-mint' : 'btn-action-blue', 'btn-always-filled']"
+          [disabled]="!resourceForm.form.valid" (click)="onSubmit()"
+          [mat-dialog-close]="true"
+          cdkFocusInitial>
+    {{ editMode ? 'Guardar' : 'Crear' }}
+  </button>
 </mat-dialog-actions>

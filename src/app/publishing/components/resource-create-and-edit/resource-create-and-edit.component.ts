@@ -11,8 +11,9 @@ import {
 import {CoursesService} from '../../services/courses.service';
 import {ResourcesService} from '../../services/resources.service';
 import {FormsModule} from '@angular/forms';
-import {MatFormField, MatInput} from '@angular/material/input';
+import {MatFormField, MatInput, MatLabel} from '@angular/material/input';
 import {MatButton} from '@angular/material/button';
+import {NgClass} from '@angular/common';
 
 @Component({
   selector: 'app-resource-create-and-edit',
@@ -24,7 +25,9 @@ import {MatButton} from '@angular/material/button';
     MatDialogActions,
     MatInput,
     MatButton,
-    MatDialogClose
+    MatDialogClose,
+    NgClass,
+    MatLabel
   ],
   templateUrl: './resource-create-and-edit.component.html',
   styleUrl: './resource-create-and-edit.component.css'
