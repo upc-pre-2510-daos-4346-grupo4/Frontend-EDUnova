@@ -5,12 +5,14 @@ import { AboutComponent } from "./public/pages/about/about.component";
 import { PageNotFoundComponent } from "./public/pages/page-not-found/page-not-found.component";
 import {CourseManagementComponent} from './publishing/pages/course-management/course-management.component';
 import { TopicManagementComponent } from './publishing/pages/topic-management/topic-management.component';
+import { StudyingComponent } from './studying/studying.component';
 
 export const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'about', component: AboutComponent },
   { path: 'publishing/courses', component: CourseManagementComponent },
   { path: 'publishing/topics/:id', component: TopicManagementComponent },
+  { path: 'studying', component: StudyingComponent },
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: '**', component: PageNotFoundComponent }
 
