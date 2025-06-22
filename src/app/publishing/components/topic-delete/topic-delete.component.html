@@ -1,0 +1,19 @@
+<mat-card class="topic-delete-card">
+  <div class="topic-delete-card-content">
+    <mat-card-title class="topic-delete-title">Eliminar tema</mat-card-title>
+    <mat-card-subtitle class="topic-delete-subtitle">
+      ¿Seguro que quieres borrar <strong>{{ topic.title }}</strong>?
+    </mat-card-subtitle>
+    <div class="topic-delete-actions">
+      <button mat-raised-button color="warn" type="button" (click)="onSubmit()" class="delete-btn">
+        <mat-icon class="icon-btn">delete</mat-icon>
+        Eliminar
+      </button>
+      <button mat-stroked-button type="button" (click)="onCancel()" class="cancel-btn">
+        <mat-icon class="icon-btn">close</mat-icon>
+        Cancelar
+      </button>
+    </div>
+  </div>
+</mat-card>
+

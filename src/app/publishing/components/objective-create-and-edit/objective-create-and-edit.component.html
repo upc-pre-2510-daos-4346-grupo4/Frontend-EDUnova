@@ -1,0 +1,71 @@
+<mat-card class="objective-card">
+  <div style="display: flex; align-items: flex-start; justify-content: space-between;">
+    <div>
+      <mat-card-title class="objective-title">
+        {{ editMode ? 'Editar Objetivo' : 'Crear Objetivo' }}
+      </mat-card-title>
+      <mat-card-subtitle class="objective-subtitle">
+        {{ editMode ? 'Modifica los campos y haz clic en Actualizar para guardar los cambios.' : 'Completa los campos y haz clic en Agregar para crear un nuevo objetivo.' }}
+      </mat-card-subtitle>
+    </div>
+    <small *ngIf="showIncompleteError" class="form-error-message" style="margin-top:2px;">Datos incompletos</small>
+  </div>
+  <div class="objective-card-content">
+    <form #objectiveForm="ngForm" (ngSubmit)="onSubmit()">
+      <div class="objective-form-row">
+        <mat-form-field appearance="outline" class="objective-input small-label field-title">
+          <mat-label>Título</mat-label>
+          <input matInput placeholder="Título" name="title" [(ngModel)]="objective.title" required />
+        </mat-form-field>
+      </div>
+      <div class="objective-form-row">
+        <mat-form-field appearance="outline" class="objective-input small-label field-header">
+          <mat-label>Encabezado</mat-label>
+          <input matInput placeholder="Encabezado" name="header" [(ngModel)]="objective.header" required />
+        </mat-form-field>
+      </div>
+      <div class="objective-form-row">
+        <mat-form-field appearance="outline" class="objective-input small-label field-main-paragraph">
+          <mat-label>Párrafo principal</mat-label>
+          <textarea matInput placeholder="Párrafo principal" name="mainParagraph" [(ngModel)]="objective.mainParagraph" required rows="2"></textarea>
+        </mat-form-field>
+      </div>
+      <div class="objective-form-row">
+        <mat-form-field appearance="outline" class="objective-input small-label field-footer">
+          <mat-label>Pie de página</mat-label>
+          <input matInput placeholder="Pie de página" name="footer" [(ngModel)]="objective.footer" />
+        </mat-form-field>
+      </div>
+      <div class="objective-form-row">
+        <mat-form-field appearance="outline" class="objective-input small-label field-conclusion">
+          <mat-label>Conclusión</mat-label>
+          <input matInput placeholder="Conclusión" name="conclusion" [(ngModel)]="objective.conclusion" />
+        </mat-form-field>
+      </div>
+      <div class="objective-form-actions-horizontal-right">
+        <button mat-raised-button
+                [color]="editMode ? 'accent' : 'primary'"
+                type="submit"
+                class="objective-btn styled-btn"
+                [ngClass]="{
+                  'btn-mint': !editMode,
+                  'btn-blue': editMode
+                }">
+          <mat-icon class="icon-btn">{{ editMode ? 'edit' : 'add_circle' }}</mat-icon>
+          {{ editMode ? 'Actualizar' : 'Agregar' }}
+        </button>
+        <button
+          mat-stroked-button
+          type="button"
+          (click)="onCancel()"
+          *ngIf="editMode"
+          class="objective-btn-cancel styled-btn btn-yellow"
+          color="warn"
+        >
+          <mat-icon class="icon-btn">close</mat-icon>
+          Cancelar
+        </button>
+      </div>
+    </form>
+  </div>
+</mat-card>

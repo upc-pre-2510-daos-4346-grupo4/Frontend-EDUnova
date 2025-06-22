@@ -133,283 +133,310 @@
   ],
   "courses": [
     {
-      "id": 1,
+      "id": "1",
       "name": "Álgebra Lineal",
-      "code": "01MAT42",
       "description": "Curso introductorio sobre álgebra lineal, vectores y matrices.",
       "category": "Matemáticas",
       "price": 120,
-      "language": "Español",
-      "creatorId": 1
+      "creatorId": "1",
+      "image": "https://concepto.de/wp-content/uploads/2019/12/algebra-e1577465340342.jpg",
+      "language": "Spanish",
+      "difficulty": "Beginner"
     },
     {
-      "id": 2,
+      "id": "2",
       "name": "Fundamentos de Programación",
-      "code": "02CS10",
       "description": "Aprende los conceptos básicos de programación con Python.",
       "category": "Informática",
       "price": 150,
-      "language": "Español",
-      "creatorId": 1
+      "creatorId": "1",
+      "image": "https://concepto.de/wp-content/uploads/2019/12/algebra-e1577465340342.jpg",
+      "language": "Spanish",
+      "difficulty": "Beginner"
     },
     {
-      "id": 3,
+      "id": "3",
       "name": "Historia del Arte",
-      "code": "03ART21",
       "description": "Un recorrido visual por las grandes obras y movimientos artísticos.",
       "category": "Arte",
       "price": 100,
-      "language": "Inglés",
-      "creatorId": 1
+      "creatorId": "1",
+      "image": "https://concepto.de/wp-content/uploads/2019/12/algebra-e1577465340342.jpg",
+      "language": "Spanish",
+      "difficulty": "Intermediate"
     },
     {
-      "id": 4,
+      "id": "4",
       "name": "Diseño UX/UI",
-      "code": "04DES35",
       "description": "Principios de diseño centrado en el usuario para apps y sitios web.",
       "category": "Diseño",
       "price": 180,
-      "language": "Español",
-      "creatorId": 1
+      "creatorId": "1",
+      "image": "https://concepto.de/wp-content/uploads/2019/12/algebra-e1577465340342.jpg",
+      "language": "Spanish",
+      "difficulty": "Intermediate"
     },
     {
-      "id": 5,
+      "id": "5",
       "name": "Marketing Digital",
-      "code": "05BUS60",
       "description": "Técnicas y herramientas clave del marketing en medios digitales.",
       "category": "Negocios",
       "price": 130,
-      "language": "Español",
-      "creatorId": 3
+      "creatorId": "3",
+      "image": "https://concepto.de/wp-content/uploads/2019/12/algebra-e1577465340342.jpg",
+      "language": "Spanish",
+      "difficulty": "Advanced"
     },
     {
-      "id": 6,
+      "id": "6",
       "name": "Introducción a la Filosofía",
-      "code": "06PHI01",
       "description": "Explora las preguntas fundamentales de la filosofía occidental.",
       "category": "Humanidades",
       "price": 90,
-      "language": "Español",
-      "creatorId": 3
+      "creatorId": "3",
+      "image": "https://concepto.de/wp-content/uploads/2019/12/algebra-e1577465340342.jpg",
+      "language": "Spanish",
+      "difficulty": "Beginner"
     }
   ],
   "topics": [
     {
-      "id": 1,
+      "id": "1",
       "title": "Vectores y Espacios",
       "description": "Introducción a vectores en R² y R³ y nociones de espacio vectorial.",
-      "courseId": 1,
-      "position": 1
+      "courseId": "1"
     },
     {
-      "id": 2,
+      "id": "2",
       "title": "Matrices y Transformaciones",
       "description": "Uso de matrices para representar y resolver sistemas lineales.",
-      "courseId": 1,
-      "position": 2
+      "courseId": "1"
     },
     {
-      "id": 3,
+      "id": "3",
       "title": "Variables y Tipos de Datos",
       "description": "Conceptos fundamentales en programación con Python.",
-      "courseId": 2,
-      "position": 1
+      "courseId": "2"
     },
     {
-      "id": 4,
+      "id": "4",
       "title": "Condicionales y Bucles",
       "description": "Control de flujo en programas utilizando estructuras condicionales.",
-      "courseId": 2,
-      "position": 2
+      "courseId": "2"
     },
     {
-      "id": 5,
+      "id": "5",
       "title": "Arte Renacentista",
       "description": "Características y autores clave del Renacimiento.",
-      "courseId": 3,
-      "position": 1
+      "courseId": "3"
     },
     {
-      "id": 6,
+      "id": "6",
       "title": "Principios de UX",
       "description": "Bases del diseño centrado en el usuario.",
-      "courseId": 4,
-      "position": 1
+      "courseId": "4"
     },
     {
-      "id": 7,
+      "id": "7",
       "title": "Wireframes y Prototipos",
       "description": "Uso de herramientas para el diseño de interfaces.",
-      "courseId": 4,
-      "position": 2
+      "courseId": "4"
     },
     {
-      "id": 8,
+      "id": "8",
       "title": "SEO y SEM",
       "description": "Optimización en buscadores y publicidad pagada.",
-      "courseId": 5,
-      "position": 1
+      "courseId": "5"
     },
     {
-      "id": 9,
+      "id": "9",
       "title": "Introducción a Sócrates",
       "description": "Contexto histórico y pensamiento socrático.",
-      "courseId": 6,
-      "position": 1
+      "courseId": "6"
     }
   ],
   "objectives": [
     {
-      "id": 1,
-      "topicId": 1,
-      "description": "Comprender el concepto de vector y su representación gráfica."
+      "id": "1",
+      "topicId": "1",
+      "title": "Introducción a los vectores",
+      "description": "Un vector es una entidad matemática que tiene magnitud y dirección. En este objetivo aprenderás cómo representar vectores gráficamente en un plano cartesiano, cómo se diferencian de los escalares, y cómo se utilizan en diversas aplicaciones de la física y las matemáticas."
     },
     {
-      "id": 2,
-      "topicId": 1,
-      "description": "Identificar operaciones básicas con vectores."
+      "id": "2",
+      "topicId": "1",
+      "title": "Operaciones con vectores",
+      "description": "Aprenderás a realizar operaciones fundamentales como suma, resta, y multiplicación por escalar con vectores. Comprenderás cómo estas operaciones afectan gráficamente a los vectores y cómo se aplican en contextos prácticos como el análisis de fuerzas."
     },
     {
-      "id": 3,
-      "topicId": 2,
-      "description": "Entender la multiplicación de matrices y sus aplicaciones."
+      "id": "3",
+      "topicId": "2",
+      "title": "Multiplicación de matrices",
+      "description": "Este objetivo te enseña cómo realizar multiplicaciones entre matrices, entendiendo la regla de filas por columnas. Además, verás ejemplos de cómo esta operación es fundamental en transformaciones lineales, gráficos computacionales y sistemas de ecuaciones."
     },
     {
-      "id": 4,
-      "topicId": 2,
-      "description": "Resolver sistemas de ecuaciones lineales usando matrices."
+      "id": "4",
+      "topicId": "2",
+      "title": "Resolución de sistemas lineales con matrices",
+      "description": "Aprenderás a aplicar métodos como el de Gauss-Jordan para resolver sistemas de ecuaciones lineales mediante matrices. Este enfoque algebraico es muy utilizado en ingeniería, programación y física aplicada."
     },
     {
-      "id": 5,
-      "topicId": 3,
-      "description": "Reconocer distintos tipos de datos en Python."
+      "id": "5",
+      "topicId": "3",
+      "title": "Tipos de datos en Python",
+      "description": "Explora los diferentes tipos de datos disponibles en Python como enteros, flotantes, cadenas de texto y booleanos. Aprenderás a identificarlos, utilizarlos correctamente y evitar errores comunes al manipular datos."
     },
     {
-      "id": 6,
-      "topicId": 3,
-      "description": "Declarar variables utilizando buenas prácticas."
+      "id": "6",
+      "topicId": "3",
+      "title": "Buenas prácticas al declarar variables",
+      "description": "Aprenderás cómo declarar variables de manera clara, legible y segura. Verás ejemplos de nombres significativos, convenciones como snake_case, y cómo mantener tu código limpio y profesional desde el inicio."
     },
     {
-      "id": 7,
-      "topicId": 4,
-      "description": "Aplicar estructuras condicionales simples y compuestas."
+      "id": "7",
+      "topicId": "4",
+      "title": "Condicionales en Python",
+      "description": "Conocerás cómo usar estructuras condicionales como `if`, `elif` y `else` para ejecutar diferentes bloques de código según se cumplan ciertas condiciones. Esta habilidad es esencial para la lógica de cualquier programa."
     },
     {
-      "id": 8,
-      "topicId": 4,
-      "description": "Implementar bucles para automatizar tareas repetitivas."
+      "id": "8",
+      "topicId": "4",
+      "title": "Bucles y automatización",
+      "description": "Aprenderás a usar bucles `for` y `while` para repetir acciones de forma automática en Python. Verás cómo aplicar esta técnica en tareas como recorrer listas, procesar datos o simular procesos."
     },
     {
-      "id": 9,
-      "topicId": 5,
-      "description": "Distinguir las características del arte renacentista."
+      "id": "9",
+      "topicId": "5",
+      "title": "Características del arte renacentista",
+      "description": "Este objetivo te guía por las principales características del arte renacentista como la perspectiva, el realismo y la inspiración clásica. Analizarás obras clave de artistas como Leonardo da Vinci y Miguel Ángel."
     },
     {
-      "id": 10,
-      "topicId": 6,
-      "description": "Definir los principios fundamentales de la experiencia de usuario."
+      "id": "10",
+      "topicId": "6",
+      "title": "Fundamentos de UX",
+      "description": "Comprenderás los principios fundamentales de la experiencia de usuario (UX), como usabilidad, accesibilidad, y diseño centrado en el usuario. Estos principios son clave para diseñar productos digitales eficientes y agradables."
     },
     {
-      "id": 11,
-      "topicId": 6,
-      "description": "Identificar buenas y malas prácticas en interfaces."
+      "id": "11",
+      "topicId": "6",
+      "title": "Buenas y malas prácticas en UI",
+      "description": "Aprenderás a identificar interfaces efectivas frente a aquellas que frustran al usuario. Analizarás ejemplos reales y descubrirás cómo pequeños detalles pueden mejorar o arruinar la experiencia del usuario."
     },
     {
-      "id": 12,
-      "topicId": 7,
-      "description": "Crear wireframes para prototipos funcionales."
+      "id": "12",
+      "topicId": "7",
+      "title": "Creación de wireframes",
+      "description": "Descubrirás cómo crear wireframes, es decir, esquemas visuales que representan la estructura básica de una página o app. Esta técnica te ayudará a planificar el diseño antes de programar."
     },
     {
-      "id": 13,
-      "topicId": 8,
-      "description": "Comprender la diferencia entre SEO y SEM."
+      "id": "13",
+      "topicId": "8",
+      "title": "SEO vs SEM",
+      "description": "Este objetivo explica las diferencias entre el posicionamiento orgánico (SEO) y el de pago (SEM). Comprenderás cuándo conviene usar cada estrategia y cómo influyen en la visibilidad en buscadores."
     },
     {
-      "id": 14,
-      "topicId": 8,
-      "description": "Aplicar estrategias básicas de posicionamiento web."
+      "id": "14",
+      "topicId": "8",
+      "title": "Estrategias básicas de posicionamiento",
+      "description": "Aprenderás estrategias prácticas como la optimización de palabras clave, el uso de etiquetas HTML adecuadas, y la creación de contenido de calidad para mejorar el posicionamiento web."
     },
     {
-      "id": 15,
-      "topicId": 9,
-      "description": "Conocer el contexto histórico de la filosofía griega antigua."
+      "id": "15",
+      "topicId": "9",
+      "title": "Filosofía griega antigua",
+      "description": "Conocerás el contexto cultural, político y social de la antigua Grecia que dio origen a la filosofía occidental. Verás cómo el pensamiento racional comenzó a cuestionar el mito y a buscar explicaciones lógicas del mundo."
     },
     {
-      "id": 16,
-      "topicId": 9,
-      "description": "Explicar los principales aportes de Sócrates al pensamiento filosófico."
+      "id": "16",
+      "topicId": "9",
+      "title": "Sócrates y su legado filosófico",
+      "description": "Estudiarás la figura de Sócrates, su método de enseñanza basado en preguntas, y sus aportes al pensamiento crítico. Verás por qué es considerado uno de los fundadores de la filosofía occidental."
     }
   ],
   "resources": [
     {
-      "id": 1,
-      "topicId": 1,
-      "link": "https://example.com/vector-space-video"
+      "id": "1",
+      "topicId": "1",
+      "link": "IrTeyyzerjI",
+      "description": "Video explicativo sobre vectores y espacios vectoriales."
     },
     {
-      "id": 2,
-      "topicId": 1,
-      "link": "https://example.com/vector-guide-pdf"
+      "id": "2",
+      "topicId": "1",
+      "link": "nQnxMF1Jwso",
+      "description": "Guía PDF sobre operaciones con vectores."
     },
     {
-      "id": 3,
-      "topicId": 2,
-      "link": "https://example.com/matrix-transformations"
+      "id": "3",
+      "topicId": "2",
+      "link": "https://www.youtube.com/watch?v=IrTeyyzerjI",
+      "description": "Artículo sobre transformaciones con matrices."
     },
     {
-      "id": 4,
-      "topicId": 3,
-      "link": "https://example.com/python-variables"
+      "id": "4",
+      "topicId": "3",
+      "link": "https://www.youtube.com/watch?v=IrTeyyzerjI",
+      "description": "Tutorial sobre variables y tipos de datos en Python."
     },
     {
-      "id": 5,
-      "topicId": 3,
-      "link": "https://example.com/data-types-explained"
+      "id": "5",
+      "topicId": "3",
+      "link": "https://www.youtube.com/watch?v=IrTeyyzerjI",
+      "description": "Infografía sobre tipos de datos en programación."
     },
     {
-      "id": 6,
-      "topicId": 4,
-      "link": "https://example.com/conditionals-loops"
+      "id": "6",
+      "topicId": "4",
+      "link": "IrTeyyzerjI",
+      "description": "Ejercicios prácticos sobre condicionales y bucles."
     },
     {
-      "id": 7,
-      "topicId": 5,
-      "link": "https://example.com/renaissance-art-overview"
+      "id": "7",
+      "topicId": "5",
+      "link": "https://www.youtube.com/watch?v=IrTeyyzerjI",
+      "description": "Resumen de los principales movimientos artísticos del Renacimiento."
     },
     {
-      "id": 8,
-      "topicId": 6,
-      "link": "https://example.com/ux-principles"
+      "id": "8",
+      "topicId": "6",
+      "link": "https://example.com/ux-principles",
+      "description": "Artículo sobre los principios del diseño UX."
     },
     {
-      "id": 9,
-      "topicId": 6,
-      "link": "https://example.com/ux-checklist"
+      "id": "9",
+      "topicId": "6",
+      "link": "https://example.com/ux-checklist",
+      "description": "Lista de verificación para evaluar la experiencia de usuario."
     },
     {
-      "id": 10,
-      "topicId": 7,
-      "link": "https://example.com/wireframe-tools"
+      "id": "10",
+      "topicId": "7",
+      "link": "https://example.com/wireframe-tools",
+      "description": "Herramientas recomendadas para crear wireframes."
     },
     {
-      "id": 11,
-      "topicId": 8,
-      "link": "https://example.com/seo-vs-sem"
+      "id": "11",
+      "topicId": "8",
+      "link": "https://example.com/seo-vs-sem",
+      "description": "Diferencias entre SEO y SEM."
     },
     {
-      "id": 12,
-      "topicId": 8,
-      "link": "https://example.com/seo-strategies"
+      "id": "12",
+      "topicId": "8",
+      "link": "https://example.com/seo-strategies",
+      "description": "Estrategias básicas de SEO para principiantes."
     },
     {
-      "id": 13,
-      "topicId": 9,
-      "link": "https://example.com/socrates-bio"
+      "id": "13",
+      "topicId": "9",
+      "link": "https://example.com/socrates-bio",
+      "description": "Biografía de Sócrates y su impacto en la filosofía."
     },
     {
-      "id": 14,
-      "topicId": 9,
-      "link": "https://example.com/greek-philosophy"
+      "id": "14",
+      "topicId": "9",
+      "link": "https://example.com/greek-philosophy",
+      "description": "Introducción a la filosofía griega antigua."
     }
   ],
   "reviews": [
@@ -539,5 +566,4 @@
       "topicId": 8
     }
   ]
-
 }

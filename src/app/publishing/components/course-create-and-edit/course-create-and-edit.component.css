@@ -1,0 +1,217 @@
+:host ::ng-deep .mat-dialog-container {
+  border-radius: 16px;
+  padding: 32px 28px 20px 28px;
+  background: #fff;
+  box-shadow: 0 4px 32px rgba(25, 118, 210, 0.10), 0 1.5px 4px rgba(0,0,0,0.04);
+  max-width: 440px;
+}
+
+h2[mat-dialog-title] {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #1976d2;
+  margin-bottom: 18px;
+  font-family: 'Montserrat', 'Roboto', Arial, sans-serif;
+}
+
+mat-dialog-content {
+  padding: 0;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+mat-form-field.mat-form-field {
+  margin-bottom: 0;
+}
+
+mat-select, input[matInput], textarea[matInput] {
+  font-size: 1.08rem;
+  font-family: 'Roboto', Arial, sans-serif;
+}
+
+label {
+  font-size: 1.08rem;
+  color: #1976d2;
+  font-weight: 500;
+  margin-bottom: 2px;
+  font-family: 'Montserrat', 'Roboto', Arial, sans-serif;
+}
+
+mat-radio-group {
+  margin-bottom: 8px;
+}
+
+/* Resalta el grupo de radio en rojo cuando hay error de validación */
+.mat-radio-group-warn {
+  border: 1.5px solid #f44336;
+  border-radius: 6px;
+  padding: 8px 12px 4px 12px;
+  background: rgba(244,67,54,0.07);
+  transition: border 0.2s;
+}
+
+mat-radio-button {
+  font-size: 1.05rem;
+  color: #37474f;
+  font-family: 'Roboto', Arial, sans-serif;
+}
+
+mat-dialog-actions {
+  margin-top: 10px;
+  padding: 0 20px 20px 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  gap: 0;
+  border-radius: 0 0 16px 16px;
+  background: transparent;
+}
+
+button[mat-button], .btn-yellow-text {
+  min-width: 120px;
+  max-width: 220px;
+  width: 48%;
+  height: 40px;
+  font-size: 1.04rem;
+  font-weight: 500;
+  border-radius: 8px;
+  padding: 0 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: none !important;
+  border: none;
+  margin: 0;
+  transition: background 0.18s, color 0.18s, border 0.18s;
+}
+
+button[mat-button]:first-child, .btn-yellow-text {
+  margin-right: auto;
+}
+button[mat-button]:last-child, .btn-mint, .btn-blue {
+  margin-left: auto;
+}
+
+.btn-yellow-text {
+  color: #ffd600 !important;
+  background: transparent !important;
+  border: 2px solid #ffd600 !important;
+  font-weight: 600;
+}
+.btn-yellow-text:hover, .btn-yellow-text:focus {
+  color: #fff !important;
+  background: #ffd600 !important;
+  border: 2px solid #ffd600 !important;
+}
+
+.btn-mint {
+  background: #43e97b !important;
+  color: #fff !important;
+  border: none !important;
+}
+.btn-mint:hover, .btn-mint:focus {
+  background: #38f9d7 !important;
+  color: #fff !important;
+}
+
+.btn-blue {
+  background: #2196f3 !important;
+  color: #fff !important;
+  border: none !important;
+}
+.btn-blue:hover, .btn-blue:focus {
+  background: #1976d2 !important;
+  color: #fff !important;
+}
+
+.btn-action {
+}
+
+.btn-action.btn-action-mint,
+.btn-action.btn-action-blue {
+  color: inherit !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  border: 2px solid !important;
+  font-weight: 600;
+}
+.btn-action.btn-action-mint {
+  color: #43e97b !important;
+  border-color: #43e97b !important;
+}
+.btn-action.btn-action-blue {
+  color: #2196f3 !important;
+  border-color: #2196f3 !important;
+}
+.btn-action.btn-action-mint:hover, .btn-action.btn-action-mint:focus {
+  color: #fff !important;
+  background: #43e97b !important;
+  border-color: #43e97b !important;
+}
+.btn-action.btn-action-blue:hover, .btn-action.btn-action-blue:focus {
+  color: #fff !important;
+  background: #2196f3 !important;
+  border-color: #2196f3 !important;
+}
+
+.title-mint {
+  color: #1976d2 !important;
+}
+.title-blue {
+  color: #43e97b !important;
+}
+
+.label-blue {
+  color: #1976d2 !important;
+}
+.label-mint {
+  color: #43e97b !important;
+}
+
+.form-error-message {
+  color: #f44336;
+  font-size: 1rem;
+  font-weight: 600;
+  font-family: 'Montserrat', 'Roboto', Arial, sans-serif;
+  margin-left: 18px;
+  margin-bottom: 0;
+  padding: 2px 12px;
+  border-radius: 6px;
+  background: rgba(244,67,54,0.07);
+  box-shadow: 0 1px 4px rgba(244,67,54,0.07);
+  transition: background 0.2s;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+@media (max-width: 600px) {
+  :host ::ng-deep .mat-dialog-container {
+    padding: 12px 2vw 8px 2vw;
+    max-width: 98vw;
+  }
+  h2[mat-dialog-title] {
+    font-size: 1.18rem;
+  }
+  mat-dialog-actions {
+    flex-direction: column;
+    padding: 0 4vw 12px 4vw;
+    gap: 10px;
+  }
+  button[mat-button], .btn-yellow-text {
+    width: 100%;
+    min-width: 0;
+    max-width: 100%;
+    border-radius: 8px;
+  }
+  .form-error-message {
+    font-size: 0.92rem;
+    margin-left: 6px;
+    padding: 2px 6px;
+  }
+}

@@ -1,0 +1,186 @@
+.studying-wrapper {
+  padding: 24px;
+  background-color: #ececec;
+  min-height: 100vh;
+  box-sizing: border-box;
+}
+
+.studying-wrapper h2 {
+  margin-bottom: 16px;
+  color: #1d1d1d;
+  font-size: 1.8rem;
+}
+
+.tab-group {
+  margin-bottom: 16px;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.paginator-container {
+  display: flex;
+  justify-content: flex-end;
+  margin: 12px 0;
+}
+
+.course-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.course-card {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 16px;
+  background-color: #ffffff;
+  border-left: 4px solid #deb12c;
+  border-radius: 8px;
+  gap: 16px;
+}
+
+.card-content {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+  width: 100%;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.menu-wrapper {
+  display: flex;
+  align-items: center;
+}
+
+.course-info h3 {
+  margin: 0 0 8px 0;
+  color: #1d1d1d;
+  font-size: 1.4rem;
+}
+
+.course-info p {
+  margin: 4px 0;
+  color: #333333;
+  font-size: 1rem;
+}
+
+.menu-wrapper button {
+  background-color: #e07219;
+  color: white;
+  border-radius: 4px;
+  transition: background-color 0.2s;
+}
+
+.menu-wrapper button:hover {
+  background-color: #c86117;
+}
+
+.completed-icon {
+  color: green;
+  margin-left: auto;
+}
+
+mat-dialog-content {
+  max-height: 60vh;
+  overflow-y: auto;
+  color: #1d1d1d;
+  padding-right: 8px;
+}
+
+mat-dialog-actions button {
+  min-width: 100px;
+  margin-left: 8px;
+}
+
+.edit-button {
+  margin-top: 8px;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.edit-button button {
+  font-size: 14px;
+  padding: 4px 12px;
+  border-radius: 4px;
+  transition: background-color 0.2s;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.add-topic-button {
+  margin-top: 8px;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.add-topic-button button {
+  font-size: 14px;
+  padding: 4px 12px;
+  border-radius: 4px;
+  transition: background-color 0.2s;
+}
+
+mat-form-field {
+  margin-bottom: 16px;
+}
+
+
+@media (max-width: 1024px) {
+  .card-content {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .course-card {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 768px) {
+  .studying-wrapper {
+    padding: 16px;
+  }
+
+  .course-info h3 {
+    font-size: 1.3rem;
+  }
+
+  .course-info p {
+    font-size: 0.95rem;
+  }
+
+  .paginator-container {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .studying-wrapper {
+    padding: 12px;
+  }
+
+  .course-info h3 {
+    font-size: 1.2rem;
+  }
+
+  .course-info p {
+    font-size: 0.9rem;
+  }
+
+  .edit-button button,
+  .add-topic-button button {
+    width: 100%;
+  }
+
+  .menu-wrapper {
+    width: 100%;
+    justify-content: center;
+  }
+}

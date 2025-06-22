@@ -1,0 +1,47 @@
+<mat-card class="temario-card">
+  <div style="display: flex; align-items: flex-start; justify-content: space-between;">
+    <div>
+      <mat-card-title class="temario-title">Gestiona el temario del curso</mat-card-title>
+      <mat-card-subtitle class="temario-subtitle">Aquí puedes agregar o editar los temas del curso. Completa los campos y haz clic en <b>Agregar</b> o <b>Actualizar</b>.</mat-card-subtitle>
+    </div>
+    <small *ngIf="showIncompleteError" class="form-error-message" style="margin-top:2px;">Datos incompletos</small>
+  </div>
+  <div class="temario-card-content">
+    <form #topicForm="ngForm" (ngSubmit)="onSubmit()">
+      <div class="temario-form-row-horizontal-align">
+        <mat-form-field appearance="outline" class="temario-input small-label horizontal-field field-title">
+          <mat-label>Título del tema</mat-label>
+          <input matInput id="title" placeholder="Título" name="title" [(ngModel)]="topic.title" required />
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="temario-input small-label horizontal-field field-description">
+          <mat-label>Descripción del tema</mat-label>
+          <textarea matInput id="description" placeholder="Descripción" name="description" [(ngModel)]="topic.description" required rows="1"></textarea>
+        </mat-form-field>
+        <div class="temario-form-actions-horizontal-right">
+          <button mat-raised-button
+                  [color]="editMode ? 'accent' : 'primary'"
+                  type="submit"
+                  class="temario-btn styled-btn"
+                  [ngClass]="{
+                    'btn-mint': !editMode,
+                    'btn-blue': editMode
+                  }">
+            <mat-icon class="icon-btn">{{ editMode ? 'edit' : 'add_circle' }}</mat-icon>
+            {{ editMode ? 'Actualizar' : 'Agregar' }}
+          </button>
+          <button
+            mat-stroked-button
+            type="button"
+            (click)="onCancel()"
+            *ngIf="editMode"
+            class="temario-btn-cancel styled-btn btn-yellow"
+            color="warn"
+          >
+            <mat-icon class="icon-btn">close</mat-icon>
+            Cancelar
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</mat-card>

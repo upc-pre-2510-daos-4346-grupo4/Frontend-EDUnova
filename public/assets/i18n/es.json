@@ -1,7 +1,48 @@
 {
+  "options": {
+    "home": "Inicio",
+    "courseManagement": "Gestión de Cursos",
+    "studying": "Estudiando",
+    "profile": "Perfil",
+    "about": "Sobre Nosotros"
+  },
+  "course": {
+    "create": "Crear Curso",
+    "edit": "Editar Curso",
+    "delete": "Eliminar Curso",
+    "name": "Nombre",
+    "description": "Descripción",
+    "category": "Categoría",
+    "price": "Precio",
+    "moreInformation": "Más Información"
+  },
+
+  "topic": {
+    "syllabus": "Plan de Estudios",
+    "id": "ID",
+    "title": "Título",
+    "description": "Descripción",
+    "actions": "Acciones"
+  },
+
   "footer": {
     "rights": "Derechos de autor © 2024 {{ api }}, Todos los derechos reservados",
     "intro": "Desarrollado ",
     "author": "por el Equipo {{ team }}"
+  },
+
+  "objective": {
+    "title": "Objetivos",
+    "description": "Aquí puede ver sus objetivos y la información para aprenderlos",
+    "edit": "Editar",
+    "delete": "Eliminar"
+  },
+
+  "resource": {
+    "title": "Recursos",
+    "description": "Aquí puedes ver videos complementarios en YouTube",
+    "edit": "Editar",
+    "delete": "Eliminar"
   }
 }
+

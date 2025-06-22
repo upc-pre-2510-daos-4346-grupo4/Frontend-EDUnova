@@ -13,10 +13,14 @@ import { BreakpointObserver } from "@angular/cdk/layout";
 import { TranslateService } from "@ngx-translate/core";
 import { LanguageSwitcherComponent } from "./public/components/language-switcher/language-switcher.component";
 
+import { FooterContentComponent } from './public/components/footer-content/footer-content.component';
+import { TranslateModule } from "@ngx-translate/core";
+
 @Component({
   selector: 'app-root',
   imports: [RouterOutlet, RouterLink, MatToolbarModule, MatButtonModule, MatIconModule,
-    MatSidenavModule, MatDividerModule, MatListModule, LanguageSwitcherComponent],
+    MatSidenavModule, MatDividerModule, MatListModule, LanguageSwitcherComponent,
+    FooterContentComponent, TranslateModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
@@ -25,9 +29,15 @@ export class AppComponent implements OnInit {
 
   @ViewChild(MatSidenav, {static: true}) sidenav!: MatSidenav;
   options = [
-    { icon: 'home', path: '/home', title: 'Home'},
-    { icon: 'info', path:'/about', title: 'About'}
+    { icon: 'home', path: '/home', title: 'home'},
+    { icon: 'edit', path: '/publishing/courses', title: 'courseManagement'},
+    { icon: 'school', path: '/studying', title: 'studying' },
+    { icon: 'person', path: '/profile', title: 'profile' },
+    { icon: 'info', path:'/about', title: 'about'},
+
   ];
+
+  isSmallScreen = false;
 
   constructor(private translate: TranslateService, private observer: BreakpointObserver) {
     translate.setDefaultLang('en');
@@ -35,14 +45,15 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.observer.observe(['(max-width: 1280px)']) // Observa el ancho de la pantalla
-      .subscribe((response) => {  // Se suscribe a los cambios en el ancho de la pantalla
-        if (response.matches) { // Si el ancho de la pantalla es menor a 1280px
-          this.sidenav.mode = 'over'; // Se despliega sobre el contenido
-          this.sidenav.close(); // Se cierra
+    this.observer.observe(['(max-width: 900px)']) // Ajusta el breakpoint según necesidad
+      .subscribe((response) => {
+        this.isSmallScreen = response.matches;
+        if (response.matches) {
+          this.sidenav.mode = 'over';
+          this.sidenav.close();
         } else {
-          this.sidenav.mode = 'side'; // Se despliega al lado del contenido
-          this.sidenav.open();  // Se abre
+          this.sidenav.mode = 'over';
+          this.sidenav.close();
         }
       });
   }

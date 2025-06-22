@@ -1,1 +1,6 @@
-<p>page-not-found works!</p>
+<div class="not-found-container">
+  <h1>Página no encontrada</h1>
+  <p>La ruta <span class="not-found-path">{{ currentPath }}</span> no existe o ha sido movida.</p>
+  <button [routerLink]="'/home'">Ir al inicio</button>
+</div>
+

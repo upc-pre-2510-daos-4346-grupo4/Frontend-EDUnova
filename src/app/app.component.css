@@ -18,3 +18,21 @@ mat-sidenav {
 mat-sidenav-container {
   height: calc(100svh - 65px);
 }
+
+
+.custom-toolbar {
+  background-color: orange !important;
+  color: white;
+}
+
+.custom-sidenav {
+  background-color: white !important;
+}
+
+.custom-sidenav-container {
+  background-color: #f5f5f5; /* Gris claro */
+}
+
+.custom-content {
+  background-color: #f5f5f5; /* Gris claro */
+}
