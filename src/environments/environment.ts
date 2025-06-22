@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  serverBasePath: 'https://my-json-server.typicode.com/ComidaRapida007/db-server'
+  serverBasePath: 'https://685250f80594059b23ccf92a.mockapi.io'
 };
