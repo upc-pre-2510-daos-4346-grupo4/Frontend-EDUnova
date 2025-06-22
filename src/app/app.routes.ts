@@ -8,6 +8,8 @@ import { TopicManagementComponent } from './publishing/pages/topic-management/to
 import { StudyingComponent } from './studying/studying.component';
 import { ProfilePageComponent } from './presenting/pages/profile-page/profile-page.component';
 
+
+
 export const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'about', component: AboutComponent },

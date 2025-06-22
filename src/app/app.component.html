@@ -13,7 +13,7 @@
   <span class="mat-spacer"></span>
   @if (!isSmallScreen) {
     @for(option of options; track option.title) {
-      <a mat-button [routerLink]="option.path">{{ option.title }}</a>
+      <a mat-button [routerLink]="option.path">{{ 'options.' + option.title | translate }}</a>
     }
   }
   <button mat-icon-button>
@@ -30,7 +30,7 @@
       @for(option of options; track option.title) {
         <mat-list-item (click)="sidenav.mode === 'over' && sidenav.toggle()" [routerLink]="option.path">
           <mat-icon matListItemIcon>{{ option.icon }}</mat-icon>
-          {{ option.title }}
+          {{ 'options.' + option.title | translate }}
         </mat-list-item>
       }
     </mat-nav-list>

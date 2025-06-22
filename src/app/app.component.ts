@@ -14,12 +14,13 @@ import { TranslateService } from "@ngx-translate/core";
 import { LanguageSwitcherComponent } from "./public/components/language-switcher/language-switcher.component";
 
 import { FooterContentComponent } from './public/components/footer-content/footer-content.component';
-
+import { TranslateModule } from "@ngx-translate/core";
 
 @Component({
   selector: 'app-root',
   imports: [RouterOutlet, RouterLink, MatToolbarModule, MatButtonModule, MatIconModule,
-    MatSidenavModule, MatDividerModule, MatListModule, LanguageSwitcherComponent,FooterContentComponent],
+    MatSidenavModule, MatDividerModule, MatListModule, LanguageSwitcherComponent,
+    FooterContentComponent, TranslateModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
@@ -28,11 +29,12 @@ export class AppComponent implements OnInit {
 
   @ViewChild(MatSidenav, {static: true}) sidenav!: MatSidenav;
   options = [
-    { icon: 'home', path: '/home', title: 'Home'},
-    { icon: 'edit', path: '/publishing/courses', title: 'Course Management'},
-    { icon: 'school', path: '/studying', title: 'Studying' },
-    { icon: 'person', path: '/profile', title: 'Profile' },
-    { icon: 'info', path:'/about', title: 'About'}
+    { icon: 'home', path: '/home', title: 'home'},
+    { icon: 'edit', path: '/publishing/courses', title: 'courseManagement'},
+    { icon: 'school', path: '/studying', title: 'studying' },
+    { icon: 'person', path: '/profile', title: 'profile' },
+    { icon: 'info', path:'/about', title: 'about'},
+
   ];
 
   isSmallScreen = false;

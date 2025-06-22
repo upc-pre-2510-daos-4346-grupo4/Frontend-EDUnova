@@ -1,0 +1,71 @@
+/* Contenedor principal */
+.about-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2.5rem;
+  margin: 3rem auto 2rem auto;
+  max-width: 900px;
+  padding: 0 1rem;
+}
+
+/* Card principal */
+.about-card {
+  background: #fff;
+  border-radius: 14px;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.08);
+  padding: 2.5rem 2rem 2rem 2rem;
+  width: 100%;
+  max-width: 700px;
+  text-align: center;
+}
+
+.about-card h1 {
+  color: #1976d2;
+  font-size: 2.2rem;
+  margin-bottom: 1.2rem;
+}
+
+.about-card p {
+  color: #333;
+  font-size: 1.15rem;
+  margin-bottom: 1.1rem;
+  line-height: 1.7;
+}
+
+.about-card strong {
+  color: #1976d2;
+}
+
+/* Cards de misión y visión */
+.about-mv-cards {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 100%;
+}
+
+.about-mv-card {
+  background: #f5f5f5;
+  border-radius: 10px;
+  box-shadow: 0 1px 6px rgba(0,0,0,0.05);
+  padding: 1.7rem 1.5rem;
+  max-width: 340px;
+  min-width: 260px;
+  flex: 1 1 260px;
+  text-align: center;
+}
+
+.about-mv-card h2 {
+  color: #1976d2;
+  margin-top: 0;
+  margin-bottom: 0.8rem;
+}
+
+.about-mv-card p {
+  color: #444;
+  font-size: 1.05rem;
+  margin: 0;
+  line-height: 1.6;
+}

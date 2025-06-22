@@ -1,4 +1,11 @@
 {
+  "options": {
+    "home": "Inicio",
+    "courseManagement": "Gestión de Cursos",
+    "studying": "Estudiando",
+    "profile": "Perfil",
+    "about": "Sobre Nosotros"
+  },
   "course": {
     "create": "Crear Curso",
     "edit": "Editar Curso",
@@ -38,3 +45,4 @@
     "delete": "Eliminar"
   }
 }
+
