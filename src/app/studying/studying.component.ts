@@ -92,9 +92,9 @@ export class StudyingComponent implements OnInit {
       this.http.get<any[]>(`${environment.serverBasePath}/topics`).subscribe(topics => {
         this.topics = topics;
 
-        this.http.get<any>(`${environment.serverBasePath}/learningProgress?userId=${this.currentUserId}`)
-          .subscribe(progressArray => {
-            this.learningProgress = progressArray[0];
+        this.http.get<any>(`${environment.serverBasePath}/learning-progress?userId=${this.currentUserId}`)
+          .subscribe(progress => {
+            this.learningProgress = progress;
             this.paginateCourses();
           });
       });
@@ -174,7 +174,11 @@ export class StudyingComponent implements OnInit {
       }))
     };
 
-    this.http.put(`${environment.serverBasePath}/learningProgress/${this.learningProgress.id}`, updatedProgress).subscribe(() => {
+    this.http.put(`${environment.serverBasePath}/learning-progress/${this.learningProgress.id}`, {
+      userId: this.learningProgress.userId,
+      purchasedCourses: this.learningProgress.purchasedCourses,
+      completedTopics: this.learningProgress.completedTopics
+    }).subscribe(() => {
       this.loadAllData();
       this.dialog.closeAll();
     });
@@ -206,11 +210,24 @@ export class StudyingComponent implements OnInit {
   }
 
   saveCourseEdit(courseData: any): void {
+    const CATEGORY_MAP: Record<string,string> = {
+      'Mathematics':'MATHEMATICS',
+      'Computer Science':'COMPUTER_SCIENCE',
+      'Science':'SCIENCE',
+      'Arts':'ARTS',
+      'Design':'DESIGN',
+      'Business':'BUSINESS',
+      'Languages':'LANGUAGES',
+      'Humanities':'HUMANITIES',
+      'Health & Wellness':'HEALTH_AND_WELLNESS',
+      'Personal Development':'PERSONAL_DEVELOPMENT'
+    };
     const courseId = courseData.id;
-    this.http.put(`${environment.serverBasePath}/courses/${courseId}`, courseData).subscribe(() => {
-      this.loadAllData();
-      this.dialog.closeAll();
-    });
+
+    courseData.category = CATEGORY_MAP[courseData.category] ?? courseData.category;
+
+    this.http.put(`${environment.serverBasePath}/courses/${courseId}`, courseData)
+      .subscribe(() => { this.loadAllData(); this.dialog.closeAll(); });
   }
 
   deleteTopic(topicId: number, courseId: number) {
