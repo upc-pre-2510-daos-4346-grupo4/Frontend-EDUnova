@@ -7,8 +7,7 @@ import {CourseManagementComponent} from './publishing/pages/course-management/co
 import { TopicManagementComponent } from './publishing/pages/topic-management/topic-management.component';
 import { StudyingComponent } from './studying/studying.component';
 import { ProfilePageComponent } from './presenting/pages/profile-page/profile-page.component';
-
-
+import { ResenasMainComponent } from './resenas/pages/resenas-main/resenas-main.component';
 
 export const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -17,7 +16,7 @@ export const routes: Routes = [
   { path: 'publishing/topics/:id', component: TopicManagementComponent },
   { path: 'studying', component: StudyingComponent },
   { path: 'profile', component: ProfilePageComponent },
+  { path: 'resenas', component: ResenasMainComponent },  // ← TU NUEVA RUTA
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: '**', component: PageNotFoundComponent }
-
 ];

@@ -32,9 +32,9 @@ export class AppComponent implements OnInit {
     { icon: 'home', path: '/home', title: 'home'},
     { icon: 'edit', path: '/publishing/courses', title: 'courseManagement'},
     { icon: 'school', path: '/studying', title: 'studying' },
+    { icon: 'rate_review', path: '/resenas', title: 'resenas' },  // ← TU NUEVA OPCIÓN
     { icon: 'person', path: '/profile', title: 'profile' },
     { icon: 'info', path:'/about', title: 'about'},
-
   ];
 
   isSmallScreen = false;
