@@ -1,14 +1,14 @@
 export class Objective {
-  id: string;
-  topicId: string;
+  id: number;
+  topicId: number;
   title: string;
   header:string;
   mainParagraph: string;
   footer: string;
   conclusion: string;
   constructor() {
-    this.id = "";
-    this.topicId = "";
+    this.id = 0;
+    this.topicId = 0;
     this.title = "";
     this.header = "";
     this.mainParagraph = "";
