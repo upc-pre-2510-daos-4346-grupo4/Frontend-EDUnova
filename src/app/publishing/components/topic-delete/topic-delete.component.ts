@@ -36,8 +36,8 @@ export class TopicDeleteComponent {
               private objectivesService: ObjectivesService,
               private resourcesService: ResourcesService) {
     this.topic = new Topic;
-    this.getAllObjectivesByTopicId();
-    this.getAllResourcesByTopicId();
+    //this.getAllObjectivesByTopicId();
+    //this.getAllResourcesByTopicId();
   }
 
   // Private methods
@@ -60,11 +60,15 @@ export class TopicDeleteComponent {
   }
 
   private deleteTopic(): void {
+    if (!this.topic || !this.topic.id) {
+      console.error('topic no es válido');
+      return;
+    }
     this.topicService.delete(this.topic.id).subscribe(
-      (response: any) => {
-        this.topicDeleted.emit(response);
+      () => {
+        this.topicDeleted.emit(this.topic);
       }
-    )
+    );
   }
 
   private deleteObjectives(): void {
@@ -82,8 +86,8 @@ export class TopicDeleteComponent {
 
 
   onSubmit(): void {
-    this.deleteObjectives();
-    this.deleteResources();
+    //this.deleteObjectives();
+    //this.deleteResources();
     this.deleteTopic();
   }
 
