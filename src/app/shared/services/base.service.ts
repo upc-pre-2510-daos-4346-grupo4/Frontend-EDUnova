@@ -61,6 +61,16 @@ export class BaseService<T> {
       .pipe(retry(2), catchError(this.handleError));
   }
 
+  // PUBLISHING
+  getAllByCreatorId(creatorId: number): Observable<T> {
+    const options = {
+      ...this.httpOptions,
+      params: { creatorId: creatorId.toString() }
+    };
+    return this.http.get<T>(this.resourcePath(), options)
+      .pipe(retry(2), catchError(this.handleError));
+  }
+
 
   private resourcePath(): string {
     return `${this.basePath}${this.resourceEndpoint}`;

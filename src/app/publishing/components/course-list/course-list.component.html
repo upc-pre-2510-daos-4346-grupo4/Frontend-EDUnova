@@ -24,48 +24,55 @@
 
 <br>
 
-<div *ngFor="let course of paginatedCourses; let i = index">
-  <br>
-  <mat-card appearance="outlined" class="data-view-card">
-    <div class="card-content">
-      <img [src]="course.image" alt="Imagen" class="card-image" />
-      <div class="card-details">
-        <mat-card-title class="course-title">{{ course.name }}</mat-card-title>
-        <mat-card-subtitle class="course-category">Categoría: {{ course.category }}</mat-card-subtitle>
-        <div class="course-meta">
-          <span class="course-language"><mat-icon>language</mat-icon>Idioma: {{ course.language }}</span>
-          <span class="course-difficulty"><mat-icon>school</mat-icon>Dificultad: {{ course.difficulty }}</span>
+@if (this.courseList.length > 0) {
+  <div *ngFor="let course of paginatedCourses; let i = index">
+    <br>
+    <mat-card appearance="outlined" class="data-view-card">
+      <div class="card-content">
+        <img [src]="course.image" alt="Imagen" class="card-image" />
+        <div class="card-details">
+          <mat-card-title class="course-title">{{ course.name }}</mat-card-title>
+          <mat-card-subtitle class="course-category">Categoría: {{ course.category }}</mat-card-subtitle>
+          <div class="course-meta">
+            <span class="course-language"><mat-icon>language</mat-icon>Idioma: {{ course.language }}</span>
+            <span class="course-difficulty"><mat-icon>school</mat-icon>Dificultad: {{ course.difficulty }}</span>
+          </div>
         </div>
+        <div class="card-center-content">
+          <p class="course-description">{{ course.description }}</p>
+          <p class="course-price"><strong style="font-size: 1.2em;">Precio: ${{ course.price }}</strong></p>
+        </div>
+        <mat-card-actions class="card-actions">
+          <button mat-fab extended color="primary" (click)="openDialog(true, course)">
+            <mat-icon>edit</mat-icon>
+            {{ 'course.edit' | translate }}
+          </button>
+          <button mat-fab extended color="warn" (click)="openDeleteDialog(course)">
+            <mat-icon>delete</mat-icon>
+            {{ 'course.delete' | translate }}
+          </button>
+        </mat-card-actions>
       </div>
-      <div class="card-center-content">
-        <p class="course-description">{{ course.description }}</p>
-        <p class="course-price"><strong style="font-size: 1.2em;">Precio: ${{ course.price }}</strong></p>
-      </div>
-      <mat-card-actions class="card-actions">
-        <button mat-fab extended color="primary" (click)="openDialog(true, course)">
-          <mat-icon>edit</mat-icon>
-          {{ 'course.edit' | translate }}
-        </button>
-        <button mat-fab extended color="warn" (click)="openDeleteDialog(course)">
-          <mat-icon>delete</mat-icon>
-          {{ 'course.delete' | translate }}
-        </button>
-      </mat-card-actions>
-    </div>
-    <mat-accordion class="card-accordion">
-      <mat-expansion-panel>
-        <mat-expansion-panel-header>
-          <span>{{ 'course.moreInformation' | translate }}</span>
-        </mat-expansion-panel-header>
-        <app-topic-list [courseId]="course.id"></app-topic-list>
-      </mat-expansion-panel>
-    </mat-accordion>
-  </mat-card>
-</div>
+      <mat-accordion class="card-accordion">
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <span>{{ 'course.moreInformation' | translate }}</span>
+          </mat-expansion-panel-header>
+          <app-topic-list [courseId]="course.id"></app-topic-list>
+        </mat-expansion-panel>
+      </mat-accordion>
+    </mat-card>
+  </div>
 
-<mat-paginator class="main-paginator"
-               [length]="courseList.length"
-               [pageSize]="pageSize"
-               [pageSizeOptions]="[1, 2, 4, 10]"
-               (page)="onPageChange($event)">
-</mat-paginator>
+  <mat-paginator class="main-paginator"
+                 [length]="courseList.length"
+                 [pageSize]="pageSize"
+                 [pageSizeOptions]="[1, 2, 4, 10]"
+                 (page)="onPageChange($event)">
+  </mat-paginator>
+}
+
+
+
+
+

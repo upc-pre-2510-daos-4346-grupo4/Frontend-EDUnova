@@ -10,6 +10,7 @@ import { TranslateModule } from "@ngx-translate/core";
 
 import {Course} from '../../model/course.entity';
 import {CoursesService} from '../../services/courses.service';
+import { firstValueFrom } from 'rxjs';
 
 // Card
 import {ChangeDetectionStrategy} from '@angular/core';
@@ -85,11 +86,13 @@ export class CourseListComponent implements OnInit{
   }
 
   // Attributes
-
+  //courseList: Course[];
   courseList: Course[];
   paginatedCourses: Course[];
   isEditMode: boolean;
-  userId: String;
+  userId: number;
+
+
 
   //paginator
   pageSize = 1;
@@ -104,20 +107,33 @@ export class CourseListComponent implements OnInit{
     this.courseList = [];
     this.paginatedCourses= [];
     // Este es el user actual
-    this.userId = "1";
+    this.userId = 1;
   }
 
   // Private Methods
 
   // CRUD Actions
+
   private getAllCourses(): void {
+    /*
     this.courseService.getAll()
       .subscribe((response: any) => {
+        console.log(response);
         this.courseList = response.filter((course: any) => course.creatorId === this.userId);
         console.log(this.courseList); // Muestra los cursos filtrados en la consola
         this.updatePaginatedCourses();
       });
+      */
+     this.courseService.getAllByCreatorId(this.userId)
+      .subscribe((response: any) => {
+        console.log(response);
+        this.courseList = response;
+        console.log(this.courseList); // Muestra los cursos filtrados en la consola
+        this.updatePaginatedCourses();
+      });
   }
+
+
 
 
   // Event Handlers
