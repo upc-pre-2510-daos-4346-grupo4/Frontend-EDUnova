@@ -33,7 +33,8 @@ export class BaseService<T> {
 
   // Create Resource
   create(item: any): Observable<T> {
-    return this.http.post<T>(this.resourcePath(), JSON.stringify(item), this.httpOptions)
+    return this.http.post<T>(this.resourcePath(), JSON.stringify(item),
+      this.httpOptions)
       .pipe(retry(2), catchError(this.handleError));
   }
 
