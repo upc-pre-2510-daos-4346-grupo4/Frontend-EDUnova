@@ -18,16 +18,16 @@
     <mat-form-field appearance="outline" class="temario-input small-label">
       <mat-label>Categoría</mat-label>
       <mat-select name="category" [(ngModel)]="newCourse.category" required>
-        <mat-option value="Mathematics">Mathematics</mat-option>
-        <mat-option value="Computer Science">Computer Science (o Programming)</mat-option>
-        <mat-option value="Science">Science</mat-option>
-        <mat-option value="Arts">Arts</mat-option>
-        <mat-option value="Design">Design</mat-option>
-        <mat-option value="Business">Business</mat-option>
-        <mat-option value="Languages">Languages</mat-option>
-        <mat-option value="Humanities">Humanities</mat-option>
-        <mat-option value="Health & Wellness">Health & Wellness</mat-option>
-        <mat-option value="Personal Development">Personal Development</mat-option>
+        <mat-option value="ARABIC">Arabic</mat-option>
+        <mat-option value="ENGLISH">English</mat-option>
+        <mat-option value="FRENCH">French</mat-option>
+        <mat-option value="GERMAN">German</mat-option>
+        <mat-option value="HINDI">Hindi</mat-option>
+        <mat-option value="JAPANESE">Japanese</mat-option>
+        <mat-option value="MANDARIN_CHINESE">Mandarin Chinese</mat-option>
+        <mat-option value="PORTUGUESE">Portuguese</mat-option>
+        <mat-option value="RUSSIAN">Russian</mat-option>
+        <mat-option value="SPANISH">Spanish</mat-option>
       </mat-select>
     </mat-form-field>
     <mat-form-field appearance="outline" class="temario-input small-label">
@@ -41,23 +41,23 @@
     <mat-form-field appearance="outline" class="temario-input small-label">
       <mat-label>Lenguaje</mat-label>
       <mat-select name="language" [(ngModel)]="newCourse.language" required>
-        <mat-option value="English">English</mat-option>
-        <mat-option value="Spanish">Spanish</mat-option>
-        <mat-option value="Mandarin Chinese">Mandarin Chinese</mat-option>
-        <mat-option value="Hindi">Hindi</mat-option>
-        <mat-option value="French">French</mat-option>
-        <mat-option value="Arabic">Arabic</mat-option>
-        <mat-option value="Portuguese">Portuguese</mat-option>
-        <mat-option value="Russian">Russian</mat-option>
-        <mat-option value="German">German</mat-option>
-        <mat-option value="Japanese">Japanese</mat-option>
+        <mat-option value="ARTS">Arts</mat-option>
+        <mat-option value="BUSINESS">Business</mat-option>
+        <mat-option value="COMPUTER_SCIENCE">Computer Science</mat-option>
+        <mat-option value="DESIGN">Design</mat-option>
+        <mat-option value="HEALTH_AND_WELLNESS">Health & Wellness</mat-option>
+        <mat-option value="HUMANITIES">Humanities</mat-option>
+        <mat-option value="LANGUAGES">Languages</mat-option>
+        <mat-option value="MATHEMATICS">Mathematics</mat-option>
+        <mat-option value="PERSONAL_DEVELOPMENT">Personal Development</mat-option>
+        <mat-option value="SCIENCE">Science</mat-option>
       </mat-select>
     </mat-form-field>
     <label [ngClass]="editMode ? 'label-blue' : 'label-mint'" style="margin-top: 8px; display: block;">Dificultad</label>
     <mat-radio-group name="difficulty" [(ngModel)]="newCourse.difficulty" required style="display: flex; flex-direction: row; gap: 16px;">
-      <mat-radio-button value="Beginner">Beginner</mat-radio-button>
-      <mat-radio-button value="Intermediate">Intermediate</mat-radio-button>
-      <mat-radio-button value="Advanced">Advanced</mat-radio-button>
+      <mat-radio-button value="BEGINNER">Beginner</mat-radio-button>
+      <mat-radio-button value="INTERMEDIATE">Intermediate</mat-radio-button>
+      <mat-radio-button value="ADVANCED">Advanced</mat-radio-button>
     </mat-radio-group>
   </form>
 </mat-dialog-content>
