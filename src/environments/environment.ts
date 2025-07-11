@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  serverBasePath: 'http://localhost:8093/api/v1'
+  serverBasePath: 'https://open-cnbre5hycuh6huhs.canadacentral-01.azurewebsites.net/api/v1'
 };
