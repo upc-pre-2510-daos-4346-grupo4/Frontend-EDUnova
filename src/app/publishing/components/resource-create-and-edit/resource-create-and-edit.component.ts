@@ -37,7 +37,7 @@ import {NgClass, NgIf} from '@angular/common';
 export class ResourceCreateAndEditComponent {
 
   // Attributes
-  topicId: string;
+  topicId: number;
   newResource: Resource; // Replace 'any' with the actual type of your resource
   editMode: boolean = false;
   showIncompleteError = false;
@@ -46,7 +46,7 @@ export class ResourceCreateAndEditComponent {
 
   // Constructor
   constructor(@Inject(MAT_DIALOG_DATA) public data: any, private resourcesService: ResourcesService, private dialogRef: MatDialogRef<ResourceCreateAndEditComponent>) {
-    this.topicId = data?.topicId ?? '';
+    this.topicId = data?.topicId ?? 0;
     this.newResource = data?.resource ? { ...data.resource } : new Resource();
     this.editMode = data?.editMode ?? false;
   }

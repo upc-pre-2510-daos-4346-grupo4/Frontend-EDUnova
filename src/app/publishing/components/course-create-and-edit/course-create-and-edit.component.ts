@@ -36,7 +36,7 @@ import {NgClass, NgIf} from '@angular/common';
 })
 export class CourseCreateAndEditComponent {
   // Attributes
-  userId: string;
+  userId: number;
   newCourse:Course;
   editMode: boolean = false;
   showIncompleteError = false;

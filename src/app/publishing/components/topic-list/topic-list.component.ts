@@ -22,7 +22,7 @@ import {TopicDeleteComponent} from '../topic-delete/topic-delete.component';
 })
 export class TopicListComponent implements OnInit, AfterViewInit {
   // Attributes
-  @Input() courseId!: string; // Recibe el dato courseId
+  @Input() courseId!: number; // Recibe el dato courseId
   dataSource: MatTableDataSource<any>;
   displayedColumns: string[] = ['title', 'description', 'actions'];
   // Edit/Create Mode

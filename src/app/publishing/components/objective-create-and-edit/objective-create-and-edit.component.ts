@@ -33,7 +33,7 @@ export class ObjectiveCreateAndEditComponent {
   // Attributes
   @Input() objective: Objective;
   @Input() editMode: boolean = false;
-  @Input() topicId!: string; // Receives the topicId
+  @Input() topicId!: number; // Receives the topicId
   @Output() objectiveAdded: EventEmitter<Objective> = new EventEmitter<Objective>();
   @Output() objectiveUpdated: EventEmitter<Objective> = new EventEmitter<Objective>();
   @Output() editCanceled: EventEmitter<any> = new EventEmitter();

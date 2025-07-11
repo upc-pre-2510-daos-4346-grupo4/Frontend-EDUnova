@@ -38,7 +38,7 @@ export class ObjectiveListComponent implements OnInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
   // Attributes
-  @Input() topicId!: string; // Receives the topicId
+  @Input() topicId!: number; // Receives the topicId
   objectiveData: Objective;
   objectiveList: Objective[];
   isEditMode: boolean;
