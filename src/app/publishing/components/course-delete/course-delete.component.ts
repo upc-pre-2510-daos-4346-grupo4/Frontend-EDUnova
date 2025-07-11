@@ -25,20 +25,14 @@ import { lastValueFrom } from 'rxjs';
     MatDialogClose,
     MatDialogContent,
     MatDialogTitle,
-    MatFormField,
     FormsModule,
-    MatInput,
-    MatRadioButton,
-    MatOption,
-    MatSelect,
-    MatRadioGroup
   ],
   templateUrl: './course-delete.component.html',
   styleUrl: './course-delete.component.css'
 })
 export class CourseDeleteComponent {
   // Attributes
-  selectCourse:Course;
+  selectedCourse:Course;
   @Output() courseDeleted: EventEmitter<Course> = new EventEmitter<Course>();
 
   selectedTopics: Topic[] = [];
@@ -50,10 +44,10 @@ export class CourseDeleteComponent {
               private topicsService: TopicsService,
               private objectivesService: ObjectivesService,
               private resourcesService: ResourcesService) {
-    this.selectCourse = data?.course ? { ...data.course } : new Course();
-    this.getAllTopicsByCourseId();
-    this.getAllObjectivesByTopicId();
-    this.getAllResourcesByTopicId();
+    this.selectedCourse = data?.course ? { ...data.course } : new Course();
+    //this.getAllTopicsByCourseId();
+    //this.getAllObjectivesByTopicId();
+    //this.getAllResourcesByTopicId();
   }
 
   //Private methods
@@ -63,7 +57,7 @@ export class CourseDeleteComponent {
   private getAllTopicsByCourseId(): void {
     this.topicsService.getAll().subscribe(
       (response:any) => {
-        this.selectedTopics = response.filter((topic: any) => topic.courseId === this.selectCourse.id);
+        this.selectedTopics = response.filter((topic: any) => topic.courseId === this.selectedCourse.id);
       }
     );
   }
@@ -85,10 +79,15 @@ export class CourseDeleteComponent {
       }
     );
   }
+
   private deleteCourse(): void {
-    this.courseService.delete(this.selectCourse.id).subscribe(
-      (response: any) => {
-        this.courseDeleted.emit(response);
+    if (!this.selectedCourse || !this.selectedCourse.id) {
+      console.error('selectedCourse no es válido');
+      return;
+    }
+    this.courseService.delete(this.selectedCourse.id).subscribe(
+      () => {
+        this.courseDeleted.emit(this.selectedCourse);
       }
     );
   }
@@ -129,9 +128,9 @@ export class CourseDeleteComponent {
 
   // Event Handlers
   onDelete(): void {
-    this.deleteResources();
-    this.deleteObjectives();
-    this.deleteTopics();
+    //this.deleteResources();
+    //this.deleteObjectives();
+    //this.deleteTopics();
     this.deleteCourse();
   }
 

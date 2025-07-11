@@ -77,7 +77,12 @@ export class CourseListComponent implements OnInit{
 
     const instance = dialogRef.componentInstance;
     if (instance) {
-      instance.courseDeleted.subscribe((selectedCourse: Course) => this.onCourseDeleted(selectedCourse));
+      instance.courseDeleted.subscribe((selectedCourse: Course) => {
+        console.log('IDs en la lista:', this.courseList.map(c => c.id));
+        console.log('ID a eliminar:', selectedCourse.id);
+        this.onCourseDeleted(selectedCourse);
+        console.log(this.courseList); // Aquí ya está actualizado
+      });
     }
 
     dialogRef.afterClosed().subscribe(() => {
@@ -115,7 +120,7 @@ export class CourseListComponent implements OnInit{
   // CRUD Actions
 
   private getAllCourses(): void {
-    /*
+
     this.courseService.getAll()
       .subscribe((response: any) => {
         console.log(response);
@@ -123,14 +128,7 @@ export class CourseListComponent implements OnInit{
         console.log(this.courseList); // Muestra los cursos filtrados en la consola
         this.updatePaginatedCourses();
       });
-      */
-     this.courseService.getAllByCreatorId(this.userId)
-      .subscribe((response: any) => {
-        console.log(response);
-        this.courseList = response;
-        console.log(this.courseList); // Muestra los cursos filtrados en la consola
-        this.updatePaginatedCourses();
-      });
+
   }
 
 
@@ -150,7 +148,8 @@ export class CourseListComponent implements OnInit{
     }
   }
 
-  onCourseDeleted(selectedCourse: Course): void {
+  onCourseDeleted(selectedCourse: Course| null): void {
+    if (!selectedCourse) return;
     this.courseList = this.courseList.filter(course => course.id !== selectedCourse.id);
     // Si la página actual queda vacía y no es la primera, retrocede una página
     const totalPages = Math.ceil(this.courseList.length / this.pageSize);
