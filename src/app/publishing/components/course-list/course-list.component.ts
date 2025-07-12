@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-
+import {AuthenticationService} from '../../../iam/services/authentication.service';
 import { AfterViewInit, OnInit, ViewChild} from '@angular/core';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { MatPaginator } from "@angular/material/paginator";
@@ -107,12 +107,15 @@ export class CourseListComponent implements OnInit{
 
 
   // Constructor
-  constructor(private courseService: CoursesService) {
+  constructor(private courseService: CoursesService, private authenticationService: AuthenticationService) {
     this.isEditMode = false;
     this.courseList = [];
-    this.paginatedCourses= [];
-    // Este es el user actual
-    this.userId = 1;
+    this.paginatedCourses = [];
+    this.userId = 0; // Valor inicial
+
+    this.authenticationService.currentUserId.subscribe((id) => {
+      this.userId = id;
+    });
   }
 
   // Private Methods
