@@ -13,11 +13,11 @@ import {ResourceListComponent} from '../../components/resource-list/resource-lis
   styleUrl: './topic-management.component.css'
 })
 export class TopicManagementComponent implements OnInit{
-  topicId!: string; // Recibe el topicId
+  topicId!: number; // Recibe el topicId
 
   constructor(private route: ActivatedRoute) {}
 
   ngOnInit(): void {
-    this.topicId = String(this.route.snapshot.paramMap.get('id'));
+    this.topicId = Number(this.route.snapshot.paramMap.get('id'));
   }
 }

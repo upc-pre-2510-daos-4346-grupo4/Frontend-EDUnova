@@ -36,7 +36,7 @@ import {NgClass, NgIf} from '@angular/common';
 })
 export class CourseCreateAndEditComponent {
   // Attributes
-  userId: string;
+  userId: number;
   newCourse:Course;
   editMode: boolean = false;
   showIncompleteError = false;
@@ -46,7 +46,7 @@ export class CourseCreateAndEditComponent {
 
   //Constructor
   constructor(@Inject(MAT_DIALOG_DATA) public data: any, private courseService: CoursesService, private dialogRef: MatDialogRef<CourseCreateAndEditComponent>) {
-    this.userId=data?.userId ?? '1';
+    this.userId=data?.userId ?? 1;
     this.newCourse = data?.course ? { ...data.course } : new Course();
     this.editMode = data?.editMode ?? false;
   }

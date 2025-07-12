@@ -56,22 +56,6 @@ mat-accordion {
 
 }
 
-@media (max-width: 1200px) {
-  .resource-list-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (max-width: 800px) {
-  .resource-list-grid {
-    grid-template-columns: 1fr;
-  }
-  .example-card {
-    width: 100%;
-    min-width: 0;
-  }
-}
-
 .resource-list-container {
   display: flex;
   flex-direction: column;
@@ -202,44 +186,6 @@ mat-accordion {
   color: #fff !important;
 }
 
-@media (max-width: 900px) {
-  .resource-card-content {
-    gap: 16px;
-    padding: 14px 8px;
-  }
-  .resource-card-video {
-    max-width: 220px;
-    min-width: 120px;
-    max-height: 140px;
-    min-height: 100px;
-  }
-}
-
-@media (max-width: 700px) {
-  .resource-card-content {
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
-    padding: 12px 4px;
-  }
-  .resource-card-video {
-    width: 100% !important;
-    min-width: 0;
-    max-width: 100%;
-    max-height: 220px;
-  }
-  .resource-view-card {
-    flex-direction: column;
-    align-items: flex-start;
-    max-width: 100%;
-  }
-  .card-actions {
-    margin-left: 0;
-    align-items: center;
-    width: 100%;
-  }
-}
-
 /* Card de presentación para recursos de video */
 .presentation-card {
   margin-bottom: 32px;
@@ -307,14 +253,74 @@ mat-accordion {
   color: #fff;
 }
 
-@media (max-width: 900px) {
-  .presentation-content {
+
+.resource-view-card {
+  width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+  max-width: 100%;
+}
+
+.resource-card-content {
+  width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+}
+
+@media (max-width: 800px) {
+  .resource-view-card {
     flex-direction: column;
-    align-items: flex-start;
-    gap: 20px;
-  }
-  .presentation-action {
-    align-items: flex-start;
+    align-items: stretch;
+    max-width: 100%;
     width: 100%;
+  }
+  .resource-card-content {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+    padding: 8px 2px;
+    gap: 10px;
+  }
+  .resource-card-video {
+    width: 100%;
+    max-width: 340px;
+    min-width: 0;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: auto;
+    min-height: unset;
+    max-height: unset;
+  }
+  .resource-card-video iframe {
+    width: 100% !important;
+    height: auto !important;
+    aspect-ratio: 16 / 9;
+    min-width: 0;
+    max-width: 100%;
+    border-radius: 10px;
+  }
+  .resource-card-details {
+    width: 100%;
+    text-align: center;
+    margin-top: 0;
+    margin-bottom: 0;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .card-actions {
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    margin-left: 0;
+    margin-top: 0;
+    gap: 10px;
   }
 }

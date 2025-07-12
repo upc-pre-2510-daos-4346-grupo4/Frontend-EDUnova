@@ -33,7 +33,8 @@ export class BaseService<T> {
 
   // Create Resource
   create(item: any): Observable<T> {
-    return this.http.post<T>(this.resourcePath(), JSON.stringify(item), this.httpOptions)
+    return this.http.post<T>(this.resourcePath(), JSON.stringify(item),
+      this.httpOptions)
       .pipe(retry(2), catchError(this.handleError));
   }
 
@@ -58,6 +59,16 @@ export class BaseService<T> {
   //Get Resource by ID
   getById(id: any): Observable<T> {
     return this.http.get<T>(`${this.resourcePath()}/${id}`, this.httpOptions)
+      .pipe(retry(2), catchError(this.handleError));
+  }
+
+  // PUBLISHING
+  getAllByCreatorId(creatorId: number): Observable<T> {
+    const options = {
+      ...this.httpOptions,
+      params: { creatorId: creatorId.toString() }
+    };
+    return this.http.get<T>(this.resourcePath(), options)
       .pipe(retry(2), catchError(this.handleError));
   }
 

@@ -31,7 +31,7 @@ export class TopicCreateAndEditComponent {
   // Attributes
   @Input() topic: Topic;
   @Input() editMode: boolean = false;
-  @Input() courseId!: string; // Recibe el dato courseId
+  @Input() courseId!: number; // Recibe el dato courseId
   @Output() topicAdded: EventEmitter<Topic> = new EventEmitter<Topic>();
   @Output() topicUpdated: EventEmitter<Topic> = new EventEmitter<Topic>();
   @Output() editCanceled: EventEmitter<any> = new EventEmitter();

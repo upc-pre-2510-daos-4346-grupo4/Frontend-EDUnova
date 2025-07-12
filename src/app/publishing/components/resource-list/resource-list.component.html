@@ -23,7 +23,10 @@
         <ng-container *ngFor="let resource of paginatedResources; let i = index">
           <mat-card appearance="outlined" class="resource-view-card">
             <div class="resource-card-content">
-              <youtube-player [videoId]="resource.youtubeId" class="resource-card-video" [width]="320" [height]="220"></youtube-player>
+              <youtube-player [videoId]="resource.youtubeId"
+                              class="resource-card-video"
+                              [width]="320" [height]="220">
+              </youtube-player>
               <div class="resource-card-details">
                 <mat-card-title>Título: {{resource.title}}</mat-card-title>
                 <mat-card-subtitle>Descripción: {{resource.description}}</mat-card-subtitle>

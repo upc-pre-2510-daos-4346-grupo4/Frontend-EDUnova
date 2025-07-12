@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-
+import {AuthenticationService} from '../../../iam/services/authentication.service';
 import { AfterViewInit, OnInit, ViewChild} from '@angular/core';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { MatPaginator } from "@angular/material/paginator";
@@ -10,6 +10,7 @@ import { TranslateModule } from "@ngx-translate/core";
 
 import {Course} from '../../model/course.entity';
 import {CoursesService} from '../../services/courses.service';
+import { firstValueFrom } from 'rxjs';
 
 // Card
 import {ChangeDetectionStrategy} from '@angular/core';
@@ -76,7 +77,12 @@ export class CourseListComponent implements OnInit{
 
     const instance = dialogRef.componentInstance;
     if (instance) {
-      instance.courseDeleted.subscribe((selectedCourse: Course) => this.onCourseDeleted(selectedCourse));
+      instance.courseDeleted.subscribe((selectedCourse: Course) => {
+        console.log('IDs en la lista:', this.courseList.map(c => c.id));
+        console.log('ID a eliminar:', selectedCourse.id);
+        this.onCourseDeleted(selectedCourse);
+        console.log(this.courseList); // Aquí ya está actualizado
+      });
     }
 
     dialogRef.afterClosed().subscribe(() => {
@@ -85,11 +91,13 @@ export class CourseListComponent implements OnInit{
   }
 
   // Attributes
-
+  //courseList: Course[];
   courseList: Course[];
   paginatedCourses: Course[];
   isEditMode: boolean;
-  userId: String;
+  userId: number;
+
+
 
   //paginator
   pageSize = 1;
@@ -99,25 +107,34 @@ export class CourseListComponent implements OnInit{
 
 
   // Constructor
-  constructor(private courseService: CoursesService) {
+  constructor(private courseService: CoursesService, private authenticationService: AuthenticationService) {
     this.isEditMode = false;
     this.courseList = [];
-    this.paginatedCourses= [];
-    // Este es el user actual
-    this.userId = "1";
+    this.paginatedCourses = [];
+    this.userId = 0; // Valor inicial
+
+    this.authenticationService.currentUserId.subscribe((id) => {
+      this.userId = id;
+    });
   }
 
   // Private Methods
 
   // CRUD Actions
+
   private getAllCourses(): void {
+
     this.courseService.getAll()
       .subscribe((response: any) => {
+        console.log(response);
         this.courseList = response.filter((course: any) => course.creatorId === this.userId);
         console.log(this.courseList); // Muestra los cursos filtrados en la consola
         this.updatePaginatedCourses();
       });
+
   }
+
+
 
 
   // Event Handlers
@@ -134,7 +151,8 @@ export class CourseListComponent implements OnInit{
     }
   }
 
-  onCourseDeleted(selectedCourse: Course): void {
+  onCourseDeleted(selectedCourse: Course| null): void {
+    if (!selectedCourse) return;
     this.courseList = this.courseList.filter(course => course.id !== selectedCourse.id);
     // Si la página actual queda vacía y no es la primera, retrocede una página
     const totalPages = Math.ceil(this.courseList.length / this.pageSize);

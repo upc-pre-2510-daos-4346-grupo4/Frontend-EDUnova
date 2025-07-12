@@ -90,7 +90,7 @@ export class ResourceListComponent implements OnInit{
   }
 
   // Attributes
-  @Input() topicId!: string; // Receives the topicId
+  @Input() topicId!: number; // Receives the topicId
   resourceData: Resource;
   resourceList: Resource[];
   isEditMode: boolean;

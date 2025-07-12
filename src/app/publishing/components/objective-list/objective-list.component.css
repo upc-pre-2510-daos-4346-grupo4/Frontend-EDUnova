@@ -336,7 +336,7 @@
   color: #f9a825;
 }
 
-@media (max-width: 900px) {
+@media (max-width: 1200px) {
   .presentation-content {
     flex-direction: column;
     align-items: flex-start;
@@ -345,5 +345,91 @@
   .presentation-action {
     align-items: flex-start;
     width: 100%;
+  }
+}
+
+
+
+.objective-list-grid {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 28px;
+  width: 100%;
+  align-items: flex-start;
+  margin-bottom: 32px;
+}
+
+.objective-list-col,
+.objective-list-col-cards-grid,
+.objective-card-grid {
+  width: 100%;
+  min-width: 0;
+}
+
+.objective-card-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+
+@media (max-width: 1200px) {
+  .objective-list-grid {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+  .objective-card-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 1200px) {
+  .objective-list-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 1200px) {
+  .objective-card-grid {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+}
+
+
+
+@media (max-width: 1200px) {
+  .objective-list-grid {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+  .objective-list-col-paginator {
+    grid-column: auto;
+    align-items: stretch;
+    margin-top: 10px;
+  }
+  .objective-list-col-cards-grid {
+    grid-column: auto;
+  }
+}
+
+.objective-list-col-form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  width: 100%;     /* <-- Asegura esto */
+  min-width: 0;    /* <-- Asegura esto */
+}
+
+@media (max-width: 1200px) {
+  .objective-list-grid {
+    display: flex !important;
+    flex-direction: column;
+    gap: 18px;
+  }
+  .objective-list-col-form,
+  .objective-list-col-cards-grid {
+    order: unset;
+    width: 100%;
+    min-width: 0;
   }
 }

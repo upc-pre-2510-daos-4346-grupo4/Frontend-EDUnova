@@ -44,6 +44,24 @@
     "description": "Here you can see complementary videos on YouTube",
     "edit": "Edit",
     "delete": "Delete"
+  },
+  
+  "STUDYING": {
+    "SCHEDULE_TITLE": "Study Schedule",
+    "IN_PROGRESS": "In Progress",
+    "COMPLETED": "Completed",
+    "INSTRUCTOR": "Instructor",
+    "WEEK": "Week",
+    "CANCEL": "Cancel",
+    "COMPLETE": "Complete",
+    "EDIT_COURSE": "Edit Course",
+    "COURSE_NAME": "Course Name",
+    "DESCRIPTION": "Description",
+    "CATEGORY": "Category",
+    "SAVE": "Save",
+    "ADD_TOPIC": "Add Topic",
+    "DELETE_TOPIC": "Delete Topic",
+    "TOPIC_TITLE": "Topic Title",
+    "TOPIC_DESCRIPTION": "Topic Description"
   }
-
 }

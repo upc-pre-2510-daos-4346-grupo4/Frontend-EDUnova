@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  serverBasePath: 'https://685250f80594059b23ccf92a.mockapi.io'
+  serverBasePath: 'https://open-cnbre5hycuh6huhs.canadacentral-01.azurewebsites.net/api/v1'
 };

@@ -242,3 +242,59 @@
     padding: 2px 6px;
   }
 }
+
+
+
+
+
+
+.temario-card {
+  background: linear-gradient(120deg, #f5f7fa 60%, #e0f7fa 100%);
+  border-radius: 14px;
+  box-shadow: 0 2px 12px rgba(0, 150, 136, 0.08), 0 1px 2px rgba(0,0,0,0.03);
+  padding: 20px 22px 18px 22px;
+  margin-bottom: 24px;
+  border: 1px solid #b2dfdb;
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
+}
+
+.temario-form-row-horizontal-align {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+  flex-wrap: wrap;
+}
+
+.field-title {
+  flex: 2 1 180px;
+  min-width: 120px;
+  max-width: 320px;
+  width: 100%;
+}
+
+.field-description {
+  flex: 10 1 300px;
+  min-width: 180px;
+  max-width: 100%;
+  width: 100%;
+}
+
+@media (max-width: 900px) {
+  .field-title,
+  .field-description {
+    min-width: 0;
+    max-width: 100%;
+    width: 100%;
+  }
+}
+
+@media (max-width: 700px) {
+  .temario-form-row-horizontal-align {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
